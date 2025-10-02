@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наши сотрудники и активисты — Комиссия по противодействию коррупции</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'PT Serif', serif;
+            color: #333;
+            line-height: 1.6;
+            background: url('https://images.unsplash.com/photo-1543349689-9a4d426bee8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80') fixed;
+            background-size: cover;
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(to bottom, #0039a4, #002b7a);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        header .container {
+            display: flex;
+            align-items: center;
+        }
+        
+        header a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        header a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Main content */
+        main {
+            flex: 1;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-light {
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: #002b7a;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #FF7F50;
+            border-radius: 2px;
+        }
+
+        /* Стили для сотрудников */
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .staff-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .staff-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .staff-photo {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #002b7a, #0039a4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .staff-photo i {
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .staff-info h3 {
+            color: #002b7a;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .staff-position {
+            color: #d52b1e;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .staff-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            font-size: 0.95rem;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .staff-btn {
+            background: #002b7a;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            display: inline-block;
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .staff-btn:hover {
+            background: #0039a4;
+            text-decoration: none;
+        }
+
+        /* Стили для активистов */
+        .activists-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .activist-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .activist-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .activist-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #d52b1e, #ff6b6b);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .activist-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .activist-info h3 {
+            color: #002b7a;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .activist-info p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            font-size: 0.95rem;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .activist-btn {
+            background: #d52b1e;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            display: inline-block;
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .activist-btn:hover {
+            background: #b22222;
+            text-decoration: none;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            header .container {
+                justify-content: center;
+            }
+            
+            .staff-grid,
+            .activists-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .staff-card,
+            .activist-card {
+                padding: 20px;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="ннн.html">
+                <i class="fas fa-arrow-left"></i> Вернуться на главную
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="section section-light">
+            <div class="container">
+                <!-- Наши сотрудники -->
+                <div id="staff">
+                    <div class="section-title">
+                        <h2>Наши сотрудники</h2>
+                    </div>
+                    
+                    <div class="staff-grid">
+                        <div class="staff-card">
+                            <div class="staff-photo">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="staff-info">
+                                <h3>Иванов Иван Иванович</h3>
+                                <p class="staff-position">Директор по развитию</p>
+                                <p class="staff-description">Эксперт в области антикоррупционного законодательства</p>
+                                <a href="#" class="staff-btn">Подробнее</a>
+                            </div>
+                        </div>
+                        
+                        <div class="staff-card">
+                            <div class="staff-photo">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div class="staff-info">
+                                <h3>Петрова Мария Сергеевна</h3>
+                                <p class="staff-position">Менеджер проектов</p>
+                                <p class="staff-description">Специалист по реализации антикоррупционных программ</p>
+                                <a href="#" class="staff-btn">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Активисты -->
+                <div id="activ" style="margin-top: 80px;">
+                    <div class="section-title">
+                        <h2>Активисты</h2>
+                    </div>
+                    
+                    <div class="activists-grid">
+                        <div class="activist-card">
+                            <div class="activist-icon">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
+                            <div class="activist-info">
+                                <h3>Волонтерское движение</h3>
+                                <p>Активные участники наших проектов по общественному контролю</p>
+                                <a href="#" class="activist-btn">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.staff-card, .activist-card').forEach(item => {
+                item.style.opacity = 0;
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(item);
+            });
+        });
+    </script>
+</body>
+</html>

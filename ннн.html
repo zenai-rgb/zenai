@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Комиссия по противодействию коррупции — межрегиональная общественная организация, занимающаяся борьбой с коррупцией и общественным контролем.">
+    <title>Комиссия по противодействию коррупции</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* ... ваш оригинальный CSS без изменений ... */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'PT Serif', serif;
+            color: #333;
+            line-height: 1.6;
+            background: url('https://images.unsplash.com/photo-1543349689-9a4d426bee8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80') fixed;
+            background-size: cover;
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            scroll-behavior: smooth;
+            transition: all 0.3s ease;
+        }
+        /* Стили для версии слабовидящих */
+        body.low-vision {
+            background: #000 !important;
+            color: #fff !important;
+            font-size: 1.2em !important;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Кнопка переключения версий */
+        .accessibility-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: #002b7a;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        .accessibility-toggle:hover {
+            background: #0039a4;
+            transform: translateY(-2px);
+        }
+        .accessibility-toggle i {
+            font-size: 18px;
+        }
+        /* Header */
+        header {
+            background: linear-gradient(to bottom, #0039a4, #002b7a);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        body.low-vision header {
+            background: linear-gradient(to bottom, #000, #111) !important;
+            box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2) !important;
+        }
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+        body.low-vision .header-top {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5) !important;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo-img {
+            width: 70px;
+            height: 70px;
+            background: transparent; /* ← УБРАН СИНЯЯ/БЕЛАЯ ЗАЛИВКА */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+        body.low-vision .logo-img {
+            background: transparent !important;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2) !important;
+        }
+        .logo-img img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        .logo-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        .logo-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+        .datetime {
+            color: #B0E0E6;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            margin-top: 12px;
+            text-align: center;
+        }
+        body.low-vision .datetime {
+            color: #fff !important;
+        }
+        .header-nav {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+            align-items: center;
+        }
+        .header-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 5px;
+            position: relative;
+            font-family: 'Roboto', sans-serif;
+            white-space: nowrap;
+        }
+        body.low-vision .header-nav a {
+            color: #fff !important;
+            font-size: 1.1em !important;
+        }
+        .header-nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+        body.low-vision .header-nav a:after {
+            background: #fff !important;
+        }
+        .header-nav a:hover:after {
+            width: 100%;
+        }
+        /* Hero section */
+        .hero {
+            background: url('https://cdn.culture.ru/images/dbaf51d3-1bdf-52f0-a516-7834d841b119') no-repeat center center;
+            background-size: cover;
+            padding: 100px 0;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        body.low-vision .hero {
+            background: #000 !important;
+        }
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 57, 164, 0.85), rgba(0, 43, 122, 0.9));
+        }
+        body.low-vision .hero:before {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.95)) !important;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        body.low-vision .hero h1 {
+            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.3) !important;
+            font-size: 3.2rem !important;
+        }
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        body.low-vision .hero-subtitle {
+            opacity: 1 !important;
+            font-size: 1.6rem !important;
+        }
+        .contacts {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 40px;
+        }
+        body.low-vision .contacts {
+            background: rgba(255, 255, 255, 0.2) !important;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-family: 'Roboto', sans-serif;
+        }
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+        .contact-item i {
+            font-size: 1.2rem;
+            color: #B0E0E6;
+        }
+        body.low-vision .contact-item i {
+            color: #fff !important;
+        }
+        /* Main content */
+        main {
+            flex: 1;
+        }
+        .section {
+            padding: 80px 0;
+            scroll-margin-top: 100px;
+        }
+        .section-light {
+            background: rgba(255, 255, 255, 0.9);
+        }
+        body.low-vision .section-light {
+            background: rgba(30, 30, 30, 0.95) !important;
+        }
+        .section-dark {
+            background: rgba(248, 249, 255, 0.9);
+        }
+        body.low-vision .section-dark {
+            background: rgba(20, 20, 20, 0.95) !important;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: #002b7a;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        body.low-vision .section-title h2 {
+            color: #fff !important;
+            font-size: 2.5rem !important;
+        }
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #FF7F50;
+            border-radius: 2px;
+        }
+        body.low-vision .section-title h2:after {
+            background: #FF7F50 !important;
+        }
+        .section-content {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: center;
+        }
+        body.low-vision .section-content {
+            color: #fff !important;
+            font-size: 1.3rem !important;
+            line-height: 2 !important;
+        }
+        .section-content p {
+            margin-bottom: 25px;
+        }
+        /* === СТИЛИ ДЛЯ СТАТИЧНОЙ КАРТЫ (БЕЗ МАРКЕРОВ) === */
+        #map-container {
+            position: relative;
+            height: 500px;
+            margin-top: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: #f0f0f0;
+            overflow: hidden;
+        }
+        body.low-vision #map-container {
+            box-shadow: 0 5px 15px rgba(255,255,255,0.1) !important;
+            background: #222 !important;
+        }
+        #static-map-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        /* President section */
+        .president {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .president-photo {
+            flex: 0 0 300px;
+            height: 400px;
+            background: #002b7a url('антон.jpg') no-repeat center center;
+            background-size: cover;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+        body.low-vision .president-photo {
+            background: #000 url('антон.jpg') no-repeat center center !important;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15) !important;
+        }
+        .president-photo:before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid #002b7a;
+            border-radius: 12px;
+            z-index: -1;
+            opacity: 0.5;
+        }
+        body.low-vision .president-photo:before {
+            border: 2px solid #fff !important;
+            opacity: 0.7 !important;
+        }
+        .president-info {
+            flex: 1;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        body.low-vision .president-info {
+            background: #222 !important;
+            color: #fff !important;
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1) !important;
+        }
+        .president-quote {
+            font-size: 1.4rem;
+            font-style: italic;
+            line-height: 1.8;
+            color: #002b7a;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+        body.low-vision .president-quote {
+            color: #fff !important;
+            font-size: 1.6rem !important;
+        }
+        .president-quote:before,
+        .president-quote:after {
+            content: '"';
+            font-size: 3rem;
+            color: #d52b1e;
+            opacity: 0.3;
+            position: absolute;
+        }
+        body.low-vision .president-quote:before,
+        body.low-vision .president-quote:after {
+            color: #FF7F50 !important;
+            opacity: 0.7 !important;
+        }
+        /* Stats section */
+        .stats {
+            background: linear-gradient(to right, #0039a4, #002b7a);
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+        }
+        body.low-vision .stats {
+            background: linear-gradient(to right, #000, #111) !important;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .stat-item {
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+        }
+        body.low-vision .stat-item {
+            background: rgba(255, 255, 255, 0.15) !important;
+        }
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #FFFFE0;
+        }
+        body.low-vision .stat-number {
+            color: #fff !important;
+            font-size: 3.5rem !important;
+        }
+        .stat-text {
+            font-size: 1.2rem;
+        }
+        body.low-vision .stat-text {
+            font-size: 1.4rem !important;
+        }
+        /* Footer */
+        footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        body.low-vision footer {
+            background: #000 !important;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-col h3 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            color: white;
+        }
+        body.low-vision .footer-col h3 {
+            color: #fff !important;
+            font-size: 1.6rem !important;
+        }
+        .footer-links {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-family: 'Roboto', sans-serif;
+        }
+        body.low-vision .footer-links a {
+            color: #fff !important;
+            font-size: 1.1em !important;
+        }
+        .footer-links a:hover {
+            color: white;
+        }
+        .contact-info {
+            list-style: none;
+        }
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        .contact-info i {
+            color: #d52b1e;
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+        body.low-vision .contact-info i {
+            color: #FF7F50 !important;
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999;
+            font-size: 0.9rem;
+            font-family: 'Roboto', sans-serif;
+        }
+        body.low-vision .copyright {
+            color: #ccc !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
+        }
+        /* Contact Page Styles */
+        .contact-form-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin: 40px auto;
+            max-width: 800px;
+        }
+        body.low-vision .contact-form-container {
+            background: rgba(30, 30, 30, 0.95) !important;
+            color: #fff !important;
+        }
+        .contact-form h2 {
+            color: #002b7a;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #d52b1e;
+            text-align: center;
+        }
+        body.low-vision .contact-form h2 {
+            color: #fff !important;
+            border-bottom: 2px solid #FF7F50 !important;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #002b7a;
+        }
+        body.low-vision .form-group label {
+            color: #fff !important;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            font-family: 'Roboto', sans-serif;
+        }
+        body.low-vision .form-group input,
+        body.low-vision .form-group textarea {
+            background: #333 !important;
+            color: #fff !important;
+            border: 1px solid #555 !important;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #002b7a;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(0, 43, 122, 0.2);
+        }
+        body.low-vision .form-group input:focus,
+        body.low-vision .form-group textarea:focus {
+            border-color: #FF7F50 !important;
+            box-shadow: 0 0 0 2px rgba(255, 127, 80, 0.3) !important;
+        }
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            margin: 25px 0;
+        }
+        .checkbox-group input {
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+        .checkbox-group label {
+            font-weight: normal;
+            line-height: 1.4;
+        }
+        body.low-vision .checkbox-group label {
+            color: #fff !important;
+        }
+        .btn {
+            background: #002b7a;
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+            font-family: 'Roboto', sans-serif;
+        }
+        body.low-vision .btn {
+            background: #FF7F50 !important;
+            color: #000 !important;
+        }
+        .btn:hover {
+            background: #0039a4;
+        }
+        body.low-vision .btn:hover {
+            background: #ff9977 !important;
+        }
+        .benefits {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin: 40px auto;
+            max-width: 800px;
+        }
+        body.low-vision .benefits {
+            background: rgba(30, 30, 30, 0.95) !important;
+        }
+        .benefits h2 {
+            color: #002b7a;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #d52b1e;
+            text-align: center;
+        }
+        body.low-vision .benefits h2 {
+            color: #fff !important;
+            border-bottom: 2px solid #FF7F50 !important;
+        }
+        .benefits-list {
+            list-style: none;
+        }
+        .benefits-list li {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9ff;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            position: relative;
+            padding-left: 70px;
+        }
+        body.low-vision .benefits-list li {
+            background: #2a2a2a !important;
+            color: #fff !important;
+        }
+        .benefits-list li:before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            width: 40px;
+            height: 40px;
+            background: #002b7a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        body.low-vision .benefits-list li:before {
+            background: #FF7F50 !important;
+            color: #000 !important;
+        }
+        .benefits-list h3 {
+            color: #002b7a;
+            margin-bottom: 10px;
+        }
+        body.low-vision .benefits-list h3 {
+            color: #fff !important;
+        }
+        /* Partners Page Styles */
+        .partners-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin: 40px auto;
+        }
+        body.low-vision .partners-section {
+            background: rgba(30, 30, 30, 0.95) !important;
+        }
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        .nav-item {
+            background: #002b7a;
+            padding: 10px 20px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+        body.low-vision .nav-item {
+            background: #FF7F50 !important;
+        }
+        .nav-item:hover {
+            background: #0039a4;
+            transform: translateY(-3px);
+        }
+        body.low-vision .nav-item:hover {
+            background: #ff9977 !important;
+        }
+        .nav-item a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Roboto', sans-serif;
+        }
+        body.low-vision .nav-item a {
+            color: #000 !important;
+        }
+        .partner-img {
+            height: 200px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 15px;
+        }
+        body.low-vision .partner-img {
+            background: #222 !important;
+        }
+        .partner-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .partner-info {
+            padding: 20px;
+            text-align: center;
+        }
+        .partner-info h3 {
+            color: #002b7a;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            line-height: 1.3;
+        }
+        body.low-vision .partner-info h3 {
+            color: #fff !important;
+        }
+        .partner-info p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        body.low-vision .partner-info p {
+            color: #ccc !important;
+        }
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        .partner-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        body.low-vision .partner-card {
+            background: #222 !important;
+            color: #fff !important;
+        }
+        .partner-card:hover {
+            transform: translateY(-5px);
+        }
+        .documents {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin: 50px 0;
+        }
+        body.low-vision .documents {
+            background: #222 !important;
+            color: #fff !important;
+        }
+        .doc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .doc-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        body.low-vision .doc-item {
+            background: #2a2a2a !important;
+            color: #fff !important;
+        }
+        .doc-item:hover {
+            transform: translateX(5px);
+            background: #e9ecef;
+        }
+        body.low-vision .doc-item:hover {
+            background: #333 !important;
+        }
+        .doc-icon {
+            width: 50px;
+            height: 50px;
+            background: #002b7a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        body.low-vision .doc-icon {
+            background: #FF7F50 !important;
+            color: #000 !important;
+        }
+        .doc-text h3 {
+            color: #002b7a;
+            margin-bottom: 5px;
+        }
+        body.low-vision .doc-text h3 {
+            color: #fff !important;
+        }
+        .contact-section {
+            background: linear-gradient(135deg, #002b7a, #0039a4);
+            color: white;
+            padding: 50px 0;
+            border-radius: 10px;
+            margin: 50px 0;
+            text-align: center;
+        }
+        body.low-vision .contact-section {
+            background: linear-gradient(135deg, #000, #111) !important;
+        }
+        .contact-btn {
+            display: inline-block;
+            background: #002b7a;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s;
+            font-family: 'Roboto', sans-serif;
+        }
+        body.low-vision .contact-btn {
+            background: #FF7F50 !important;
+            color: #000 !important;
+        }
+        .contact-btn:hover {
+            background: #0039a4;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        body.low-vision .contact-btn:hover {
+            background: #ff9977 !important;
+            box-shadow: 0 5px 15px rgba(255, 127, 80, 0.3) !important;
+        }
+        /* Кнопка "Вернуться наверх" */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: #002b7a;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover {
+            background: #0039a4;
+            transform: translateY(-3px);
+        }
+        body.low-vision .back-to-top {
+            background: #FF7F50 !important;
+            color: #000 !important;
+        }
+        body.low-vision .back-to-top:hover {
+            background: #ff9977 !important;
+        }
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .president {
+                flex-direction: column;
+                text-align: center;
+            }
+            .header-top {
+                flex-wrap: wrap;
+            }
+            .header-nav {
+                margin-top: 20px;
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            .header-nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+                margin-top: 15px;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            body.low-vision .hero h1 {
+                font-size: 2.5rem !important;
+            }
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            body.low-vision .hero-subtitle {
+                font-size: 1.4rem !important;
+            }
+            .contact-item {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .logo {
+                justify-content: center;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .benefits-list li {
+                padding-left: 60px;
+            }
+            .benefits-list li:before {
+                left: 15px;
+            }
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            .nav-item {
+                width: 100%;
+                text-align: center;
+            }
+            .partners-grid {
+                grid-template-columns: 1fr;
+            }
+            .doc-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-form-container, .benefits {
+                padding: 20px;
+            }
+            .partner-img {
+                height: 180px;
+                padding: 10px;
+            }
+            .partner-info h3 {
+                font-size: 1rem;
+            }
+            body.low-vision .partner-info h3 {
+                font-size: 1.2rem !important;
+            }
+            #map-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Кнопка переключения версий -->
+    <button class="accessibility-toggle" id="accessibilityToggle">
+        <i class="fas fa-low-vision"></i>
+        <span>Версия для слабовидящих</span>
+    </button>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <div class="logo-img">
+                        <img src="logo-kpk-копия.png" alt="Логотип Комиссии по противодействию коррупции">
+                    </div>
+                    <div class="logo-text">
+                        <div class="logo-title">Комиссия по противодействию коррупции</div>
+                        <div class="logo-subtitle">Межрегиональная общественная организация</div>
+                    </div>
+                </div>
+                <ul class="header-nav">
+                    <li><a href="#about">О комиссии</a></li>
+                    <li><a href="#activity">Деятельность</a></li>
+                    <li><a href="#regions">Регионы</a></li>
+                    <li><a href="#documents">Документы</a></li>
+                    <li><a href="#news">Новости</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </div>
+            <div class="datetime" id="current-datetime" style="text-align: center; margin-top: 15px;"></div>
+        </div>
+    </header>
+    <!-- Hero section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Комиссия по противодействию коррупции</h1>
+            <div class="hero-subtitle">Межрегиональная общественная организация</div>
+            <div class="contacts">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+7(499) 391-33-34</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>+7(926) 384-44-18</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>korrup-net@mail.ru</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-globe"></i>
+                    <span>www.korrup-net.ru</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Main content -->
+    <main>
+        <!-- About section -->
+        <section id="about" class="section section-light">
+            <div class="container">
+                <div class="section-title">
+                    <h2>О комиссии</h2>
+                </div>
+                <div class="section-content">
+                    <p>Комиссия по содействию развитию института общественного контроля за соблюдением законодательства по противодействию коррупции</p>
+                    <p>МОО «КПК» была создана в соответствии с законом об общественных объединениях и зарегистрирована Главным управлением Министерства Юстиции РФ – 26 декабря 2019 года.</p>
+                </div>
+            </div>
+        </section>
+        <!-- Stats section -->
+        <section class="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-text">лет работы</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">120+</div>
+                        <div class="stat-text">реализованных проектов</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">250+</div>
+                        <div class="stat-text">проведенных экспертиз</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">40+</div>
+                        <div class="stat-text">регионов присутствия</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- President section -->
+        <section class="section section-dark">
+            <div class="container">
+                <div class="president">
+                    <div class="president-photo">
+                        <div style="position: absolute; bottom: 20px; left: 0; right: 0; text-align: center; color: white; background: rgba(0, 43, 122, 0.8); padding: 10px;">
+                            Президент организации Бояркин Антон Валерьевич.
+                        </div>
+                    </div>
+                    <div class="president-info">
+                        <div class="president-quote">
+                            "Мы живём с вами в очень сложное время, время экономических реформ и кризисов. Согласно исследованиям, коррупция является серьезным препятствием к экономическому росту и развитию государства, способным поставить под угрозу любые преобразования."
+                            <div style="text-align: right; margin-top: 20px; font-style: normal; font-weight: bold;">Бояркин А.В.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- СЕКЦИЯ: Деятельность по регионам -->
+        <section id="regions" class="section section-light">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Деятельность по регионам</h2>
+                </div>
+                <div class="section-content">
+                    <p>Интерактивная карта деятельности Комиссии по противодействию коррупции в различных регионах России.</p>
+                </div>
+                <!-- КОНТЕЙНЕР ДЛЯ СТАТИЧНОЙ КАРТЫ БЕЗ МАРКЕРОВ -->
+                <div id="map-container">
+                    <img id="static-map-image" src="Karta.png" alt="Карта регионов России">
+                    <!-- МАРКЕРЫ УДАЛЕНЫ -->
+                </div>
+            </div>
+        </section>
+        <!-- Деятельность section -->
+        <section id="activity" class="section section-light">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Деятельность</h2>
+                </div>
+                <div class="section-content">
+                    <p>Информация о направлениях деятельности комиссии будет размещена здесь</p>
+                </div>
+            </div>
+        </section>
+        <!-- Документы section -->
+        <section id="documents" class="section section-dark">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Документы</h2>
+                </div>
+                <div class="section-content">
+                    <p>Официальные документы и отчеты комиссии будут размещены здесь</p>
+                </div>
+            </div>
+        </section>
+        <!-- Новости section -->
+        <section id="news" class="section section-light">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Новости</h2>
+                </div>
+                <div class="section-content">
+                    <p>Последние новости и события комиссии будут размещены здесь</p>
+                </div>
+            </div>
+        </section>
+        <!-- Partners Section -->
+        <section class="section section-dark" id="partners">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Наши партнеры</h2>
+                </div>
+                <div class="partners-section">
+                    <div class="nav-menu">
+                        <div class="nav-item">
+                            <a href="#partners"><i class="fas fa-handshake"></i> Наши партнеры</a>
+                        </div>
+                        <div class="nav-item">
+                            <a href="certificate.html#partners"><i class="fas fa-file-certificate"></i> Свидетельство о регистрации</a>
+                        </div>
+                        <div class="nav-item">
+                            <a href="ustav.html#partners"><i class="fas fa-file-contract"></i> Устав МОО</a>
+                        </div>
+                        <div class="nav-item">
+                            <a href="application.html#partners"><i class="fas fa-clipboard-list"></i> Заявление и анкета</a>
+                        </div>
+                        <div class="nav-item">
+                            <a href="форма связ.html#partners"><i class="fas fa-envelope"></i> Связаться с нами</a>
+                        </div>
+                        <div class="nav-item">
+                            <a href="Сотруд.html#partners">Наши сотрудники и Активисты</a>
+                        </div>
+                    </div>
+                    <div class="partners-grid">
+                        <div class="partner-card">
+                            <div class="partner-img">
+                                <img src="1.png" alt="СЛЕДСТВЕННЫЙ КОМИТЕТ РФ">
+                            </div>
+                            <div class="partner-info">
+                                <h3>СЛЕДСТВЕННЫЙ КОМИТЕТ РФ</h3>
+                                <a href="#" class="contact-btn" style="display:inline-block; margin-top:10px;">Подробнее</a>
+                            </div>
+                        </div>
+                        <div class="partner-card">
+                            <div class="partner-img">
+                                <img src="2.png" alt="ГЕНЕРАЛЬНАЯ ПРОКУРАТУРА РОССИЙСКОЙ ФЕДЕРАЦИИ">
+                            </div>
+                            <div class="partner-info">
+                                <h3>ГЕНЕРАЛЬНАЯ ПРОКУРАТУРА РОССИЙСКОЙ ФЕДЕРАЦИИ</h3>
+                                <a href="#" class="contact-btn" style="display:inline-block; margin-top:10px;">Подробнее</a>
+                            </div>
+                        </div>
+                        <div class="partner-card">
+                            <div class="partner-img">
+                                <img src="3.png" alt="МИРОВОЕ СООБЩЕСТВО Межгосударственного агенства специальных расследований и противодействия коррупции">
+                            </div>
+                            <div class="partner-info">
+                                <h3>МИРОВОЕ СООБЩЕСТВО Межгосударственного агенства специальных расследований и противодействия коррупции</h3>
+                                <a href="#" class="contact-btn" style="display:inline-block; margin-top:10px;">Подробнее</a>
+                            </div>
+                        </div>
+                        <div class="partner-card">
+                            <div class="partner-img">
+                                <img src="4.png" alt="МИНИСТЕРСТВО ВНУТРЕННИХ ДЕЛ РОССИЙСКОЙ ФЕДЕРАЦИИ">
+                            </div>
+                            <div class="partner-info">
+                                <h3>МИНИСТЕРСТВО ВНУТРЕННИХ ДЕЛ РОССИЙСКОЙ ФЕДЕРАЦИИ</h3>
+                                <p>Финансовый партнер. Банковские услуги и финансовая поддержка проектов.</p>
+                                <a href="#" class="contact-btn" style="display:inline-block; margin-top:10px;">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-section" id="contact">
+                        <div class="contact-content">
+                            <h2>Связаться с нами</h2>
+                            <p>Есть вопросы или предложения? Напишите нам, и мы обязательно ответим!</p>
+                            <a href="форма связ.html#partners" class="contact-btn">Написать сообщение</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Комиссия по противодействию коррупции</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about">О комиссии</a></li>
+                        <li><a href="#documents">Уставные документы</a></li>
+                        <li><a href="#activity">Структура</a></li>
+                        <li><a href="#about">История</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Деятельность</h3>
+                    <ul class="footer-links">
+                        <li><a href="#activity">Направления работы</a></li>
+                        <li><a href="#activity">Проекты и программы</a></li>
+                        <li><a href="#activity">Мероприятия</a></li>
+                        <li><a href="#news">Публикации</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Контакты</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+7(499) 391-33-34</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>+7(926) 384-44-18</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>korrup-net@mail.ru</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-globe"></i>
+                            <span>www.korrup-net.ru</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Комиссия по противодействию коррупции. Межрегиональная общественная организация. Все права защищены.
+            </div>
+        </div>
+    </footer>
+    <!-- Кнопка "Вернуться наверх" -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Обновление года в футере
+        const currentYear = new Date().getFullYear();
+        document.querySelector('.copyright').innerHTML = `&copy; ${currentYear} Комиссия по противодействию коррупции. Межрегиональная общественная организация. Все права защищены.`;
+        // Текущая дата и время
+        function updateDateTime() {
+            const now = new Date();
+            const options = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                timeZoneName: 'short'
+            };
+            const dateTimeString = now.toLocaleDateString('ru-RU', options);
+            document.getElementById('current-datetime').textContent = dateTimeString;
+        }
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+        // Переключение версий
+        const toggleButton = document.getElementById('accessibilityToggle');
+        const body = document.body;
+        if (localStorage.getItem('lowVisionMode') === 'enabled') {
+            body.classList.add('low-vision');
+            toggleButton.innerHTML = '<i class="fas fa-eye"></i> <span>Обычная версия</span>';
+        }
+        toggleButton.addEventListener('click', function() {
+            body.classList.toggle('low-vision');
+            if (body.classList.contains('low-vision')) {
+                toggleButton.innerHTML = '<i class="fas fa-eye"></i> <span>Обычная версия</span>';
+                localStorage.setItem('lowVisionMode', 'enabled');
+            } else {
+                toggleButton.innerHTML = '<i class="fas fa-low-vision"></i> <span>Версия для слабовидящих</span>';
+                localStorage.setItem('lowVisionMode', 'disabled');
+            }
+        });
+        // Анимации при прокрутке
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.section-title, .section-content, .president, .stat-item, .contact-form, .benefits, .partner-card, .doc-item').forEach(item => {
+            item.style.opacity = 0;
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(item);
+        });
+        // Обработка формы (если есть)
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('name')?.value;
+                const email = document.getElementById('email')?.value;
+                const message = document.getElementById('message')?.value;
+                const agreement = document.getElementById('agreement')?.checked;
+                if (!name || !email || !message || !agreement) {
+                    alert('Пожалуйста, заполните все обязательные поля и примите соглашение');
+                    return;
+                }
+                alert('Спасибо! Ваше сообщение отправлено. Мы свяжемся с вами в ближайшее время.');
+                form.reset();
+            });
+        }
+        // Кнопка "Вернуться наверх"
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    });
+</script>
+</body>
+</html>

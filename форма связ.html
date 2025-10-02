@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма обратной связи - Комиссия по противодействию коррупции</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css  ">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'PT Serif', serif;
+            color: #333;
+            line-height: 1.6;
+            background: url('  https://images.unsplash.com/photo-1543349689-9a4d426bee8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80') fixed;
+            background-size: cover;
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(to bottom, #0039a4, #002b7a);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        header .container {
+            display: flex;
+            align-items: center;
+        }
+        
+        header a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        header a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Main content */
+        main {
+            flex: 1;
+            padding: 60px 0;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-light {
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: #002b7a;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #FF7F50;
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 20px auto 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Contact Page Styles */
+        .contact-form-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin: 40px auto;
+            max-width: 800px;
+        }
+        
+        .contact-form h2 {
+            color: #002b7a;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #d52b1e;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #002b7a;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #002b7a;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(0, 43, 122, 0.2);
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            margin: 25px 0;
+        }
+        
+        .checkbox-group input {
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+        
+        .checkbox-group label {
+            font-weight: normal;
+            line-height: 1.4;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .btn {
+            background: #002b7a;
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .btn:hover {
+            background: #0039a4;
+        }
+        
+        /* Benefits */
+        .benefits {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin: 40px auto;
+            max-width: 800px;
+        }
+        
+        .benefits h2 {
+            color: #002b7a;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #d52b1e;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .benefits-list {
+            list-style: none;
+        }
+        
+        .benefits-list li {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9ff;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            position: relative;
+            padding-left: 70px;
+        }
+        
+        .benefits-list li:before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            width: 40px;
+            height: 40px;
+            background: #002b7a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .benefits-list li:nth-child(1):before { content: '1'; }
+        .benefits-list li:nth-child(2):before { content: '2'; }
+        .benefits-list li:nth-child(3):before { content: '3'; }
+        .benefits-list li:nth-child(4):before { content: '4'; }
+        
+        .benefits-list h3 {
+            color: #002b7a;
+            margin-bottom: 10px;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .benefits-list p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header .container {
+                justify-content: center;
+            }
+            
+            .contact-form-container,
+            .benefits {
+                padding: 20px;
+            }
+            
+            .benefits-list li {
+                padding-left: 60px;
+            }
+            
+            .benefits-list li:before {
+                left: 15px;
+                width: 35px;
+                height: 35px;
+                font-size: 18px;
+            }
+            
+            .checkbox-group {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .checkbox-group input {
+                margin-bottom: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="ннн.html">
+                <i class="fas fa-arrow-left"></i> Вернуться на главную
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="section section-light">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Свяжитесь с нами</h2>
+                    <p>Мы готовы ответить на ваши вопросы и предложить профессиональную помощь</p>
+                </div>
+                
+                <div class="contact-form-container">
+                    <div class="contact-form">
+                        <h2>Форма обратной связи</h2>
+                        <!-- ВСТАВЬТЕ СЮДА СВОЙ ACTION ОТ FORMSPREE -->
+                        <form action="https://formspree.io/f/xzzjgrkl" method="POST">
+                            <div class="form-group">
+                                <label for="name">ФИО</label>
+                                <input type="text" id="name" name="name" placeholder="Введите ваше полное имя" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Адрес электронной почты</label>
+                                <input type="email" id="email" name="email" placeholder="example@mail.ru" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Номер телефона</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+7 (XXX) XXX-XX-XX">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Сообщение</label>
+                                <textarea id="message" name="message" placeholder="Опишите вашу ситуацию или вопрос..." required></textarea>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="agreement" name="agreement" required>
+                                <label for="agreement">Я принимаю пользовательское соглашение и политику конфиденциальности</label>
+                            </div>
+                            
+                            <button type="submit" class="btn">Отправить обращение</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
+               
