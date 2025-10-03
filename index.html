@@ -98,7 +98,7 @@
         .logo-img {
             width: 70px;
             height: 70px;
-            background: transparent; /* ← УБРАН СИНЯЯ/БЕЛАЯ ЗАЛИВКА */
+            background: transparent;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -314,26 +314,28 @@
         .section-content p {
             margin-bottom: 25px;
         }
-        /* === СТИЛИ ДЛЯ СТАТИЧНОЙ КАРТЫ (БЕЗ МАРКЕРОВ) === */
-        #map-container {
-            position: relative;
-            height: 500px;
-            margin-top: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            background: #f0f0f0;
-            overflow: hidden;
-        }
-        body.low-vision #map-container {
-            box-shadow: 0 5px 15px rgba(255,255,255,0.1) !important;
-            background: #222 !important;
-        }
-        #static-map-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
+        /* === СТИЛИ ДЛЯ СТАТИЧНОЙ КАРТЫ === */
+#map-container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    margin: 30px auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    background: #f0f0f0;
+    overflow: hidden;
+}
+body.low-vision #map-container {
+    box-shadow: 0 5px 15px rgba(255,255,255,0.1) !important;
+    background: #222 !important;
+}
+#static-map-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
         /* President section */
         .president {
             display: flex;
@@ -1130,23 +1132,22 @@
                     </div>
                 </div>
             </div>
-        </section>
         <!-- СЕКЦИЯ: Деятельность по регионам -->
-        <section id="regions" class="section section-light">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Деятельность по регионам</h2>
-                </div>
-                <div class="section-content">
-                    <p>Интерактивная карта деятельности Комиссии по противодействию коррупции в различных регионах России.</p>
-                </div>
-                <!-- КОНТЕЙНЕР ДЛЯ СТАТИЧНОЙ КАРТЫ БЕЗ МАРКЕРОВ -->
-                <div id="map-container">
-                    <img id="static-map-image" src="Karta.png" alt="Карта регионов России">
-                    <!-- МАРКЕРЫ УДАЛЕНЫ -->
-                </div>
-            </div>
-        </section>
+<section id="regions" class="section section-light">
+    <div class="container">
+        <div class="section-title">
+            <h2>Деятельность по регионам</h2>
+        </div>
+        <div class="section-content">
+            <p>Интерактивная карта деятельности Комиссии по противодействию коррупции в различных регионах России.</p>
+        </div>
+        <!-- КОНТЕЙНЕР ДЛЯ СТАТИЧНОЙ КАРТЫ -->
+        <div id="map-container">
+            <img id="static-map-image" src="Karta.png" alt="Карта регионов России">
+        </div>
+    </div>
+</section>
+        </s
         <!-- Деятельность section -->
         <section id="activity" class="section section-light">
             <div class="container">
@@ -1208,43 +1209,38 @@
                         </div>
                     </div>
                     <div class="partners-grid">
-                        <div class="partner-card">
+                        <a href="https://sledcom.ru" target="_blank" class="partner-card">
                             <div class="partner-img">
                                 <img src="1.png" alt="СЛЕДСТВЕННЫЙ КОМИТЕТ РФ">
                             </div>
                             <div class="partner-info">
                                 <h3>СЛЕДСТВЕННЫЙ КОМИТЕТ РФ</h3>
-                                <a href="#" class="contact-btn" style="display:inline-block; margin-top:10px;">Подробнее</a>
                             </div>
-                        </div>
-                        <div class="partner-card">
+                        </a>
+                        <a href="https://epp.genproc.gov.ru/web/gprf" target="_blank" class="partner-card">
                             <div class="partner-img">
                                 <img src="2.png" alt="ГЕНЕРАЛЬНАЯ ПРОКУРАТУРА РОССИЙСКОЙ ФЕДЕРАЦИИ">
                             </div>
                             <div class="partner-info">
                                 <h3>ГЕНЕРАЛЬНАЯ ПРОКУРАТУРА РОССИЙСКОЙ ФЕДЕРАЦИИ</h3>
-                                <a href="#" class="contact-btn" style="display:inline-block; margin-top:10px;">Подробнее</a>
                             </div>
-                        </div>
-                        <div class="partner-card">
+                        </a>
+                        <a href="https://compronet.info" target="_blank" class="partner-card">
                             <div class="partner-img">
                                 <img src="3.png" alt="МИРОВОЕ СООБЩЕСТВО Межгосударственного агенства специальных расследований и противодействия коррупции">
                             </div>
                             <div class="partner-info">
                                 <h3>МИРОВОЕ СООБЩЕСТВО Межгосударственного агенства специальных расследований и противодействия коррупции</h3>
-                                <a href="#" class="contact-btn" style="display:inline-block; margin-top:10px;">Подробнее</a>
                             </div>
-                        </div>
-                        <div class="partner-card">
+                        </a>
+                        <a href="https://мвд.рф" target="_blank" class="partner-card">
                             <div class="partner-img">
                                 <img src="4.png" alt="МИНИСТЕРСТВО ВНУТРЕННИХ ДЕЛ РОССИЙСКОЙ ФЕДЕРАЦИИ">
                             </div>
                             <div class="partner-info">
                                 <h3>МИНИСТЕРСТВО ВНУТРЕННИХ ДЕЛ РОССИЙСКОЙ ФЕДЕРАЦИИ</h3>
-                                <p>Финансовый партнер. Банковские услуги и финансовая поддержка проектов.</p>
-                                <a href="#" class="contact-btn" style="display:inline-block; margin-top:10px;">Подробнее</a>
                             </div>
-                        </div>
+                        </a>
                     </div>
                     <div class="contact-section" id="contact">
                         <div class="contact-content">
@@ -1403,5 +1399,4 @@
     });
 </script>
 </body>
-
 </html>
