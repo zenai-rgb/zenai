@@ -73,7 +73,7 @@
         
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
         }
         
         .section-title h2 {
@@ -96,6 +96,61 @@
             border-radius: 2px;
         }
 
+        /* Фильтры */
+        .filters {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+        }
+
+        .filter-group {
+            margin-bottom: 15px;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #002b7a;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .filter-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+
+        select, button {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+        }
+
+        .letter-btn {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+
+        .letter-btn:hover, .letter-btn.active {
+            background: #002b7a;
+            color: white;
+        }
+
         /* Стили для сотрудников */
         .staff-grid {
             display: grid;
@@ -112,6 +167,12 @@
             text-align: center;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .staff-card.hidden {
+            display: none;
         }
 
         .staff-card:hover {
@@ -270,13 +331,23 @@
             .section-title h2 {
                 font-size: 1.8rem;
             }
+
+            .filter-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .letter-btn {
+                width: auto;
+                min-width: 36px;
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <a href="index.html">
+            <a href="ннн.html">
                 <i class="fas fa-arrow-left"></i> Вернуться на главную
             </a>
         </div>
@@ -285,45 +356,45 @@
     <main>
         <section class="section section-light">
             <div class="container">
-                <!-- Наши сотрудники -->
-                <div id="staff">
-                    <div class="section-title">
-                        <h2>Наши сотрудники</h2>
+                <div class="section-title">
+                    <h2>Наши сотрудники</h2>
+                </div>
+
+                <!-- Фильтры -->
+                <div class="filters">
+                    <div class="filter-group">
+                        <label>Фильтр по должности:</label>
+                        <select id="positionFilter">
+                            <option value="">Все должности</option>
+                        </select>
                     </div>
-                    
-                    <div class="staff-grid">
-                        <div class="staff-card">
-                            <div class="staff-photo">
-                                <i class="fas fa-user-tie"></i>
-                            </div>
-                            <div class="staff-info">
-                                <h3>Иванов Иван Иванович</h3>
-                                <p class="staff-position">Директор по развитию</p>
-                                <p class="staff-description">Эксперт в области антикоррупционного законодательства</p>
-                                <a href="#" class="staff-btn">Подробнее</a>
-                            </div>
+                    <div class="filter-group">
+                        <label>Фильтр по первой букве фамилии:</label>
+                        <div class="filter-row" id="letterFilter">
+                            <!-- Будет заполнено JS -->
                         </div>
-                        
-                        <div class="staff-card">
-                            <div class="staff-photo">
-                                <i class="fas fa-user-graduate"></i>
-                            </div>
-                            <div class="staff-info">
-                                <h3>Петрова Мария Сергеевна</h3>
-                                <p class="staff-position">Менеджер проектов</p>
-                                <p class="staff-description">Специалист по реализации антикоррупционных программ</p>
-                                <a href="#" class="staff-btn">Подробнее</a>
-                            </div>
-                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <label>Фильтр по региону / направлению:</label>
+                        <select id="regionFilter">
+                            <option value="">Все направления</option>
+                        </select>
+                    </div>
+                    <div class="filter-row">
+                        <button id="resetFilters">Сбросить фильтры</button>
                     </div>
                 </div>
-                
+
+                <!-- Сотрудники -->
+                <div class="staff-grid" id="staffGrid">
+                    <!-- Карточки будут вставлены JS -->
+                </div>
+
                 <!-- Активисты -->
                 <div id="activ" style="margin-top: 80px;">
                     <div class="section-title">
                         <h2>Активисты</h2>
                     </div>
-                    
                     <div class="activists-grid">
                         <div class="activist-card">
                             <div class="activist-icon">
@@ -342,24 +413,212 @@
     </main>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            document.querySelectorAll('.staff-card, .activist-card').forEach(item => {
-                item.style.opacity = 0;
-                item.style.transform = 'translateY(20px)';
-                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                observer.observe(item);
+        // Данные сотрудников (взяты из Сотрудники.docx)
+        const staffData = [
+            { name: "Бояркин Антон Валерьевич", position: "Президент организации", number: "77-00001 АА-00191" },
+            { name: "Курылев Андрей Владимирович", position: "Первый Вице-президент организации", number: "Номер не присвоен" },
+            { name: "Таран Дмитрий Михайлович", position: "Заместитель Президента организации по вопросам образования", number: "Номер не присвоен" },
+            { name: "Аркатов Василий Иванович", position: "Заместитель Президента организации по Республике Крым, Севастополю и ЛНР", number: "77-00059 АА-00180" },
+            { name: "Вашаев Абу Магомедович", position: "Заместитель Президента организации по СКФО", number: "77-00012 АА-00238" },
+            { name: "Мурадова Екатерина Андреевна", position: "Заместитель Президента организации по СФО", number: "78-00004 АА-00178" },
+            { name: "Поленчук Тамара Андреевна", position: "Заместитель Президента организации по вопросам экономики и финансов", number: "77-00009 АА-00200" },
+            { name: "Корнеев Юрий Борисович", position: "Заместитель Президента организации по Сибирскому Федеральному округу", number: "77-00074 АА-00187" },
+            { name: "Губашев Апти Махмутович", position: "Заместитель Президента организации по кадровым вопросам", number: "77-00038 АА-00204" },
+            { name: "Сенчуров Сергей Валерьевич", position: "Заместитель Президента организации по работе с силовыми ведомствами", number: "77-00067 АА-00253" },
+            { name: "Турлуев Саид-Хасан Баудинович", position: "Заместитель Президента организации по СКФО", number: "77-00057 АА-00120" },
+            { name: "Сурхаева Эмма Шарановна", position: "Заместитель Президента организации по СКФО", number: "26-00001 СК-00246" },
+            { name: "Черивмурзаев Абдулла Магомедович", position: "Заместитель Президента организации по Республике Дагестан", number: "77-00088 АА-00249" },
+            { name: "Иванов Юрий Анатольевич", position: "Заместитель Президента организации по ЮФО", number: "77-00080 АА-00224" },
+            { name: "Омаров Магомедрасул Курбанович", position: "Заместитель Президента организации по ЮФО", number: "77-00084 АА-00231" },
+            { name: "Дегтярёв Вячеслав Николаевич", position: "Советник Президента организации", number: "77-00044 АА-00212" },
+            { name: "Гурьев Михаил Константинович", position: "Советник Президента организации по вопросам информационной безопасности", number: "77-00049 АА-00148" },
+            { name: "Дутов Андрей Владимирович", position: "Советник Президента организации по связям с общественностью", number: "77-00005 АА-00232" },
+            { name: "Хасбулатов Аслан Вахаевич", position: "Советник Президента организации по СКФО", number: "95-00020 РЧ-00186" },
+            { name: "Магомадов Лом-Али Элимхаджиевич", position: "Советник Президента организации по СКФО", number: "95-00025 РЧ-00209" },
+            { name: "Муртазалиев Зелимхан Рамзанович", position: "Советник Президента организации по СКФО", number: "95-00026 РЧ-00210" },
+            { name: "Дёргай Вячеслав Андреевич", position: "Советник Президента организации", number: "77-00072 АА-00183" },
+            { name: "Павлов Дмитрий Вячеславович", position: "Советник Президента организации по Москве и Московской области", number: "77-00036 АА-00190" },
+            { name: "Айдамиров Уваха Вагаевич", position: "Советник Президента организации по СКФО", number: "95-00002 РЧ-00173" },
+            { name: "Измайлов Батыр Баширович", position: "Советник Президента организации по СКФО", number: "77-00062 АА-00237" },
+            { name: "Махмудов Исраил Духуевич", position: "Советник Президента организации по СКФО", number: "95-00024 РЧ-00208" },
+            { name: "Магамаев Кирим Ломалиевич", position: "Советник заместителя Президента организации по СКФО", number: "95-00023 РЧ-00207" },
+            { name: "Шахгириев Тамирлан Данилбекович", position: "Председатель р/о по Чеченской Республике", number: "95-00009 РЧ-00247" },
+            { name: "Галимова Вера Николаевна", position: "Председатель р/о по г. Екатеринбургу", number: "66-00001 ЕО-00177" },
+            { name: "Абдулмуслимов Шакир Арсаланбекович", position: "Председатель р/о организации по Республике Калмыкия", number: "08-00004 РК-00185" },
+            { name: "Исламов Камол Ибрагимович", position: "Председатель р/о организации по Санкт-Петербургу и Ленинградской области", number: "78-00001 СП-00198" },
+            { name: "Бахтеев Ислам Умалатович", position: "Председатель р/о по Саратовской области", number: "64-00001 СО-00147" },
+            { name: "Закаев Алимхан Хусаинович", position: "Председатель р/о по Ивановской обл. г. Иваново", number: "37-00001 ИО-00160" },
+            { name: "Чимиков Вахарсултан Абдурахманович", position: "Председатель р/о по Республике Дагестан", number: "05-00001 РД-00250" },
+            { name: "Грошев Дмитрий Оскарович", position: "Заместитель начальника департамента по взаимодействию с силовыми ведомствами", number: "77-00007 АА-00194" },
+            { name: "Айдамиров Зелимхан Увахаевич", position: "Заместитель председателя р/о по Чеченской Республике", number: "95-00019 РЧ-00175" },
+            { name: "Абдурзаков Султан Магометович", position: "Заместитель председателя р/о по Чеченской Республике", number: "95-00014 РЧ-00157" },
+            { name: "Гасанов Роман Алиевич", position: "Заместитель начальника департамента экономики", number: "77-00041 АА-00243" },
+            { name: "Баталов Аслан Мусаевич", position: "Заместитель председателя р/о по Ставропольскому Краю", number: "26-00003 СК-00245" },
+            { name: "Петросян Артур Вагикович", position: "Руководитель оперативного отдела организации по Краснодарскому Краю", number: "23-00027 КК-00234" },
+            { name: "Задаев Роман Шахрадинович", position: "Заместитель председателя р/о по Чеченской Республике по вопросам здравоохранения", number: "95-00019 РЧ-00240" },
+            { name: "Хворостов Алексей Николаевич", position: "Руководитель юридического департамента организации", number: "77-00086 АА-00241" },
+            { name: "Сосна Никита Викторович", position: "Руководитель юридического Департамента организации по Москве и Московской области", number: "77-00090 АА-00251" },
+            { name: "Сосна Матвей Никитич", position: "Руководитель отдела информационной безопасности", number: "77-00089 АО-00252" },
+            { name: "Мачитова Элина Абуевна", position: "Руководитель юридического Департамента по Республике Дагестан", number: "05-00015 РД-00217" },
+            { name: "Кучуро Сергей Владимирович", position: "Помощник советника Президента организации по вопросам информационной безопасности", number: "77-00056 АА-00218" },
+            { name: "Айдамиров Саид-Эмин Увахаевич", position: "Советник председателя р/о по Чеченской Республике", number: "95-00018 РЧ-00174" },
+            { name: "Хадаева Мадина Хусейновна", position: "Советник председателя р/о по Чеченской Республике", number: "95-00014 РЧ-00163" },
+            { name: "Бадалян Саркис Григорьевич", position: "Советник заместителя президента организации по ЮФО", number: "77-00081 АА-00225" },
+            { name: "Григорян Армен Робертович", position: "Советник заместителя президента организации по ЮФО", number: "77-00082 АА-00226" },
+            { name: "Григорян Кристина Вагатовна", position: "Заместитель председателя р/о по Краснодарскому Краю", number: "23-00010 КК-00227" },
+            { name: "Саросек Евгений Михайлович", position: "Старший инспектор Контрольно-Ревизионной Комиссии", number: "77-00070 АА-00181" },
+            { name: "Узун Василий Иванович", position: "Начальник управления за качеством гражданского и промышленного строительства", number: "77-00071 АА-00183" },
+            { name: "Стульнев Сергей Александрович", position: "Руководитель департамента организации по вопросам ЖКХ", number: "23-00023 КК-00158" },
+            { name: "Чертовиков Владислав Владиславович", position: "Руководитель службы протокола", number: "72-00007 ТЮ-00161" },
+            { name: "Григорьев Владислав Валерьевич", position: "Руководитель оперативного отдела организации", number: "77-00065 МО-00151" },
+            { name: "Кутько Владимир Фёдорович", position: "Руководитель Контрольно-Ревизионной Комиссии по Луганской Народной Республике", number: "81-00003 ЛР-00129" },
+            { name: "Глазунов Роман Борисович", position: "Руководитель спецотдела по контролю за исполнением законодательства сотрудниками органов власти в РФ", number: "77-00010 АА-00242" },
+            { name: "Вагапова Хадижат Заурбековна", position: "Руководитель р/о организации по Грозненскому р-ну, г. Грозного Чеченской Республики", number: "95-00027 РЧ-00244" },
+            { name: "Мельник Григорий Сергеевич", position: "Инспектор спецотдела по контролю за исполнением законодательства сотрудниками органов власти в РФ", number: "77-00087 АО-00248" },
+            { name: "Ходжаева Иман Солтановна", position: "Руководитель департамента по взаимодействию с силовыми ведомствами ФСБ, МВД, прокуратуре по Республике Дагестан", number: "05-00017 РД-00145" },
+            { name: "Перель Иван Ильич", position: "Руководитель информационно-аналитического отдела организации", number: "77-00069 АО-00164" },
+            { name: "Высоцкий Дмитрий Евгеньевич", position: "Руководитель отдела собственной безопасности по г. Москве", number: "77-00053 АА-00193" },
+            { name: "Кузьмин Михаил Васильевич", position: "Начальник управления организации по взаимодействию с Министерством обороны РФ", number: "77-00058 АА-00228" },
+            { name: "Богун Виктор Михайлович", position: "Руководитель Департамента собственной безопасности и противодействию коррупции", number: "22-00002 АА-00188" },
+            { name: "Аникович Владимир Владимирович", position: "Руководитель Департамента специальных проектов", number: "77-00032 АА-00197" },
+            { name: "Шейхаев Нариман Рустемович", position: "Руководитель Департамента по взаимодействию с силовыми ведомствами по Республике Крым", number: "77-00075 АА-00236" },
+            { name: "Солнцева Марина Николаевна", position: "Руководитель Департамента по взаимодействию с силовыми ведомствами", number: "77-00079 АА-00214" },
+            { name: "Гуцало Артём Михайлович", position: "Руководитель отдела экологического контроля по г. Воркута Республика Коми", number: "11-00004 ВК-00206" },
+            { name: "Абреков Магомед Расулович", position: "Сотрудник оперативного отдела организации по г. Астрахань и Астрах. Обл.", number: "05-00017 РД-00239" },
+            { name: "Абреков Багавдин Мусаевич", position: "Начальник оперативного отдела организации по Республике Дагестан", number: "05-00016 РД-00230" },
+            { name: "Аристов Андрей Петрович", position: "Инспектор департамента по содействию с силовыми ведомствами", number: "77-00066 АО-00153" },
+            { name: "Пушкина Лидия Александровна", position: "Инспектор департамента по содействию с силовыми ведомствами", number: "77-00068 АО-00162" },
+            { name: "Макеенок Александр Андреевич", position: "Сотрудник оперативного отдела организации по Санкт-Петербургу", number: "78-00011 СП-00184" },
+            { name: "Закаев Амирхан Хусаинович", position: "Помощник председателя р/о организации по Ставропольскому Краю", number: "26-00007 СК-00192" },
+            { name: "Джамалутдинова Заза Магомедовна", position: "Помощник председателя р/о по Республике Дагестан", number: "05-00015 РД-00235" },
+            { name: "Хутраев Мубариз Махаммед-Оглы", position: "Помощник председателя р/о по Московской области", number: "50-00008 МО-00222" },
+            { name: "Ясуев Абубакар Магомедович", position: "Помощник председателя р/о по Московской области", number: "77-00078 МО-00211" },
+            { name: "Мосесов Альберт Владимирович", position: "Помощник руководителя оперативного отдела организации", number: "77-00076 МО-00202" },
+            { name: "Кульпесов Эдуард Николаевич", position: "Сотрудник отдела собственной безопасности организации", number: "77-00078 МО-00205" },
+            { name: "Дидусь Наталья Владимировна", position: "Помощник заместителя Президента организации по вопросам экономики и финансов", number: "77-00052 АА-00201" },
+            { name: "Исаев Ахьяд Аликович", position: "Помощник председателя р/о по Чеченской Республике", number: "95-00016 РЧ00176" },
+            { name: "Мадагов Элимхан Алиевич", position: "Помощник председателя р/о по Чеченской Республике", number: "95-00015 РЧ-00171" },
+            { name: "Сайпусаев Амар Турпал-Алиевич", position: "Помощник председателя р/о по Чеченской Республике", number: "95-00022 РЧ-00195" },
+            { name: "Халидов Махач Камильевич", position: "Помощник председателя р/о по Московской области", number: "50-00007 МО-00215" }
+        ];
+
+        // Сортировка по ФИО
+        staffData.sort((a, b) => a.name.localeCompare(b.name, 'ru'));
+
+        // Функция для извлечения региона из должности
+        function extractRegion(position) {
+            const regions = [
+                'СКФО', 'ЮФО', 'СФО', 'Сибирскому Федеральному округу', 'Республике Крым',
+                'Севастополю', 'ЛНР', 'Республике Дагестан', 'Москве и Московской области',
+                'Санкт-Петербургу и Ленинградской области', 'Чеченской Республике',
+                'Краснодарскому Краю', 'Ставропольскому Краю', 'Республике Калмыкия',
+                'Саратовской области', 'Ивановской обл.', 'г. Екатеринбургу', 'Луганской Народной Республике',
+                'Республике Коми', 'г. Астрахань', 'Министерством обороны РФ', 'силовыми ведомствами'
+            ];
+            for (const reg of regions) {
+                if (position.includes(reg)) {
+                    return reg;
+                }
+            }
+            return 'Центральный аппарат';
+        }
+
+        // Извлечение уникальных значений
+        const positions = [...new Set(staffData.map(s => s.position))].sort();
+        const initials = [...new Set(staffData.map(s => s.name.charAt(0)))].sort();
+        const regions = [...new Set(staffData.map(s => extractRegion(s.position)))].sort();
+
+        // Генерация HTML
+        function renderStaff() {
+            const grid = document.getElementById('staffGrid');
+            grid.innerHTML = '';
+            staffData.forEach(s => {
+                const initial = s.name.charAt(0);
+                const region = extractRegion(s.position);
+                const card = document.createElement('div');
+                card.className = 'staff-card';
+                card.dataset.position = s.position;
+                card.dataset.initial = initial;
+                card.dataset.region = region;
+                card.innerHTML = `
+                    <div class="staff-photo">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="staff-info">
+                        <h3>${s.name}</h3>
+                        <p class="staff-position">${s.position}</p>
+                        <p class="staff-description">Личный номер: ${s.number}</p>
+                        <a href="#" class="staff-btn">Подробнее</a>
+                    </div>
+                `;
+                grid.appendChild(card);
             });
+        }
+
+        // Заполнение фильтров
+        function populateFilters() {
+            const posSelect = document.getElementById('positionFilter');
+            positions.forEach(p => {
+                const opt = document.createElement('option');
+                opt.value = p;
+                opt.textContent = p;
+                posSelect.appendChild(opt);
+            });
+
+            const regSelect = document.getElementById('regionFilter');
+            regions.forEach(r => {
+                const opt = document.createElement('option');
+                opt.value = r;
+                opt.textContent = r;
+                regSelect.appendChild(opt);
+            });
+
+            const letterContainer = document.getElementById('letterFilter');
+            initials.forEach(letter => {
+                const btn = document.createElement('button');
+                btn.className = 'letter-btn';
+                btn.textContent = letter;
+                btn.dataset.letter = letter;
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.letter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    applyFilters();
+                });
+                letterContainer.appendChild(btn);
+            });
+        }
+
+        // Применение фильтров
+        function applyFilters() {
+            const pos = document.getElementById('positionFilter').value;
+            const reg = document.getElementById('regionFilter').value;
+            const activeLetterBtn = document.querySelector('.letter-btn.active');
+            const letter = activeLetterBtn ? activeLetterBtn.dataset.letter : '';
+
+            document.querySelectorAll('.staff-card').forEach(card => {
+                const matchPos = !pos || card.dataset.position === pos;
+                const matchReg = !reg || card.dataset.region === reg;
+                const matchLetter = !letter || card.dataset.initial === letter;
+                card.classList.toggle('hidden', !(matchPos && matchReg && matchLetter));
+            });
+        }
+
+        // Сброс фильтров
+        function resetFilters() {
+            document.getElementById('positionFilter').value = '';
+            document.getElementById('regionFilter').value = '';
+            document.querySelectorAll('.letter-btn').forEach(b => b.classList.remove('active'));
+            applyFilters();
+        }
+
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', () => {
+            populateFilters();
+            renderStaff();
+            document.getElementById('positionFilter').addEventListener('change', applyFilters);
+            document.getElementById('regionFilter').addEventListener('change', applyFilters);
+            document.getElementById('resetFilters').addEventListener('click', resetFilters);
         });
     </script>
 </body>
-
 </html>
