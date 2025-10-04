@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* ... ваш оригинальный CSS без изменений ... */
         * {
             margin: 0;
             padding: 0;
@@ -27,7 +26,6 @@
             scroll-behavior: smooth;
             transition: all 0.3s ease;
         }
-        /* Стили для версии слабовидящих */
         body.low-vision {
             background: #000 !important;
             color: #fff !important;
@@ -38,7 +36,6 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-        /* Кнопка переключения версий */
         .accessibility-toggle {
             position: fixed;
             top: 20px;
@@ -65,7 +62,6 @@
         .accessibility-toggle i {
             font-size: 18px;
         }
-        /* Header */
         header {
             background: linear-gradient(to bottom, #0039a4, #002b7a);
             color: white;
@@ -93,11 +89,11 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
         }
         .logo-img {
-            width: 70px;
-            height: 70px;
+            width: 140px; /* Увеличено в 2 раза */
+            height: 140px; /* Увеличено в 2 раза */
             background: transparent;
             border-radius: 50%;
             display: flex;
@@ -119,12 +115,12 @@
             flex-direction: column;
         }
         .logo-title {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 700;
             line-height: 1.2;
         }
         .logo-subtitle {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             opacity: 0.9;
             margin-top: 5px;
         }
@@ -174,7 +170,6 @@
         .header-nav a:hover:after {
             width: 100%;
         }
-        /* Hero section */
         .hero {
             background: url('https://cdn.culture.ru/images/dbaf51d3-1bdf-52f0-a516-7834d841b119') no-repeat center center;
             background-size: cover;
@@ -250,12 +245,11 @@
         body.low-vision .contact-item i {
             color: #fff !important;
         }
-        /* Main content */
         main {
             flex: 1;
         }
         .section {
-            padding: 80px 0;
+            padding: 25px 0;
             scroll-margin-top: 100px;
         }
         .section-light {
@@ -314,32 +308,30 @@
         .section-content p {
             margin-bottom: 25px;
         }
-        /* === СТИЛИ ДЛЯ СТАТИЧНОЙ КАРТЫ === */
-#map-container {
-    position: relative;
-    width: 100%;
-    max-width: 1000px;
-    height: auto;
-    margin: 30px auto;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    background: #f0f0f0;
-    overflow: hidden;
-}
-body.low-vision #map-container {
-    box-shadow: 0 5px 15px rgba(255,255,255,0.1) !important;
-    background: #222 !important;
-}
-#static-map-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 8px;
-}
-        /* President section */
+        #map-container {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            height: auto;
+            margin: 30px auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: #f0f0f0;
+            overflow: hidden;
+        }
+        body.low-vision #map-container {
+            box-shadow: 0 5px 15px rgba(255,255,255,0.1) !important;
+            background: #222 !important;
+        }
+        #static-map-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
         .president {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 50px;
             max-width: 1000px;
             margin: 0 auto;
@@ -411,7 +403,16 @@ body.low-vision #map-container {
             color: #FF7F50 !important;
             opacity: 0.7 !important;
         }
-        /* Stats section */
+        .president-name {
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #002b7a;
+            text-align: left; /* Выровнено по левому краю */
+        }
+        body.low-vision .president-name {
+            color: #fff !important;
+        }
         .stats {
             background: linear-gradient(to right, #0039a4, #002b7a);
             padding: 80px 0;
@@ -453,7 +454,6 @@ body.low-vision #map-container {
         body.low-vision .stat-text {
             font-size: 1.4rem !important;
         }
-        /* Footer */
         footer {
             background: #1a1a2e;
             color: white;
@@ -525,178 +525,6 @@ body.low-vision #map-container {
             color: #ccc !important;
             border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
         }
-        /* Contact Page Styles */
-        .contact-form-container {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            margin: 40px auto;
-            max-width: 800px;
-        }
-        body.low-vision .contact-form-container {
-            background: rgba(30, 30, 30, 0.95) !important;
-            color: #fff !important;
-        }
-        .contact-form h2 {
-            color: #002b7a;
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #d52b1e;
-            text-align: center;
-        }
-        body.low-vision .contact-form h2 {
-            color: #fff !important;
-            border-bottom: 2px solid #FF7F50 !important;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #002b7a;
-        }
-        body.low-vision .form-group label {
-            color: #fff !important;
-        }
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 16px;
-            transition: border-color 0.3s;
-            font-family: 'Roboto', sans-serif;
-        }
-        body.low-vision .form-group input,
-        body.low-vision .form-group textarea {
-            background: #333 !important;
-            color: #fff !important;
-            border: 1px solid #555 !important;
-        }
-        .form-group input:focus,
-        .form-group textarea:focus {
-            border-color: #002b7a;
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(0, 43, 122, 0.2);
-        }
-        body.low-vision .form-group input:focus,
-        body.low-vision .form-group textarea:focus {
-            border-color: #FF7F50 !important;
-            box-shadow: 0 0 0 2px rgba(255, 127, 80, 0.3) !important;
-        }
-        .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-        .checkbox-group {
-            display: flex;
-            align-items: flex-start;
-            margin: 25px 0;
-        }
-        .checkbox-group input {
-            margin-right: 10px;
-            margin-top: 5px;
-        }
-        .checkbox-group label {
-            font-weight: normal;
-            line-height: 1.4;
-        }
-        body.low-vision .checkbox-group label {
-            color: #fff !important;
-        }
-        .btn {
-            background: #002b7a;
-            color: white;
-            border: none;
-            padding: 14px 25px;
-            font-size: 16px;
-            font-weight: 600;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background 0.3s;
-            width: 100%;
-            font-family: 'Roboto', sans-serif;
-        }
-        body.low-vision .btn {
-            background: #FF7F50 !important;
-            color: #000 !important;
-        }
-        .btn:hover {
-            background: #0039a4;
-        }
-        body.low-vision .btn:hover {
-            background: #ff9977 !important;
-        }
-        .benefits {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            margin: 40px auto;
-            max-width: 800px;
-        }
-        body.low-vision .benefits {
-            background: rgba(30, 30, 30, 0.95) !important;
-        }
-        .benefits h2 {
-            color: #002b7a;
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #d52b1e;
-            text-align: center;
-        }
-        body.low-vision .benefits h2 {
-            color: #fff !important;
-            border-bottom: 2px solid #FF7F50 !important;
-        }
-        .benefits-list {
-            list-style: none;
-        }
-        .benefits-list li {
-            margin-bottom: 25px;
-            padding: 20px;
-            background: #f8f9ff;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-            position: relative;
-            padding-left: 70px;
-        }
-        body.low-vision .benefits-list li {
-            background: #2a2a2a !important;
-            color: #fff !important;
-        }
-        .benefits-list li:before {
-            content: '';
-            position: absolute;
-            left: 20px;
-            top: 20px;
-            width: 40px;
-            height: 40px;
-            background: #002b7a;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 20px;
-        }
-        body.low-vision .benefits-list li:before {
-            background: #FF7F50 !important;
-            color: #000 !important;
-        }
-        .benefits-list h3 {
-            color: #002b7a;
-            margin-bottom: 10px;
-        }
-        body.low-vision .benefits-list h3 {
-            color: #fff !important;
-        }
-        /* Partners Page Styles */
         .partners-section {
             background: rgba(255, 255, 255, 0.9);
             padding: 40px;
@@ -774,14 +602,6 @@ body.low-vision #map-container {
         body.low-vision .partner-info h3 {
             color: #fff !important;
         }
-        .partner-info p {
-            color: #666;
-            margin-bottom: 15px;
-            font-size: 0.9rem;
-        }
-        body.low-vision .partner-info p {
-            color: #ccc !important;
-        }
         .partners-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -803,65 +623,6 @@ body.low-vision #map-container {
         }
         .partner-card:hover {
             transform: translateY(-5px);
-        }
-        .documents {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            margin: 50px 0;
-        }
-        body.low-vision .documents {
-            background: #222 !important;
-            color: #fff !important;
-        }
-        .doc-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-        .doc-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            transition: transform 0.3s;
-        }
-        body.low-vision .doc-item {
-            background: #2a2a2a !important;
-            color: #fff !important;
-        }
-        .doc-item:hover {
-            transform: translateX(5px);
-            background: #e9ecef;
-        }
-        body.low-vision .doc-item:hover {
-            background: #333 !important;
-        }
-        .doc-icon {
-            width: 50px;
-            height: 50px;
-            background: #002b7a;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-        }
-        body.low-vision .doc-icon {
-            background: #FF7F50 !important;
-            color: #000 !important;
-        }
-        .doc-text h3 {
-            color: #002b7a;
-            margin-bottom: 5px;
-        }
-        body.low-vision .doc-text h3 {
-            color: #fff !important;
         }
         .contact-section {
             background: linear-gradient(135deg, #002b7a, #0039a4);
@@ -899,7 +660,6 @@ body.low-vision #map-container {
             background: #ff9977 !important;
             box-shadow: 0 5px 15px rgba(255, 127, 80, 0.3) !important;
         }
-        /* Кнопка "Вернуться наверх" */
         .back-to-top {
             position: fixed;
             bottom: 20px;
@@ -934,7 +694,6 @@ body.low-vision #map-container {
         body.low-vision .back-to-top:hover {
             background: #ff9977 !important;
         }
-        /* Responsive Design */
         @media (max-width: 992px) {
             .president {
                 flex-direction: column;
@@ -983,12 +742,6 @@ body.low-vision #map-container {
             .stats-grid {
                 grid-template-columns: 1fr;
             }
-            .benefits-list li {
-                padding-left: 60px;
-            }
-            .benefits-list li:before {
-                left: 15px;
-            }
             .nav-menu {
                 flex-direction: column;
                 align-items: center;
@@ -999,12 +752,6 @@ body.low-vision #map-container {
             }
             .partners-grid {
                 grid-template-columns: 1fr;
-            }
-            .doc-grid {
-                grid-template-columns: 1fr;
-            }
-            .contact-form-container, .benefits {
-                padding: 20px;
             }
             .partner-img {
                 height: 180px;
@@ -1023,12 +770,10 @@ body.low-vision #map-container {
     </style>
 </head>
 <body>
-    <!-- Кнопка переключения версий -->
     <button class="accessibility-toggle" id="accessibilityToggle">
         <i class="fas fa-low-vision"></i>
         <span>Версия для слабовидящих</span>
     </button>
-    <!-- Header -->
     <header>
         <div class="container">
             <div class="header-top">
@@ -1053,7 +798,6 @@ body.low-vision #map-container {
             <div class="datetime" id="current-datetime" style="text-align: center; margin-top: 15px;"></div>
         </div>
     </header>
-    <!-- Hero section -->
     <section class="hero">
         <div class="container hero-content">
             <h1>Комиссия по противодействию коррупции</h1>
@@ -1078,9 +822,8 @@ body.low-vision #map-container {
             </div>
         </div>
     </section>
-    <!-- Main content -->
     <main>
-        <!-- About section -->
+        <!-- ИЗМЕНЁННЫЙ БЛОК "О комиссии" -->
         <section id="about" class="section section-light">
             <div class="container">
                 <div class="section-title">
@@ -1092,7 +835,6 @@ body.low-vision #map-container {
                 </div>
             </div>
         </section>
-        <!-- Stats section -->
         <section class="stats">
             <div class="container">
                 <div class="stats-grid">
@@ -1115,15 +857,10 @@ body.low-vision #map-container {
                 </div>
             </div>
         </section>
-        <!-- President section -->
         <section class="section section-dark">
             <div class="container">
                 <div class="president">
-                    <div class="president-photo">
-                        <div style="position: absolute; bottom: 20px; left: 0; right: 0; text-align: center; color: white; background: rgba(0, 43, 122, 0.8); padding: 10px;">
-                            Президент организации Бояркин Антон Валерьевич.
-                        </div>
-                    </div>
+                    <div class="president-photo"></div>
                     <div class="president-info">
                         <div class="president-quote">
                             "Мы живём с вами в очень сложное время, время экономических реформ и кризисов. Согласно исследованиям, коррупция является серьезным препятствием к экономическому росту и развитию государства, способным поставить под угрозу любые преобразования."
@@ -1131,24 +868,22 @@ body.low-vision #map-container {
                         </div>
                     </div>
                 </div>
+                <div class="president-name">Президент организации Бояркин Антон Валерьевич</div>
             </div>
-        <!-- СЕКЦИЯ: Деятельность по регионам -->
-<section id="regions" class="section section-light">
-    <div class="container">
-        <div class="section-title">
-            <h2>Деятельность по регионам</h2>
-        </div>
-        <div class="section-content">
-            <p>Интерактивная карта деятельности Комиссии по противодействию коррупции в различных регионах России.</p>
-        </div>
-        <!-- КОНТЕЙНЕР ДЛЯ СТАТИЧНОЙ КАРТЫ -->
-        <div id="map-container">
-            <img id="static-map-image" src="Karta.png" alt="Карта регионов России">
-        </div>
-    </div>
-</section>
-        </s
-        <!-- Деятельность section -->
+        </section>
+        <section id="regions" class="section section-light">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Деятельность по регионам</h2>
+                </div>
+                <div class="section-content">
+                    <p>Интерактивная карта деятельности Комиссии по противодействию коррупции в различных регионах России.</p>
+                </div>
+                <div id="map-container">
+                    <img id="static-map-image" src="Karta.png" alt="Карта регионов России">
+                </div>
+            </div>
+        </section>
         <section id="activity" class="section section-light">
             <div class="container">
                 <div class="section-title">
@@ -1159,7 +894,6 @@ body.low-vision #map-container {
                 </div>
             </div>
         </section>
-        <!-- Документы section -->
         <section id="documents" class="section section-dark">
             <div class="container">
                 <div class="section-title">
@@ -1170,7 +904,6 @@ body.low-vision #map-container {
                 </div>
             </div>
         </section>
-        <!-- Новости section -->
         <section id="news" class="section section-light">
             <div class="container">
                 <div class="section-title">
@@ -1181,7 +914,6 @@ body.low-vision #map-container {
                 </div>
             </div>
         </section>
-        <!-- Partners Section -->
         <section class="section section-dark" id="partners">
             <div class="container">
                 <div class="section-title">
@@ -1253,7 +985,6 @@ body.low-vision #map-container {
             </div>
         </section>
     </main>
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
@@ -1302,16 +1033,13 @@ body.low-vision #map-container {
             </div>
         </div>
     </footer>
-    <!-- Кнопка "Вернуться наверх" -->
     <a href="#" class="back-to-top" id="backToTop">
         <i class="fas fa-arrow-up"></i>
     </a>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Обновление года в футере
         const currentYear = new Date().getFullYear();
         document.querySelector('.copyright').innerHTML = `&copy; ${currentYear} Комиссия по противодействию коррупции. Межрегиональная общественная организация. Все права защищены.`;
-        // Текущая дата и время
         function updateDateTime() {
             const now = new Date();
             const options = {
@@ -1329,7 +1057,6 @@ body.low-vision #map-container {
         }
         updateDateTime();
         setInterval(updateDateTime, 1000);
-        // Переключение версий
         const toggleButton = document.getElementById('accessibilityToggle');
         const body = document.body;
         if (localStorage.getItem('lowVisionMode') === 'enabled') {
@@ -1346,7 +1073,6 @@ body.low-vision #map-container {
                 localStorage.setItem('lowVisionMode', 'disabled');
             }
         });
-        // Анимации при прокрутке
         const observerOptions = {
             root: null,
             rootMargin: '0px',
@@ -1360,30 +1086,12 @@ body.low-vision #map-container {
                 }
             });
         }, observerOptions);
-        document.querySelectorAll('.section-title, .section-content, .president, .stat-item, .contact-form, .benefits, .partner-card, .doc-item').forEach(item => {
+        document.querySelectorAll('.section-title, .section-content, .president, .stat-item, .partner-card').forEach(item => {
             item.style.opacity = 0;
             item.style.transform = 'translateY(20px)';
             item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
             observer.observe(item);
         });
-        // Обработка формы (если есть)
-        const form = document.querySelector('form');
-        if (form) {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const name = document.getElementById('name')?.value;
-                const email = document.getElementById('email')?.value;
-                const message = document.getElementById('message')?.value;
-                const agreement = document.getElementById('agreement')?.checked;
-                if (!name || !email || !message || !agreement) {
-                    alert('Пожалуйста, заполните все обязательные поля и примите соглашение');
-                    return;
-                }
-                alert('Спасибо! Ваше сообщение отправлено. Мы свяжемся с вами в ближайшее время.');
-                form.reset();
-            });
-        }
-        // Кнопка "Вернуться наверх"
         const backToTop = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 400) {
