@@ -62,10 +62,20 @@
         .accessibility-toggle i {
             font-size: 18px;
         }
+        /* Мобильное меню */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            margin-left: auto;
+        }
         header {
             background: linear-gradient(to bottom, #0039a4, #002b7a);
             color: white;
-            padding: 20px 0;
+            padding: 15px 0;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             position: relative;
             transition: all 0.3s ease;
@@ -78,22 +88,16 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            position: relative;
-            z-index: 1;
-        }
-        body.low-vision .header-top {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.5) !important;
+            flex-wrap: wrap;
         }
         .logo {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
         }
         .logo-img {
-            width: 140px; /* Увеличено в 2 раза */
-            height: 140px; /* Увеличено в 2 раза */
+            width: 100px;
+            height: 100px;
             background: transparent;
             border-radius: 50%;
             display: flex;
@@ -103,7 +107,6 @@
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
         }
         body.low-vision .logo-img {
-            background: transparent !important;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.2) !important;
         }
         .logo-img img {
@@ -115,20 +118,20 @@
             flex-direction: column;
         }
         .logo-title {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: 700;
             line-height: 1.2;
         }
         .logo-subtitle {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             opacity: 0.9;
-            margin-top: 5px;
+            margin-top: 4px;
         }
         .datetime {
             color: #B0E0E6;
             font-family: 'Roboto', sans-serif;
-            font-size: 1rem;
-            margin-top: 12px;
+            font-size: 0.95rem;
+            margin-top: 10px;
             text-align: center;
         }
         body.low-vision .datetime {
@@ -136,19 +139,23 @@
         }
         .header-nav {
             display: flex;
-            gap: 25px;
+            gap: 15px;
             list-style: none;
             align-items: center;
+            margin-top: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         .header-nav a {
             color: white;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
-            padding: 8px 5px;
+            padding: 6px 8px;
             position: relative;
             font-family: 'Roboto', sans-serif;
             white-space: nowrap;
+            font-size: 0.95rem;
         }
         body.low-vision .header-nav a {
             color: #fff !important;
@@ -164,16 +171,14 @@
             background: white;
             transition: width 0.3s ease;
         }
-        body.low-vision .header-nav a:after {
-            background: #fff !important;
-        }
         .header-nav a:hover:after {
             width: 100%;
         }
+        /* Hero */
         .hero {
             background: url('https://cdn.culture.ru/images/dbaf51d3-1bdf-52f0-a516-7834d841b119') no-repeat center center;
             background-size: cover;
-            padding: 100px 0;
+            padding: 80px 0;
             color: white;
             text-align: center;
             position: relative;
@@ -200,29 +205,30 @@
             margin: 0 auto;
         }
         .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
+            font-size: 2.4rem;
+            margin-bottom: 15px;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
         body.low-vision .hero h1 {
             text-shadow: 0 2px 4px rgba(255, 255, 255, 0.3) !important;
-            font-size: 3.2rem !important;
+            font-size: 2.8rem !important;
         }
         .hero-subtitle {
-            font-size: 1.4rem;
-            margin-bottom: 40px;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
             opacity: 0.9;
         }
         body.low-vision .hero-subtitle {
             opacity: 1 !important;
-            font-size: 1.6rem !important;
+            font-size: 1.4rem !important;
         }
         .contacts {
             background: rgba(255, 255, 255, 0.15);
-            padding: 25px;
+            padding: 20px;
             border-radius: 8px;
             backdrop-filter: blur(10px);
-            margin-bottom: 40px;
+            margin: 25px auto;
+            max-width: 400px;
         }
         body.low-vision .contacts {
             background: rgba(255, 255, 255, 0.2) !important;
@@ -231,25 +237,27 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 15px;
+            gap: 10px;
+            margin-bottom: 12px;
             font-family: 'Roboto', sans-serif;
+            font-size: 0.95rem;
         }
         .contact-item:last-child {
             margin-bottom: 0;
         }
         .contact-item i {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #B0E0E6;
         }
         body.low-vision .contact-item i {
             color: #fff !important;
         }
+        /* Основной контент */
         main {
             flex: 1;
         }
         .section {
-            padding: 25px 0;
+            padding: 30px 0;
             scroll-margin-top: 100px;
         }
         .section-light {
@@ -266,58 +274,55 @@
         }
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
         .section-title h2 {
-            font-size: 2.2rem;
+            font-size: 2rem;
             color: #002b7a;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             position: relative;
             display: inline-block;
         }
         body.low-vision .section-title h2 {
             color: #fff !important;
-            font-size: 2.5rem !important;
+            font-size: 2.3rem !important;
         }
         .section-title h2:after {
             content: '';
             position: absolute;
-            bottom: -15px;
+            bottom: -12px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
+            width: 70px;
+            height: 3px;
             background: #FF7F50;
             border-radius: 2px;
-        }
-        body.low-vision .section-title h2:after {
-            background: #FF7F50 !important;
         }
         .section-content {
             max-width: 900px;
             margin: 0 auto;
-            font-size: 1.1rem;
-            line-height: 1.8;
+            font-size: 1.05rem;
+            line-height: 1.7;
             text-align: center;
         }
         body.low-vision .section-content {
             color: #fff !important;
-            font-size: 1.3rem !important;
-            line-height: 2 !important;
+            font-size: 1.25rem !important;
+            line-height: 1.9 !important;
         }
         .section-content p {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         #map-container {
             position: relative;
             width: 100%;
             max-width: 1000px;
-            height: auto;
-            margin: 30px auto;
+            margin: 25px auto;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             background: #f0f0f0;
             overflow: hidden;
+            cursor: pointer;
         }
         body.low-vision #map-container {
             box-shadow: 0 5px 15px rgba(255,255,255,0.1) !important;
@@ -328,17 +333,74 @@
             height: auto;
             display: block;
             border-radius: 8px;
+            position: relative;
+            z-index: 1;
+        }
+        .map-marker {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #FF7F50;
+            border: 2px solid white;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+        .map-marker:hover {
+            background: #d52b1e;
+            transform: scale(1.3);
+        }
+        .map-marker::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+        }
+        .marker-tooltip {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px 15px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            font-size: 0.9rem;
+            color: #333;
+            max-width: 250px;
+            z-index: 20;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            pointer-events: none;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            white-space: pre-line;
+        }
+        body.low-vision .marker-tooltip {
+            background: rgba(30, 30, 30, 0.95) !important;
+            color: #fff !important;
+            box-shadow: 0 5px 15px rgba(255,255,255,0.2) !important;
+        }
+        .map-marker:hover .marker-tooltip {
+            opacity: 1;
+            visibility: visible;
         }
         .president {
             display: flex;
             align-items: flex-start;
-            gap: 50px;
+            gap: 30px;
             max-width: 1000px;
             margin: 0 auto;
+            flex-wrap: wrap;
         }
         .president-photo {
-            flex: 0 0 300px;
-            height: 400px;
+            flex: 0 0 280px;
+            height: 360px;
             background: #002b7a url('антон.jpg') no-repeat center center;
             background-size: cover;
             border-radius: 8px;
@@ -367,6 +429,7 @@
         }
         .president-info {
             flex: 1;
+            min-width: 280px;
             padding: 20px;
             background: white;
             border-radius: 8px;
@@ -378,9 +441,9 @@
             box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1) !important;
         }
         .president-quote {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-style: italic;
-            line-height: 1.8;
+            line-height: 1.7;
             color: #002b7a;
             text-align: center;
             padding: 20px;
@@ -388,12 +451,12 @@
         }
         body.low-vision .president-quote {
             color: #fff !important;
-            font-size: 1.6rem !important;
+            font-size: 1.5rem !important;
         }
         .president-quote:before,
         .president-quote:after {
             content: '"';
-            font-size: 3rem;
+            font-size: 2.8rem;
             color: #d52b1e;
             opacity: 0.3;
             position: absolute;
@@ -408,14 +471,14 @@
             font-weight: bold;
             font-size: 1.1rem;
             color: #002b7a;
-            text-align: left; /* Выровнено по левому краю */
+            text-align: left;
         }
         body.low-vision .president-name {
             color: #fff !important;
         }
         .stats {
             background: linear-gradient(to right, #0039a4, #002b7a);
-            padding: 80px 0;
+            padding: 60px 0;
             color: white;
             text-align: center;
         }
@@ -424,13 +487,13 @@
         }
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
             max-width: 1000px;
             margin: 0 auto;
         }
         .stat-item {
-            padding: 30px;
+            padding: 20px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 8px;
             backdrop-filter: blur(5px);
@@ -439,49 +502,50 @@
             background: rgba(255, 255, 255, 0.15) !important;
         }
         .stat-number {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: #FFFFE0;
         }
         body.low-vision .stat-number {
             color: #fff !important;
-            font-size: 3.5rem !important;
+            font-size: 3rem !important;
         }
         .stat-text {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
         body.low-vision .stat-text {
-            font-size: 1.4rem !important;
+            font-size: 1.3rem !important;
         }
+        /* Footer */
         footer {
             background: #1a1a2e;
             color: white;
-            padding: 60px 0 30px;
+            padding: 50px 0 30px;
         }
         body.low-vision footer {
             background: #000 !important;
         }
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
         }
         .footer-col h3 {
-            font-size: 1.4rem;
-            margin-bottom: 25px;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
             color: white;
         }
         body.low-vision .footer-col h3 {
             color: #fff !important;
-            font-size: 1.6rem !important;
+            font-size: 1.5rem !important;
         }
-        .footer-links {
+        .footer-links, .contact-info {
             list-style: none;
         }
-        .footer-links li {
-            margin-bottom: 12px;
+        .footer-links li, .contact-info li {
+            margin-bottom: 10px;
         }
         .footer-links a {
             color: #ccc;
@@ -496,18 +560,14 @@
         .footer-links a:hover {
             color: white;
         }
-        .contact-info {
-            list-style: none;
-        }
         .contact-info li {
-            margin-bottom: 15px;
             display: flex;
             align-items: flex-start;
-            gap: 15px;
+            gap: 12px;
         }
         .contact-info i {
             color: #d52b1e;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin-top: 3px;
         }
         body.low-vision .contact-info i {
@@ -515,22 +575,23 @@
         }
         .copyright {
             text-align: center;
-            padding-top: 30px;
+            padding-top: 25px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #999;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-family: 'Roboto', sans-serif;
         }
         body.low-vision .copyright {
             color: #ccc !important;
             border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
         }
+        /* Partners */
         .partners-section {
             background: rgba(255, 255, 255, 0.9);
-            padding: 40px;
+            padding: 30px;
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            margin: 40px auto;
+            margin: 30px auto;
         }
         body.low-vision .partners-section {
             background: rgba(30, 30, 30, 0.95) !important;
@@ -539,12 +600,12 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 15px;
-            margin: 30px 0;
+            gap: 12px;
+            margin: 25px 0;
         }
         .nav-item {
             background: #002b7a;
-            padding: 10px 20px;
+            padding: 8px 18px;
             border-radius: 30px;
             transition: all 0.3s ease;
         }
@@ -564,20 +625,21 @@
             font-weight: 500;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             font-family: 'Roboto', sans-serif;
+            font-size: 0.95rem;
         }
         body.low-vision .nav-item a {
             color: #000 !important;
         }
         .partner-img {
-            height: 200px;
+            height: 160px;
             background: #f8f9fa;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            padding: 15px;
+            padding: 10px;
         }
         body.low-vision .partner-img {
             background: #222 !important;
@@ -586,17 +648,15 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            max-width: 100%;
-            max-height: 100%;
         }
         .partner-info {
-            padding: 20px;
+            padding: 15px;
             text-align: center;
         }
         .partner-info h3 {
             color: #002b7a;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
+            margin-bottom: 8px;
+            font-size: 1rem;
             line-height: 1.3;
         }
         body.low-vision .partner-info h3 {
@@ -604,9 +664,9 @@
         }
         .partners-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
         }
         .partner-card {
             background: white;
@@ -627,9 +687,9 @@
         .contact-section {
             background: linear-gradient(135deg, #002b7a, #0039a4);
             color: white;
-            padding: 50px 0;
+            padding: 40px 0;
             border-radius: 10px;
-            margin: 50px 0;
+            margin: 40px 0;
             text-align: center;
         }
         body.low-vision .contact-section {
@@ -639,13 +699,14 @@
             display: inline-block;
             background: #002b7a;
             color: white;
-            padding: 12px 25px;
+            padding: 10px 22px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
-            margin-top: 20px;
+            margin-top: 15px;
             transition: all 0.3s;
             font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
         }
         body.low-vision .contact-btn {
             background: #FF7F50 !important;
@@ -664,8 +725,8 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            width: 50px;
-            height: 50px;
+            width: 48px;
+            height: 48px;
             background: #002b7a;
             color: white;
             border-radius: 50%;
@@ -694,50 +755,46 @@
         body.low-vision .back-to-top:hover {
             background: #ff9977 !important;
         }
-        @media (max-width: 992px) {
-            .president {
-                flex-direction: column;
-                text-align: center;
-            }
-            .header-top {
-                flex-wrap: wrap;
-            }
-            .header-nav {
-                margin-top: 20px;
-                width: 100%;
-                justify-content: center;
-            }
-        }
+        /* Mobile menu */
         @media (max-width: 768px) {
-            .header-top {
-                flex-direction: column;
-                gap: 20px;
-                text-align: center;
+            .menu-toggle {
+                display: block;
             }
             .header-nav {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
                 margin-top: 15px;
+                padding-top: 15px;
+                border-top: 1px solid rgba(255,255,255,0.2);
             }
-            .hero h1 {
-                font-size: 2.2rem;
+            .header-nav.active {
+                display: flex;
             }
-            body.low-vision .hero h1 {
-                font-size: 2.5rem !important;
-            }
-            .hero-subtitle {
+            .logo-title {
                 font-size: 1.2rem;
             }
-            body.low-vision .hero-subtitle {
-                font-size: 1.4rem !important;
+            .logo-subtitle {
+                font-size: 0.8rem;
             }
-            .contact-item {
+            .logo-img {
+                width: 80px;
+                height: 80px;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            .president {
                 flex-direction: column;
-                gap: 5px;
+                align-items: center;
             }
-            .logo {
-                justify-content: center;
+            .president-info {
+                width: 100%;
             }
             .stats-grid {
                 grid-template-columns: 1fr;
@@ -754,17 +811,17 @@
                 grid-template-columns: 1fr;
             }
             .partner-img {
-                height: 180px;
-                padding: 10px;
+                height: 140px;
             }
-            .partner-info h3 {
-                font-size: 1rem;
-            }
-            body.low-vision .partner-info h3 {
-                font-size: 1.2rem !important;
+            .section-title h2 {
+                font-size: 1.8rem;
             }
             #map-container {
-                height: 350px;
+                max-width: 100%;
+            }
+            .map-marker {
+                width: 18px;
+                height: 18px;
             }
         }
     </style>
@@ -786,16 +843,19 @@
                         <div class="logo-subtitle">Межрегиональная общественная организация</div>
                     </div>
                 </div>
-                <ul class="header-nav">
-                    <li><a href="#about">О комиссии</a></li>
-                    <li><a href="#activity">Деятельность</a></li>
-                    <li><a href="#regions">Регионы</a></li>
-                    <li><a href="#documents">Документы</a></li>
-                    <li><a href="#news">Новости</a></li>
-                    <li><a href="#contact">Контакты</a></li>
-                </ul>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
-            <div class="datetime" id="current-datetime" style="text-align: center; margin-top: 15px;"></div>
+            <ul class="header-nav" id="mainNav">
+                <li><a href="#about">О комиссии</a></li>
+                <li><a href="#activity">Деятельность</a></li>
+                <li><a href="#regions">Регионы</a></li>
+                <li><a href="#documents">Документы</a></li>
+                <li><a href="#news">Новости</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+            <div class="datetime" id="current-datetime"></div>
         </div>
     </header>
     <section class="hero">
@@ -823,7 +883,6 @@
         </div>
     </section>
     <main>
-        <!-- ИЗМЕНЁННЫЙ БЛОК "О комиссии" -->
         <section id="about" class="section section-light">
             <div class="container">
                 <div class="section-title">
@@ -868,7 +927,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="president-name">Президент организации-Бояркин Антон Валерьевич</div>
+                <div class="president-name">Президент организации — Бояркин Антон Валерьевич</div>
             </div>
         </section>
         <section id="regions" class="section section-light">
@@ -881,6 +940,55 @@
                 </div>
                 <div id="map-container">
                     <img id="static-map-image" src="Karta.png" alt="Карта регионов России">
+                    <!-- Маркеры для регионов -->
+                    <div class="map-marker" data-region="краснодар" style="top: 59.5%; left: 3%;"
+                         onclick="window.location.href='region.html?region=краснодар'">
+                        <div class="marker-tooltip">Краснодар</div>
+                    </div>
+                    <div class="map-marker" data-region="калмыкия" style="top: 68%; left: 8%;"
+                         onclick="window.location.href='region.html?region=калмыкия'">
+                        <div class="marker-tooltip">Калмыкия</div>
+                    </div>
+                    <div class="map-marker" data-region="москва" style="top: 40%; left: 13.5%;"
+                         onclick="window.location.href='region.html?region=москва'">
+                        <div class="marker-tooltip">Москва</div>
+                    </div>
+                    <div class="map-marker" data-region="луганская народная республика" style="top: 53%; left: 7%;"
+                         onclick="window.location.href='region.html?region=луганская народная республика'">
+                        <div class="marker-tooltip">Луганская Народная Республика</div>
+                    </div>
+                    <div class="map-marker" data-region="крым" style="top: 52%; left: 1%;"
+                         onclick="window.location.href='region.html?region=крым'">
+                        <div class="marker-tooltip">Крым</div>
+                    </div>
+                    <div class="map-marker" data-region="дагестан" style="top: 75.5%; left: 6%;"
+                         onclick="window.location.href='region.html?region=дагестан'">
+                        <div class="marker-tooltip">Дагестан</div>
+                    </div>
+                    <div class="map-marker" data-region="санкт петербург" style="top: 26%; left: 16%;"
+                         onclick="window.location.href='region.html?region=санкт петербург'">
+                        <div class="marker-tooltip">Санкт-Петербург</div>
+                    </div>
+                    <div class="map-marker" data-region="сибирский федеральный округ" style="top: 50%; left: 52%;"
+                         onclick="window.location.href='region.html?region=сибирский федеральный округ'">
+                        <div class="marker-tooltip">Сибирский ФО</div>
+                    </div>
+                    <div class="map-marker" data-region="ставрополь" style="top: 65%; left: 6%;"
+                         onclick="window.location.href='region.html?region=ставрополь'">
+                        <div class="marker-tooltip">Ставрополь</div>
+                    </div>
+                    <div class="map-marker" data-region="чечня" style="top: 71%; left: 6%;"
+                         onclick="window.location.href='region.html?region=чечня'">
+                        <div class="marker-tooltip">Чечня</div>
+                    </div>
+                    <div class="map-marker" data-region="астрахань" style="top: 65%; left: 10%;"
+                         onclick="window.location.href='region.html?region=астрахань'">
+                        <div class="marker-tooltip">Астрахань</div>
+                    </div>
+                    <div class="map-marker" data-region="екатеринбург" style="top: 55%; left: 28.5%;"
+                         onclick="window.location.href='region.html?region=екатеринбург'">
+                        <div class="marker-tooltip">Екатеринбург</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -925,19 +1033,19 @@
                             <a href="#partners"><i class="fas fa-handshake"></i> Наши партнеры</a>
                         </div>
                         <div class="nav-item">
-                            <a href="certificate.html#partners"><i class="fas fa-file-certificate"></i> Свидетельство о регистрации</a>
+                            <a href="certificate.html"><i class="fas fa-file-certificate"></i> Свидетельство о регистрации</a>
                         </div>
                         <div class="nav-item">
-                            <a href="ustav.html#partners"><i class="fas fa-file-contract"></i> Устав МОО</a>
+                            <a href="ustav.html"><i class="fas fa-file-contract"></i> Устав МОО</a>
                         </div>
                         <div class="nav-item">
-                            <a href="application.html#partners"><i class="fas fa-clipboard-list"></i> Заявление и анкета</a>
+                            <a href="application.html"><i class="fas fa-clipboard-list"></i> Заявление и анкета</a>
                         </div>
                         <div class="nav-item">
-                            <a href="форма связ.html#partners"><i class="fas fa-envelope"></i> Связаться с нами</a>
+                            <a href="форма связ.html"><i class="fas fa-envelope"></i> Связаться с нами</a>
                         </div>
                         <div class="nav-item">
-                            <a href="сотруд.html#partners">Наши сотрудники и Активисты</a>
+                            <a href="сотруд.html">Наши сотрудники и Активисты</a>
                         </div>
                     </div>
                     <div class="partners-grid">
@@ -978,7 +1086,7 @@
                         <div class="contact-content">
                             <h2>Связаться с нами</h2>
                             <p>Есть вопросы или предложения? Напишите нам, и мы обязательно ответим!</p>
-                            <a href="форма связ.html#partners" class="contact-btn">Написать сообщение</a>
+                            <a href="форма связ.html" class="contact-btn">Написать сообщение</a>
                         </div>
                     </div>
                 </div>
@@ -1028,8 +1136,8 @@
                     </ul>
                 </div>
             </div>
-            <div class="copyright">
-                &copy; 2025 Комиссия по противодействию коррупции. Межрегиональная общественная организация. Все права защищены.
+            <div class="copyright" id="copyright">
+                &copy; 2025 Комиссия по противодействию коррупции. Все права защищены.
             </div>
         </div>
     </footer>
@@ -1037,76 +1145,75 @@
         <i class="fas fa-arrow-up"></i>
     </a>
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const currentYear = new Date().getFullYear();
-        document.querySelector('.copyright').innerHTML = `&copy; ${currentYear} Комиссия по противодействию коррупции. Межрегиональная общественная организация. Все права защищены.`;
-        function updateDateTime() {
-            const now = new Date();
-            const options = {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit',
-                timeZoneName: 'short'
-            };
-            const dateTimeString = now.toLocaleDateString('ru-RU', options);
-            document.getElementById('current-datetime').textContent = dateTimeString;
-        }
-        updateDateTime();
-        setInterval(updateDateTime, 1000);
-        const toggleButton = document.getElementById('accessibilityToggle');
-        const body = document.body;
-        if (localStorage.getItem('lowVisionMode') === 'enabled') {
-            body.classList.add('low-vision');
-            toggleButton.innerHTML = '<i class="fas fa-eye"></i> <span>Обычная версия</span>';
-        }
-        toggleButton.addEventListener('click', function() {
-            body.classList.toggle('low-vision');
-            if (body.classList.contains('low-vision')) {
-                toggleButton.innerHTML = '<i class="fas fa-eye"></i> <span>Обычная версия</span>';
-                localStorage.setItem('lowVisionMode', 'enabled');
-            } else {
-                toggleButton.innerHTML = '<i class="fas fa-low-vision"></i> <span>Версия для слабовидящих</span>';
-                localStorage.setItem('lowVisionMode', 'disabled');
+        document.addEventListener('DOMContentLoaded', function() {
+            // Обновление года
+            const currentYear = new Date().getFullYear();
+            document.getElementById('copyright').innerHTML = `&copy; ${currentYear} Комиссия по противодействию коррупции. Все права защищены.`;
+            // Дата и время
+            function updateDateTime() {
+                const now = new Date();
+                const options = {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    timeZoneName: 'short'
+                };
+                document.getElementById('current-datetime').textContent = now.toLocaleDateString('ru-RU', options);
             }
-        });
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
+            updateDateTime();
+            setInterval(updateDateTime, 1000);
+            // Версия для слабовидящих
+            const toggleButton = document.getElementById('accessibilityToggle');
+            const body = document.body;
+            if (localStorage.getItem('lowVisionMode') === 'enabled') {
+                body.classList.add('low-vision');
+                toggleButton.innerHTML = '<i class="fas fa-eye"></i> <span>Обычная версия</span>';
+            }
+            toggleButton.addEventListener('click', function() {
+                body.classList.toggle('low-vision');
+                if (body.classList.contains('low-vision')) {
+                    toggleButton.innerHTML = '<i class="fas fa-eye"></i> <span>Обычная версия</span>';
+                    localStorage.setItem('lowVisionMode', 'enabled');
+                } else {
+                    toggleButton.innerHTML = '<i class="fas fa-low-vision"></i> <span>Версия для слабовидящих</span>';
+                    localStorage.setItem('lowVisionMode', 'disabled');
                 }
             });
-        }, observerOptions);
-        document.querySelectorAll('.section-title, .section-content, .president, .stat-item, .partner-card').forEach(item => {
-            item.style.opacity = 0;
-            item.style.transform = 'translateY(20px)';
-            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            observer.observe(item);
-        });
-        const backToTop = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 400) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
+            // Мобильное меню
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+            menuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+            });
+            // Кнопка "наверх"
+            const backToTop = document.getElementById('backToTop');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 400) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            });
+            backToTop.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            // Для мобильных устройств: увеличиваем размер маркеров и делаем их более заметными
+            if (window.innerWidth <= 768) {
+                const markers = document.querySelectorAll('.map-marker');
+                markers.forEach(marker => {
+                    marker.style.width = '25px';
+                    marker.style.height = '25px';
+                });
             }
         });
-        backToTop.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    });
-</script>
+    </script>
 </body>
 </html>
+
 
 
