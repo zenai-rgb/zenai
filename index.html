@@ -343,7 +343,7 @@
             background: #ff9977 !important;
         }
 
-        /* Остальные стили (карта, партнеры и т.д.) — без изменений */
+        /* Остальные стили без изменений */
         #map-container {
             position: relative;
             width: 100%;
@@ -981,7 +981,7 @@
             </div>
         </section>
 
-        <!-- === РАЗДЕЛ "ДОКУМЕНТЫ" НА СВОЁМ МЕСТЕ === -->
+        <!-- === РАЗДЕЛ "ДОКУМЕНТЫ" С КНОПКОЙ === -->
         <section id="documents" class="section section-dark">
             <div class="container">
                 <div class="section-title">
@@ -1131,7 +1131,7 @@
         <i class="fas fa-arrow-up"></i>
     </a>
 
-    <!-- Страница "Юридические услуги" (встроена как шаблон) -->
+    <!-- Страница "Юридические услуги" -->
     <template id="legalPageTemplate">
         <!DOCTYPE html>
         <html lang="ru">
@@ -1212,8 +1212,8 @@
             <header>
                 <div class="container">
                     <h1>Юридические услуги</h1>
-                    <a href="javascript:window.close()" class="back-link" onclick="window.history.back(); return false;">
-                        <i class="fas fa-arrow-left"></i> Вернуться назад
+                    <a href="./" class="back-link">
+                        <i class="fas fa-arrow-left"></i> Вернуться на главную
                     </a>
                 </div>
             </header>
@@ -1222,9 +1222,9 @@
                     <div class="service-section">
                         <h2>1. АРБИТРАЖ</h2>
                         <ul>
-                            <li>Ознакомление с документами, подготовка и подача искового заявления, отзывов на исковые заявления, прочих процессуальных документов, сопровождающих прохождение судебного дела</li>
+                            <li>Ознакомление с документами, подготовку и подачу искового заявления, отзывов на исковые заявления, прочих процессуальных документов, сопровождающих прохождение судебного дела</li>
                             <li>Участие непосредственно в судебном заседании</li>
-                            <li>Подготовка проекта мирового соглашения</li>
+                            <li>При необходимости - подготовку проекта мирового соглашения</li>
                             <li>Затягивание процесса на длительное время (по желанию ответчика)</li>
                             <li>Участие в обжаловании решения арбитражного суда</li>
                             <li>Участие адвоката в ходе исполнения решения суда в службе судебных приставов</li>
@@ -1487,11 +1487,9 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Обновление года
             const currentYear = new Date().getFullYear();
             document.getElementById('copyright').innerHTML = `&copy; ${currentYear} Комиссия по противодействию коррупции. Все права защищены.`;
 
-            // Дата и время
             function updateDateTime() {
                 const now = new Date();
                 const options = {
@@ -1509,7 +1507,6 @@
             updateDateTime();
             setInterval(updateDateTime, 1000);
 
-            // Версия для слабовидящих
             const toggleButton = document.getElementById('accessibilityToggle');
             const body = document.body;
             if (localStorage.getItem('lowVisionMode') === 'enabled') {
@@ -1527,14 +1524,12 @@
                 }
             });
 
-            // Мобильное меню
             const menuToggle = document.getElementById('menuToggle');
             const mainNav = document.getElementById('mainNav');
             menuToggle.addEventListener('click', () => {
                 mainNav.classList.toggle('active');
             });
 
-            // Кнопка "наверх"
             const backToTop = document.getElementById('backToTop');
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 400) {
