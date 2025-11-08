@@ -299,7 +299,7 @@
             <div class="section-title">
                 <h2>Устав Российской профсоюзной организации работников среднего и малого бизнеса</h2>
             </div>
-            <a href="index.html" class="back-button">
+            <a href="#" class="back-button" onclick="closeCurrentTab(); return false;">
                 <i class="fas fa-arrow-left"></i>
                 <span>Вернуться на главную</span>
             </a>
@@ -376,6 +376,15 @@
                 }
             });
         });
+
+        function closeCurrentTab() {
+            // Пытаемся закрыть текущую вкладку
+            window.close();
+            // Если window.close() не сработало, перенаправляем на главную
+            // setTimeout(() => {
+            //     window.location.href = 'index.html';
+            // }, 1000); // Задержка на случай, если закрытие сработает
+        }
     </script>
 </body>
 </html>
