@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Юридические услуги — Комиссия по противодействию коррупции">
-    <title>Юридические услуги — Комиссия по противодействию коррупции</title>
+    <meta name="description" content="Юридические услуги, предоставляемые Комиссией по противодействию коррупции">
+    <title>Юридические услуги - Комиссия по противодействию коррупции</title>
     <link rel="icon" type="image/png" href="logo-kpk-копия.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
@@ -21,427 +21,367 @@
             background: url('https://images.unsplash.com/photo-1543349689-9a4d426bee8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80') fixed;
             background-size: cover;
             background-color: #f8f9fa;
-            padding: 20px;
-            scroll-behavior: smooth;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
             transition: all 0.3s ease;
         }
         body.low-vision {
             background: #000 !important;
             color: #fff !important;
-            font-size: 1.25em !important;
         }
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.92);
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            padding: 0 20px;
         }
-        body.low-vision .container {
-            background: rgba(30, 30, 30, 0.95) !important;
-            color: #fff !important;
+        .accessibility-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: #002b7a;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        .accessibility-toggle:hover {
+            background: #0039a4;
+            transform: translateY(-2px);
+        }
+        .accessibility-toggle i {
+            font-size: 18px;
         }
         header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #002b7a;
+            background: linear-gradient(to bottom, #0039a4, #002b7a);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
         }
         body.low-vision header {
-            border-bottom: 2px solid #FF7F50 !important;
+            background: linear-gradient(to bottom, #000, #111) !important;
+            box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2) !important;
         }
-        h1 {
-            font-size: 2.2rem;
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo-img {
+            width: 100px;
+            height: 100px;
+            background: transparent;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+        body.low-vision .logo-img {
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2) !important;
+        }
+        .logo-img img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        .logo-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        .logo-subtitle {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            margin-top: 4px;
+        }
+        .datetime {
+            color: #B0E0E6;
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.95rem;
+            margin-top: 10px;
+            text-align: center;
+        }
+        body.low-vision .datetime {
+            color: #fff !important;
+        }
+        main {
+            flex: 1;
+            padding: 40px 0;
+        }
+        .section {
+            scroll-margin-top: 100px;
+        }
+        .section-light {
+            background: rgba(255, 255, 255, 0.9);
+        }
+        body.low-vision .section-light {
+            background: rgba(30, 30, 30, 0.95) !important;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .section-title h2 {
+            font-size: 2rem;
             color: #002b7a;
             margin-bottom: 15px;
-        }
-        body.low-vision h1 {
-            color: #fff !important;
-            font-size: 2.5rem !important;
-        }
-        .back-link {
+            position: relative;
             display: inline-block;
-            margin-top: 10px;
-            color: #0039a4;
+        }
+        body.low-vision .section-title h2 {
+            color: #fff !important;
+        }
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 3px;
+            background: #FF7F50;
+            border-radius: 2px;
+        }
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #002b7a;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
             text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 20px;
+            transition: all 0.3s;
             font-family: 'Roboto', sans-serif;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.2s;
         }
-        .back-link:hover {
-            color: #d52b1e;
-            text-decoration: underline;
+        .back-button:hover {
+            background: #0039a4;
+            transform: translateY(-2px);
         }
-        body.low-vision .back-link {
-            color: #FF7F50 !important;
+        body.low-vision .back-button {
+            background: #FF7F50 !important;
+            color: #000 !important;
         }
-        body.low-vision .back-link:hover {
-            color: #ff9977 !important;
+        body.low-vision .back-button:hover {
+            background: #ff9977 !important;
         }
-        .services-list {
+        .legal-content {
+            max-width: 900px;
+            margin: 0 auto;
             font-size: 1.05rem;
             line-height: 1.7;
         }
-        body.low-vision .services-list {
-            font-size: 1.2rem !important;
-            line-height: 1.9 !important;
-        }
-        .service-section {
-            margin-bottom: 28px;
-        }
-        .service-section h2 {
-            color: #002b7a;
-            margin-bottom: 14px;
-            font-size: 1.5rem;
-            font-family: 'Roboto', sans-serif;
-            font-weight: 600;
-        }
-        body.low-vision .service-section h2 {
+        body.low-vision .legal-content {
             color: #fff !important;
-            font-size: 1.7rem !important;
         }
-        .service-section ul {
-            padding-left: 24px;
+        .legal-content p {
+            margin-bottom: 20px;
         }
-        .service-section li {
-            margin-bottom: 8px;
-            list-style-type: disc;
+        .legal-content ul, .legal-content ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+        .legal-content li {
+            margin-bottom: 10px;
         }
         footer {
-            margin-top: 40px;
-            text-align: center;
-            padding-top: 25px;
-            border-top: 1px solid #eee;
-            color: #555;
-            font-family: 'Roboto', sans-serif;
-            font-size: 1.1rem;
+            background: #1a1a2e;
+            color: white;
+            padding: 50px 0 30px;
         }
         body.low-vision footer {
-            border-top: 1px solid #444 !important;
+            background: #000 !important;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        body.low-vision .footer-col h3 {
+            color: #fff !important;
+        }
+        .footer-links, .contact-info {
+            list-style: none;
+        }
+        .footer-links li, .contact-info li {
+            margin-bottom: 10px;
+        }
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-family: 'Roboto', sans-serif;
+        }
+        body.low-vision .footer-links a {
+            color: #fff !important;
+        }
+        .footer-links a:hover {
+            color: white;
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999;
+            font-size: 0.85rem;
+            font-family: 'Roboto', sans-serif;
+        }
+        body.low-vision .copyright {
             color: #ccc !important;
-        }
-        .phone-trust {
-            font-weight: bold;
-            color: #d52b1e;
-        }
-        body.low-vision .phone-trust {
-            color: #FF7F50 !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
         }
         @media (max-width: 768px) {
-            .container {
-                padding: 20px 15px;
-            }
-            h1 {
-                font-size: 1.8rem;
-            }
-            .service-section h2 {
-                font-size: 1.35rem;
-            }
+            .logo-title { font-size: 1.2rem; }
+            .logo-subtitle { font-size: 0.8rem; }
+            .logo-img { width: 80px; height: 80px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Спектр юридических услуг</h1>
-            <a href="index.html" class="back-link">
-                <i class="fas fa-arrow-left"></i> Вернуться на главную
+    <button class="accessibility-toggle" id="accessibilityToggle">
+        <i class="fas fa-low-vision"></i>
+        <span>Версия для слабовидящих</span>
+    </button>
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <div class="logo-img">
+                        <img src="logo-kpk-копия.png" alt="Логотип Комиссии по противодействию коррупции">
+                    </div>
+                    <div class="logo-text">
+                        <div class="logo-title">Комиссия по противодействию коррупции</div>
+                        <div class="logo-subtitle">Межрегиональная общественная организация</div>
+                    </div>
+                </div>
+            </div>
+            <div class="datetime" id="current-datetime"></div>
+        </div>
+    </header>
+    <main>
+        <div class="container section section-light">
+            <div class="section-title">
+                <h2>Юридические услуги</h2>
+            </div>
+            <a href="#" class="back-button" onclick="closeCurrentTab(); return false;">
+                <i class="fas fa-arrow-left"></i>
+                <span>Вернуться на главную</span>
             </a>
-        </header>
-
-        <div class="services-list">
-            <div class="service-section">
-                <h2>1. АРБИТРАЖ</h2>
+            <div class="legal-content">
+                <p>Здесь будет размещена информация о предоставляемых юридических услугах.</p>
+                <p>Например:</p>
                 <ul>
-                    <li>Услуги адвоката по арбитражным делам включают в себя:</li>
-                    <li>Ознакомление с документами, подготовку и подачу искового заявления, отзывов на исковые заявления, прочих процессуальных документов, сопровождающих прохождение судебного дела;</li>
-                    <li>Участие непосредственно в судебном заседании;</li>
-                    <li>При необходимости — подготовку проекта мирового соглашения;</li>
-                    <li>Затягивание процесса на длительное время (по желанию ответчика);</li>
-                    <li>Участие в обжаловании решения арбитражного суда;</li>
-                    <li>Участие адвоката в ходе исполнения решения суда в службе судебных приставов;</li>
-                    <li>Приостановление исполнения решений судов;</li>
-                    <li>Принудительное исполнение судебных решений;</li>
-                    <li>Обеспечение невозможности взыскания средств;</li>
-                    <li>Ведение споров с приставами и управляющими;</li>
-                    <li>Вступление кредиторов в процесс банкротства;</li>
-                    <li>Применение арбитража для налоговых целей;</li>
-                    <li>По заявлениям о восстановлении утраченного судебного производства.</li>
+                    <li>Консультации по вопросам коррупции</li>
+                    <li>Правовая помощь в защите прав и интересов</li>
+                    <li>Подготовка юридических документов</li>
+                    <li>Представительство в судах и государственных органах</li>
                 </ul>
-            </div>
-
-            <div class="service-section">
-                <h2>ДОСУДЕБНОЕ УРЕГУЛИРОВАНИЕ СПОРОВ</h2>
-                <ul>
-                    <li>Подготовка претензионных писем;</li>
-                    <li>Ведение переговоров и заключение мирового соглашения.</li>
-                </ul>
-            </div>
-
-            <div class="service-section">
-                <h2>ВОЗВРАТ ДЕБИТОРСКОЙ ЗАДОЛЖНОСТИ</h2>
-                <ul>
-                    <li>Получение денежных средств в судебном порядке;</li>
-                    <li>Возврат задолженности клиентам путем переуступки права требования (договор цессии или договор права управления долга);</li>
-                    <li>Возврат дебиторской задолженности.</li>
-                </ul>
-            </div>
-
-            <div class="service-section">
-                <h2>НАЛОГОВЫЕ СПОРЫ</h2>
-                <ul>
-                    <li>Возмещение НДС;</li>
-                    <li>Снятие ареста с денежных средств и имущества;</li>
-                    <li>Оспаривание решений государственных органов.</li>
-                </ul>
-            </div>
-
-            <div class="service-section">
-                <h2>КОРПОРАТИВНЫЕ СПОРЫ</h2>
-                <ul>
-                    <li>Споры акционеров с акционерными обществами.</li>
-                </ul>
-            </div>
-
-            <div class="service-section">
-                <h2>2. Юридическое сопровождение сделок</h2>
-                <ul>
-                    <li>Купля-продажа, аренда, займ, дарение и др.;</li>
-                    <li>Письменные юридические консультации, составление договоров, исковых заявлений;</li>
-                    <li>Участие в переговорах;</li>
-                    <li>Понуждение к исполнению договора;</li>
-                    <li>Признание сделок недействительными;</li>
-                    <li>Возмещение вреда, причинённого неисполнением условий договора.</li>
-                </ul>
-            </div>
-
-            <div class="service-section">
-                <h2>3. Возмещение вреда</h2>
-                <ul>
-                    <li>Возмещение вреда, причинённого незаконными действиями (бездействием) органами государственной власти и её служащими;</li>
-                    <li>Взыскание упущенной выгоды;</li>
-                    <li>Защита и представление интересов в области предпринимательской деятельности.</li>
-                </ul>
-            </div>
-
-            <div class="service-section">
-                <h2>4. БАНКРОТСТВО</h2>
-                <ul>
-                    <li>Защита интересов кредиторов при ликвидации организации через процедуру банкротства;</li>
-                    <li>Представление интересов должника в процессе признания его банкротом.</li>
-                </ul>
-            </div>
-
-            <div class="service-section">
-                <h2>5. ИСПОЛНЕНИЕ РЕШЕНИЯ СУДА</h2>
-                <ul>
-                    <li>Разработка эффективного механизма исполнения решения суда;</li>
-                    <li>Контроль за действиями судебных приставов.</li>
-                </ul>
-            </div>
-
-            <div class="service-section">
-                <h2>6. Исполнительное производство</h2>
-                <ul>
-                    <li>Приостановление исполнительного производства через суд;</li>
-                    <li>Отсрочка, рассрочка исполнения решения суда;</li>
-                    <li>Жалобы на незаконные действия (бездействие) судебных приставов;</li>
-                    <li>Защита прав поручителей.</li>
-                </ul>
-            </div>
-
-            <div class="service-section">
-                <h2>7. Споры с банками</h2>
-                <ul>
-                    <li>Споры, связанные с кредитами;</li>
-                    <li>Взыскание в судебном порядке денежных средств, незаконно переведённых в банк;</li>
-                    <li>Возврат задолженности клиентам путем переуступки права требования (договор цессии или договор права управления долга);</li>
-                    <li>Письменные юридические консультации, составление договоров, исковых заявлений;</li>
-                    <li>Участие в переговорах.</li>
-                </ul>
-            </div>
-
-            <div class="service-section">
-                <h2>8. ЖКХ и Жилищные споры</h2>
-                <ul>
-                    <li>Взыскание вреда, причинённого заливом или пожаром;</li>
-                    <li>Вселение в коммунальную квартиру;</li>
-                    <li>Выдел доли в жилом помещении;</li>
-                    <li>Жилищные сертификаты;</li>
-                    <li>Взыскание нанимателем денег с сособственника жилого помещения за его ремонт;</li>
-                    <li>Взыскание квартплаты с члена семьи нанимателя жилого помещения, имеющего задолженность;</li>
-                    <li>Всё по коммунальным платежам;</li>
-                    <li>Определение доли в оплате коммунальных платежей;</li>
-                    <li>ТСЖ: платежи, общее собрание собственников помещений в доме и т.д.;</li>
-                    <li>Незаконное строительство дома;</li>
-                    <li>Нечинение препятствий в пользовании жилым помещением;</li>
-                    <li>Понуждение к сносу незаконной постройки;</li>
-                    <li>Признание не сохранившим права пользования жилым помещением;</li>
-                    <li>Признание не приобретшим права пользования жилым помещением;</li>
-                    <li>Признание общей собственностью жилого помещения, построенного до брака;</li>
-                    <li>Признание права собственности на долю в доме (квартире);</li>
-                    <li>Признание права собственности на долю в жилом помещении по обязательной доле в наследстве;</li>
-                    <li>Признание права собственности на комнату в коммунальной квартире;</li>
-                    <li>Признание права собственности на недвижимость по сроку давности пользования ею;</li>
-                    <li>Признание права собственности на объекты в незавершённом строительстве (обманутые дольщики);</li>
-                    <li>Признание права собственности на садовый участок;</li>
-                    <li>Признание права собственности на самовольно возведённые постройки;</li>
-                    <li>Признание утратившим право пользования жилым помещением;</li>
-                    <li>Признание членом семьи;</li>
-                    <li>Регистрация (прописка) в жилом фонде, расположенном на территории воинских частей;</li>
-                    <li>Регистрация (прописка) в дачном доме;</li>
-                    <li>Розыск родственников, зарегистрированных в квартире;</li>
-                    <li>Возмещение вреда, причинённого пожаром и заливом.</li>
-                </ul>
-            </div>
-
-            <div class="service-section">
-                <h2>9. ФМС по регионам РФ</h2>
-                <ul>
-                    <li>Сбор, составление документов и сопровождение получения Временной регистрации;</li>
-                    <li>Сбор, составление документов и сопровождение получения Разрешения на временное проживание;</li>
-                    <li>Сбор, составление документов и сопровождение получения Вида на жительство;</li>
-                    <li>Сбор, составление документов и сопровождение получения Гражданства РФ;</li>
-                    <li>Возврат из УФМС незаконно изъятого паспорта;</li>
-                    <li>Восстановление утраченных документов.</li>
-                </ul>
-            </div>
-
-            <div class="service-section">
-                <h2>10. Земельные споры</h2>
-                <ul>
-                    <li>Выдел доли земельного участка в натуре;</li>
-                    <li>Определение порядка пользования земельным участком, находящимся в долевой собственности;</li>
-                    <li>Обжалование отказа в подписании соседями границ земельного участка при межевании;</li>
-                    <li>Оспаривание межевания;</li>
-                    <li>Признание права собственности на пай земли в совхозе;</li>
-                    <li>Сервитут;</li>
-                    <li>Признание права собственности на земельный участок по дачной амнистии.</li>
-                </ul>
-            </div>
-
-            <div class="service-section">
-                <h2>11. Наследство</h2>
-                <ul>
-                    <li>Признание права собственности на наследуемое имущество после пропуска срока принятия наследства через нотариуса;</li>
-                    <li>Установление юридического факта открытия наследства (места открытия наследства);</li>
-                    <li>Установление юридического факта признания родственных отношений;</li>
-                    <li>Розыск наследства;</li>
-                    <li>Признание недостойным наследником.</li>
-                </ul>
-            </div>
-
-            <div class="service-section">
-                <h2>12. Семейные споры</h2>
-                <ul>
-                    <li>Развод и раздел общего имущества супругов;</li>
-                    <li>Признание брака недействительным;</li>
-                    <li>Лишение и восстановление родительских прав;</li>
-                    <li>Определение и изменение порядка общения с ребёнком;</li>
-                    <li>Установление факта признания отцовства;</li>
-                    <li>Фиктивный брак;</li>
-                    <li>Заключение брачного договора;</li>
-                    <li>Увеличение-уменьшение размера алиментов;</li>
-                    <li>Взыскание доли супруга в общей собственности супругов.</li>
-                </ul>
-            </div>
-
-            <div class="service-section">
-                <h2>13. Трудовые споры</h2>
-                <ul>
-                    <li>Восстановление на работе;</li>
-                    <li>Невыплата зарплаты;</li>
-                    <li>Незаконное увольнение;</li>
-                    <li>Нарушения трудового законодательства при увольнении.</li>
-                </ul>
-            </div>
-
-            <div class="service-section">
-                <h2>14. Установление юридических фактов</h2>
-                <ul>
-                    <li>Признание безвестно пропавшим;</li>
-                    <li>Об установлении фактов, имеющих юридическое значение;</li>
-                    <li>Об усыновлении (удочерении) ребенка;</li>
-                    <li>О признании гражданина безвестно отсутствующим или об объявлении гражданина умершим;</li>
-                    <li>Об ограничении дееспособности гражданина, о признании гражданина недееспособным;</li>
-                    <li>Об объявлении несовершеннолетнего полностью дееспособным (эмансипации);</li>
-                    <li>О признании движимой вещи бесхозяйной и признании права муниципальной собственности на бесхозяйную недвижимую вещь;</li>
-                    <li>О восстановлении прав по утраченным ценным бумагам на предъявителя или ордерным ценным бумагам (вызывное производство);</li>
-                    <li>О принудительной госпитализации гражданина в психиатрический стационар и принудительном психиатрическом освидетельствовании;</li>
-                    <li>О внесении исправлений или изменений в записи актов гражданского состояния;</li>
-                    <li>По заявлениям о совершенных нотариальных действиях или об отказе в их совершении;</li>
-                    <li>Признание недействительными нотариальных действий;</li>
-                    <li>Установление юридического факта бракосочетания родителей;</li>
-                    <li>Установление юридического факта госрегистрации рождения.</li>
-                </ul>
-            </div>
-
-            <div class="service-section">
-                <h2>15. Защита прав потребителя</h2>
-                <ul>
-                    <li>Защита нарушенных прав гражданина в любых государственных и хозяйственных организациях и в суде в соответствии с Законом о защите прав потребителей.</li>
-                </ul>
-            </div>
-
-            <div class="service-section">
-                <h2>Пенсии и пособия</h2>
-                <ul>
-                    <li>Защита нарушенных прав гражданина в любых государственных и хозяйственных организациях и в суде в соответствии с пенсионным законодательством и законодательством по социальному обеспечению.</li>
-                </ul>
-            </div>
-
-            <div class="service-section">
-                <h2>Страховые дела</h2>
-                <ul>
-                    <li>Защита нарушенных прав гражданина страховыми компаниями по ОСАГО, КАСКО и всех прочих видах страхования.</li>
-                </ul>
-            </div>
-
-            <div class="service-section">
-                <h2>Защита прав, нарушенных государственной властью</h2>
-                <ul>
-                    <li>Представительство интересов лица, чьи права нарушены незаконными действиями любых должностных лиц по любым вопросам и в любых органах власти: ГИБДД, органы местного самоуправления, полиции, прокуратуре, муниципальных образованиях и т.д.</li>
-                </ul>
-            </div>
-
-            <div class="service-section">
-                <h2>Административные дела</h2>
-                <ul>
-                    <li>В области охраны собственности;</li>
-                    <li>На транспорте;</li>
-                    <li>О нарушении правил дорожного движения;</li>
-                    <li>В области связи и информации;</li>
-                    <li>В области предпринимательской деятельности;</li>
-                    <li>В области таможенного дела;</li>
-                    <li>Против порядка управления;</li>
-                    <li>Посягающие на общественный порядок и общественную безопасность;</li>
-                    <li>Иные категории дел.</li>
-                </ul>
-            </div>
-
-            <div class="service-section">
-                <h2>16. Другие услуги адвоката</h2>
-                <ul>
-                    <li>Ведение административных дел;</li>
-                    <li>Устные юридические консультации;</li>
-                    <li>Письменные юридические консультации, составление договоров, исковых заявлений;</li>
-                    <li>Участие в переговорах;</li>
-                    <li>Сопровождение адвоката при посещении органов милиции, прокуратуры.</li>
-                </ul>
+                <p>Для получения подробной информации и оформления заявки на услуги, пожалуйста, свяжитесь с нами через форму обратной связи на основном сайте.</p>
             </div>
         </div>
-
-        <footer>
-            Телефон доверия: <span class="phone-trust">8-909-999-96-02</span>
-        </footer>
-    </div>
-
+    </main>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Комиссия по противодействию коррупции</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#about">О комиссии</a></li>
+                        <li><a href="index.html#documents">Документы</a></li>
+                        <li><a href="index.html#activity">Структура</a></li>
+                        <li><a href="index.html#news">Новости</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Контакты</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-phone"></i> <span>+7(499) 391-33-34</span></li>
+                        <li><i class="fas fa-mobile-alt"></i> <span>+7(926) 384-44-18</span></li>
+                        <li><i class="fas fa-envelope"></i> <span>korrup-net@mail.ru</span></li>
+                        <li><i class="fas fa-globe"></i> <span>www.korrup-net.ru</span></li>
+                        <li><i class="fab fa-telegram"></i> <a href="https://t.me/korrupnet" target="_blank">@korrupnet</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright" id="copyright">
+                &copy; 2025 Комиссия по противодействию коррупции. Все права защищены.
+            </div>
+        </div>
+    </footer>
     <script>
-        // Поддержка темы для слабовидящих (если включена на основном сайте)
-        if (localStorage.getItem('lowVisionMode') === 'enabled') {
-            document.body.classList.add('low-vision');
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentYear = new Date().getFullYear();
+            document.getElementById('copyright').innerHTML = `&copy; ${currentYear} Комиссия по противодействию коррупции. Все права защищены.`;
+            function updateDateTime() {
+                const now = new Date();
+                const options = {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    timeZoneName: 'short'
+                };
+                document.getElementById('current-datetime').textContent = now.toLocaleDateString('ru-RU', options);
+            }
+            updateDateTime();
+            setInterval(updateDateTime, 1000);
+            const toggleButton = document.getElementById('accessibilityToggle');
+            const body = document.body;
+            if (localStorage.getItem('lowVisionMode') === 'enabled') {
+                body.classList.add('low-vision');
+                toggleButton.innerHTML = '<i class="fas fa-eye"></i> <span>Обычная версия</span>';
+            }
+            toggleButton.addEventListener('click', function() {
+                body.classList.toggle('low-vision');
+                if (body.classList.contains('low-vision')) {
+                    toggleButton.innerHTML = '<i class="fas fa-eye"></i> <span>Обычная версия</span>';
+                    localStorage.setItem('lowVisionMode', 'enabled');
+                } else {
+                    toggleButton.innerHTML = '<i class="fas fa-low-vision"></i> <span>Версия для слабовидящих</span>';
+                    localStorage.setItem('lowVisionMode', 'disabled');
+                }
+            });
+        });
+
+        function closeCurrentTab() {
+            // Пытаемся закрыть текущую вкладку
+            window.close();
+            // Если window.close() не сработало, перенаправляем на главную
+            // setTimeout(() => {
+            //     window.location.href = 'index.html';
+            // }, 1000); // Задержка на случай, если закрытие сработает
         }
     </script>
 </body>
