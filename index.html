@@ -314,9 +314,8 @@
         .section-content p {
             margin-bottom: 20px;
         }
-
-        /* Кнопка "Юридические услуги" */
-        .legal-btn {
+        /* Кнопки документов */
+        .doc-btn {
             display: inline-block;
             background: #002b7a;
             color: white;
@@ -324,25 +323,25 @@
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
-            margin-top: 20px;
+            margin: 10px 10px;
             transition: all 0.3s;
             font-family: 'Roboto', sans-serif;
             font-size: 1.1rem;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            text-align: center;
         }
-        .legal-btn:hover {
+        .doc-btn:hover {
             background: #0039a4;
             transform: translateY(-3px);
             box-shadow: 0 6px 12px rgba(0,0,0,0.3);
         }
-        body.low-vision .legal-btn {
+        body.low-vision .doc-btn {
             background: #FF7F50 !important;
             color: #000 !important;
         }
-        body.low-vision .legal-btn:hover {
+        body.low-vision .doc-btn:hover {
             background: #ff9977 !important;
         }
-
         /* Остальные стили без изменений */
         #map-container {
             position: relative;
@@ -980,8 +979,7 @@
                 </div>
             </div>
         </section>
-
-        <!-- === РАЗДЕЛ "ДОКУМЕНТЫ" С КНОПКОЙ === -->
+        <!-- === РАЗДЕЛ "ДОКУМЕНТЫ" С ДВУМЯ КНОПКАМИ === -->
         <section id="documents" class="section section-dark">
             <div class="container">
                 <div class="section-title">
@@ -989,11 +987,12 @@
                 </div>
                 <div class="section-content">
                     <p>Официальные документы и отчеты комиссии будут размещены здесь</p>
-                    <a href="legal.html" target="_blank" class="legal-btn">Юридические услуги</a>
+                    <!-- Добавлены две кнопки -->
+                    <a href="ustav2.html" target="_blank" class="doc-btn">Устав РПРСМБ.pdf</a>
+                    <a href="legal.html" target="_blank" class="doc-btn">Юридические услуги</a>
                 </div>
             </div>
         </section>
-
         <section id="news" class="section section-light">
             <div class="container">
                 <div class="section-title">
@@ -1134,7 +1133,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             const currentYear = new Date().getFullYear();
             document.getElementById('copyright').innerHTML = `&copy; ${currentYear} Комиссия по противодействию коррупции. Все права защищены.`;
-
             function updateDateTime() {
                 const now = new Date();
                 const options = {
@@ -1151,7 +1149,6 @@
             }
             updateDateTime();
             setInterval(updateDateTime, 1000);
-
             const toggleButton = document.getElementById('accessibilityToggle');
             const body = document.body;
             if (localStorage.getItem('lowVisionMode') === 'enabled') {
@@ -1168,13 +1165,11 @@
                     localStorage.setItem('lowVisionMode', 'disabled');
                 }
             });
-
             const menuToggle = document.getElementById('menuToggle');
             const mainNav = document.getElementById('mainNav');
             menuToggle.addEventListener('click', () => {
                 mainNav.classList.toggle('active');
             });
-
             const backToTop = document.getElementById('backToTop');
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 400) {
