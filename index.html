@@ -413,7 +413,7 @@
             cursor: pointer;
         }
         body.low-vision #map-container {
-            box-shadow: 0 5px 15px rgba(255,255,255,0.1) !important;
+            box-shadow: 0 5px 15px rgba(255,255,255, 0.1) !important;
             background: #222 !important;
         }
         #static-map-image {
@@ -472,7 +472,7 @@
         body.low-vision .marker-tooltip {
             background: rgba(30, 30, 30, 0.95) !important;
             color: #fff !important;
-            box-shadow: 0 5px 15px rgba(255,255,255,0.2) !important;
+            box-shadow: 0 5px 15px rgba(255,255,255, 0.2) !important;
         }
         .map-marker:hover .marker-tooltip {
             opacity: 1;
@@ -1095,6 +1095,10 @@
                         <div class="nav-item">
                             <a href="сотруд.html">Наши сотрудники и Активисты</a>
                         </div>
+                        <!-- Новая кнопка -->
+                        <div class="nav-item">
+                            <a href="predprinimatelstvo.html"><i class="fas fa-briefcase"></i> Развитие предпринимательства</a>
+                        </div>
                     </div>
                     <div class="partners-grid">
                         <a href="https://sledcom.ru" target="_blank" class="partner-card">
@@ -1257,21 +1261,17 @@
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
-
             // === МОДАЛЬНОЕ ОКНО ===
             const modal = document.getElementById('reportsModal');
             const openBtn = document.getElementById('openModal');
             const closeBtn = document.getElementById('closeModal');
-
             openBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 modal.style.display = 'flex';
             });
-
             closeBtn.addEventListener('click', () => {
                 modal.style.display = 'none';
             });
-
             window.addEventListener('click', (e) => {
                 if (e.target === modal) {
                     modal.style.display = 'none';
@@ -1281,6 +1281,7 @@
     </script>
 </body>
 </html>
+
 
 
 
