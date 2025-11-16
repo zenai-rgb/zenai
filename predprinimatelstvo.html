@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Развитие предпринимательства — направление деятельности Комиссии по противодействию коррупции">
+    <title>Развитие предпринимательства — Комиссия по противодействию коррупции</title>
+    <link rel="icon" type="image/png" href="logo-kpk-копия.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'PT Serif', serif;
+            color: #333;
+            line-height: 1.6;
+            background: url('https://images.unsplash.com/photo-1543349689-9a4d426bee8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80') fixed;
+            background-size: cover;
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            scroll-behavior: smooth;
+            transition: all 0.3s ease;
+        }
+        body.low-vision {
+            background: #000 !important;
+            color: #fff !important;
+            font-size: 1.2em !important;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .accessibility-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: #002b7a;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        .accessibility-toggle:hover {
+            background: #0039a4;
+            transform: translateY(-2px);
+        }
+        .accessibility-toggle i {
+            font-size: 18px;
+        }
+        /* Мобильное меню */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            margin-left: auto;
+        }
+        header {
+            background: linear-gradient(to bottom, #0039a4, #002b7a);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        body.low-vision header {
+            background: linear-gradient(to bottom, #000, #111) !important;
+            box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2) !important;
+        }
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo-img {
+            width: 100px;
+            height: 100px;
+            background: transparent;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+        body.low-vision .logo-img {
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2) !important;
+        }
+        .logo-img img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        .logo-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        .logo-subtitle {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            margin-top: 4px;
+        }
+        .datetime {
+            color: #B0E0E6;
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.95rem;
+            margin-top: 10px;
+            text-align: center;
+        }
+        body.low-vision .datetime {
+            color: #fff !important;
+        }
+        .header-nav {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+            align-items: center;
+            margin-top: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .header-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 6px 8px;
+            position: relative;
+            font-family: 'Roboto', sans-serif;
+            white-space: nowrap;
+            font-size: 0.95rem;
+        }
+        body.low-vision .header-nav a {
+            color: #fff !important;
+            font-size: 1.1em !important;
+        }
+        .header-nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+        .header-nav a:hover:after {
+            width: 100%;
+        }
+        main {
+            flex: 1;
+        }
+        .section {
+            padding: 30px 0;
+            scroll-margin-top: 100px;
+        }
+        .section-light {
+            background: rgba(255, 255, 255, 0.9);
+        }
+        body.low-vision .section-light {
+            background: rgba(30, 30, 30, 0.95) !important;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .section-title h2 {
+            font-size: 2rem;
+            color: #002b7a;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        body.low-vision .section-title h2 {
+            color: #fff !important;
+            font-size: 2.3rem !important;
+        }
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 3px;
+            background: #FF7F50;
+            border-radius: 2px;
+        }
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #002b7a;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+            font-family: 'Roboto', sans-serif;
+            margin-left: auto;
+            margin-right: auto;
+            width: fit-content;
+        }
+        .back-button:hover {
+            background: #0039a4;
+            transform: translateY(-2px);
+        }
+        body.low-vision .back-button {
+            background: #FF7F50 !important;
+            color: #000 !important;
+        }
+        body.low-vision .back-button:hover {
+            background: #ff9977 !important;
+        }
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            padding: 0 20px;
+        }
+        body.low-vision .content {
+            color: #fff !important;
+            font-size: 1.25rem !important;
+            line-height: 1.9 !important;
+        }
+        .content p {
+            margin-bottom: 20px;
+        }
+        .content ul, .content ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+        .content li {
+            margin-bottom: 10px;
+        }
+        /* Стили для кнопок документов */
+        .doc-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        .doc-btn {
+            display: inline-block;
+            background: #002b7a;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        .doc-btn:hover {
+            background: #0039a4;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        body.low-vision .doc-btn {
+            background: #FF7F50 !important;
+            color: #000 !important;
+        }
+        body.low-vision .doc-btn:hover {
+            background: #ff9977 !important;
+        }
+        /* Стили модального окна */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 10px;
+            overflow: hidden;
+        }
+        .modal-content {
+            width: 95vw;
+            height: 90vh;
+            max-width: 1200px;
+            max-height: 800px;
+            overflow: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .modal iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(255,255,255,0.2);
+        }
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10000;
+            background: rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        .close-modal:hover {
+            background: #FF7F50;
+            transform: scale(1.1);
+        }
+        /* Footer */
+        footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 50px 0 30px;
+        }
+        body.low-vision footer {
+            background: #000 !important;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        body.low-vision .footer-col h3 {
+            color: #fff !important;
+            font-size: 1.5rem !important;
+        }
+        .footer-links, .contact-info {
+            list-style: none;
+        }
+        .footer-links li, .contact-info li {
+            margin-bottom: 10px;
+        }
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-family: 'Roboto', sans-serif;
+        }
+        body.low-vision .footer-links a {
+            color: #fff !important;
+            font-size: 1.1em !important;
+        }
+        .footer-links a:hover {
+            color: white;
+        }
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .contact-info i {
+            color: #d52b1e;
+            font-size: 1.1rem;
+            margin-top: 3px;
+        }
+        body.low-vision .contact-info i {
+            color: #FF7F50 !important;
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999;
+            font-size: 0.85rem;
+            font-family: 'Roboto', sans-serif;
+        }
+        body.low-vision .copyright {
+            color: #ccc !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
+        }
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .header-nav { display: none; }
+            .header-nav.active { display: flex; flex-direction: column; }
+            .logo-title { font-size: 1.2rem; }
+            .logo-subtitle { font-size: 0.8rem; }
+            .logo-img { width: 80px; height: 80px; }
+            .modal-content {
+                width: 90vw;
+                height: 80vh;
+            }
+            .close-modal {
+                font-size: 28px;
+                width: 36px;
+                height: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="accessibility-toggle" id="accessibilityToggle">
+        <i class="fas fa-low-vision"></i>
+        <span>Версия для слабовидящих</span>
+    </button>
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <div class="logo-img">
+                        <img src="logo-kpk-копия.png" alt="Логотип Комиссии по противодействию коррупции">
+                    </div>
+                    <div class="logo-text">
+                        <div class="logo-title">Комиссия по противодействию коррупции</div>
+                        <div class="logo-subtitle">Межрегиональная общественная организация</div>
+                    </div>
+                </div>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <ul class="header-nav" id="mainNav">
+                <li><a href="index.html#about">О комиссии</a></li>
+                <li><a href="index.html#activity">Деятельность</a></li>
+                <li><a href="index.html#regions">Регионы</a></li>
+                <li><a href="index.html#documents">Документы</a></li>
+                <li><a href="index.html#news">Новости</a></li>
+                <li><a href="index.html#contact">Контакты</a></li>
+            </ul>
+            <div class="datetime" id="current-datetime"></div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <section class="section section-light">
+                <div class="section-title">
+                    <h2>Программа развития Общероссийской Общественной Организации</h2>
+                </div>
+                <a href="index.html" class="back-button">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Вернуться на главную</span>
+                </a>
+                <div class="content">
+                    <p><strong>Программа Развития Общероссийской Общественной Организации — это естественный путь развития Предпринимательства в РФ.</strong></p>
+                    <p>Программа опирается на: Рыночный принцип развития; Развитие демократических процедур. В суете наших многочисленных проблем мы забыли такие прописные истины, что каждый из нас хозяин и вершитель своей судьбы. Наша деловая активность — это наш принцип. Высокая деловая репутация и человеческая порядочность — залог нашего успеха. По-деловому объединим наши возможности и сделаем экономический прорыв для каждого Предпринимателя, а значит и для нашей страны в целом.</p>
+                    <p>Задача данной Программы — создать условия для Предпринимателей Малого и Среднего Бизнеса на принципах развития рыночной экономики такими, чтобы в результате количество Предпринимателей увеличивалось. Одновременно данной Программой выполняется и государственная задача комплексного развития Малого и Среднего Предпринимательства на всей территории РФ.</p>
+                    <p>Всем понятно древнее изречение, что «из многих малых выходит одно большое», именно это и ляжет в основу нашей Организации. Каждый Предприниматель является сильным человеком и хозяином своего дела, но перед административными барьерами, перед огромной армией коррумпированной бюрократии, перед Крупным Бизнесом, мы оказываемся слабым звеном. Объединившись в свою собственную Организацию, мы обяжем всех разговаривать с нами не на командном жаргоне, а на современном языке сотрудничества, общественной заинтересованности и диалога. Реальная демократия на рыночных принципах — наша базовая позиция. Мы будем строго следовать ей и всячески поддерживать — в этом общее направление развития нашего Государства.</p>
+                    <p>Исторический факт для любого хозяина своего дела — никто, кроме нас самих не решает за нас наши проблемы. Уже новейшая история России за последние двадцать лет подтвердила эту истину. На разных уровнях власти пытались решать проблему развития Малого и Среднего Предпринимательства, однако в комплексе проблема так, и не решена. Более того, такой долгий срок расхолаживает и Государство и других участников процесса по развитию Малого и Среднего Предпринимательства. Сейчас уже нужно думать о том, как не допустить массового оттока Предпринимателей из предпринимательской среды.</p>
+                    <p>Основная идеология программы «Содружества» — Предприниматели — хозяева своего дела, объединяются в свою собственную Организацию по всей России в каждом городе для того, чтобы решать свои собственные проблемы.</p>
+                    <p>Существует еще одна древняя пословица: «С миру по нитке — голому рубаха». Эту древнюю мудрость мы применим для того, чтобы нанять профессионалов самого высокого уровня для решения всех вопросов, которые члены Организации ставят перед собой. Все понимают, что из-за высокой стоимости юридических услуг Предпринимателю решать грамотно вопросы невозможно. Поэтому легче откупиться, хотя это также недешево. Но при этом проблема, ради которой он откупается, окончательно не решается и вероятность ее повторения остается. Мы в нашей Организации положим этому конец, так как, объединившись, мы будем решать свои вопросы профессионально на том уровне, который только возможен для решения наших вопросов в условиях демократии.</p>
+                    <p>Программа «Содружества» достигнет своей цели, когда каждый Предприниматель будет стабильно получать прибыль и будет уверен в своем завтрашнем дне, а у всех, кто его окружает — соседи, знакомые, родственники, друзья — будет возникать чувство белой зависти. В результате чего ряды Предпринимателей будут пополняться, а быть Предпринимателем станет престижно.</p>
+
+                    <h3>Основные положения</h3>
+                    <p>Объединившись в свою собственную Организацию, мы сами для себя будем решать следующие вопросы:</p>
+
+                    <p><strong>1. Правовая защита.</strong><br>
+                    Каждый Предприниматель знает, что без правовой защиты Бизнес делать невозможно. Каждый пытается разрешить на своем уровне эту задачу. В полной мере не всем удается решить этот вопрос. А миллионам Предпринимателей просто не под силу решение этого вопроса в принципе из-за целого комплекса устоявшихся традиционных порядков на местах. Поэтому приходится мириться с существующим положением дел и заниматься Бизнесом, беря при этом на себя большие риски нестабильности своего собственного Бизнеса.</p>
+                    <p>В таких условиях развитие Малого и Среднего Бизнеса невозможно, но жизнь заставляет идти на риск, который создает почву для несоблюдения требований существующего законодательства. Следствием этого является ситуация, в которой хорошо себя чувствуют те, кто не заинтересован в становлении законности, и на этом наживается и своим существованием тормозит демократические процессы в развитии Малого и Среднего Предпринимательства. Поэтому правовая защита для развития Малого и Среднего Бизнеса стоит на первом месте. Стабильность и уверенность в завтрашнем дне каждого Предпринимателя — вот залог развития Предпринимателя и его сектора экономики.</p>
+
+                    <p><strong>2. Юридическая консультационная поддержка.</strong><br>
+                    Развитие демократии в нашей стране одновременно подразумевает и неукоснительное соблюдение законов. Порой Предприниматели по незнанию и в связи с отсутствием в своем штате опытных юристов могут не соблюдать действующее законодательство или изначально планировать свой небольшой Бизнес с нарушениями. Такие действия опасны тем, что, нарушив раз, ему приходится и дальше идти по этому пути, не способствуя развитию своего личного цивилизованного Бизнеса. Следствием является нестабильность и большие риски.</p>
+                    <p>Правовая защита и юридическая консультационная поддержка — это единый блок вопросов, которые будут решаться одновременно. Однако многие организации уже пытались решить этот вопрос. И история показала, что этот вопрос существующими ранее организациями решен не был. Причина в том, что, первое — его решали не в комплексе со всеми другими вопросами развития Предпринимательства, второе — его решали в отдалении от самих Предпринимателей и за отдельные, причем большие для Предпринимателя, деньги.</p>
+                    <p>Решение этого очень важного вопроса в рамках «Содружества» будет бесплатно и непосредственно на местах. Для этого структура общественной Организации предусматривает первичные организации в местах локализации Предпринимателей. Первичные организации позволят максимально эффективно решать правовые вопросы и способствовать профилактической работе по недопущению на практике возникновения неправовых ситуаций.</p>
+
+                    <p><strong>3. Финансово-кредитная поддержка.</strong><br>
+                    Развитие Предпринимательства без оборотных средств или финансово-кредитной поддержки невозможно. На сегодняшний момент существующая банковская система объективно не в состоянии оказывать подобные услуги — присутствует слишком много рисков.</p>
+                    <p>Развитие Общероссийской Общественной Организации «Содружество Бизнесменов» базируется на принципах рыночной экономики. В первую очередь это касается механизма финансово-кредитной поддержки Предпринимателей. Констатируем, что на сегодня такого механизма в России нет. Реализовать такой механизм по требованиям подразделений кредитных комитетов банков для Предпринимателей очень сложно. Теоретически, такой механизм можно было бы реализовать, если использовать скоринговую систему. Скоринг уже применяется банковской системой для кредитования физических лиц. (Простым примером может служить покупка товаров народного потребления в кредит по паспорту).</p>
+                    <p>Однако, реализация скорингового подхода для Предпринимателей, при условии полного исключения рисков — очень затратный механизм, который сведет к убыткам всю предполагаемую прибыль банков. И, следовательно, на рыночной основе банки не могут реализовать скоринговый подход для Предпринимателей.</p>
+                    <p>Интересным решением в Программе «Содружества» является то, что структурное построение общественной Организации осуществляется по принципу, позволяющему реализовать скоринговый подход на практике. Общероссийская Общественная Организация будет иметь первичные организации в среде Предпринимателей, которые позволят отслеживать максимально сложную скоринговую систему.</p>
+                    <p>«Действительно, если известны деловые качества Предпринимателя, который обладает хорошим опытом, и вся его работа происходит на глазах первичной ячейки нашей Организации «Содружество», а его клиенты отзываются о его работе с Уважением, у Предпринимателя есть хорошая, крепкая семья, то почему бы не рекомендовать данного Предпринимателя на получение финансово-кредитной поддержки со стороны финансовой структуры, которая учреждена самой Общероссийской Организацией «Содружество Бизнесменов».</p>
+                    <p>Это есть тривиальный пример скорингового подхода, хотя полная его разработка также будет осуществляться профессионалами с учетом наших традиций и простых общечеловеческих взаимоотношений.</p>
+                    <p>Программой предусматривается учреждение финансовой структуры, задача которой состоит в обеспечении финансово-кредитной поддержки Предпринимателей.</p>
+                    <p>Программа предусматривает разработку Кодекса «Содружества Бизнесменов» и третейского суда. В комплексе получается рабочая скоринговая система, которая практически исключает все риски и не входит в противоречие с принципами построения и развития организации в целом.</p>
+                    <p>Таким образом, получается реальный самоокупаемый механизм реализации финансово-кредитной поддержки для Предпринимателей в рамках «Содружества Бизнесменов».</p>
+                    <p>История экономического развития нашей страны и развития других стран показывает, что путь нашего экономического развития повторяет, в соответствии с законами экономики, путь развитых экономических стран. В нашей Программе мы не изобретаем что-то новое, мы только берем лучшее из того, что эффективно работает в развитых экономических странах в сфере Малого и Среднего Предпринимательства.</p>
+                    <p>Реализовать самоокупаемый скоринг по Программе «Содружества» предполагается через факторинг — реально действующий механизм финансовых услуг для развивающегося Бизнеса.</p>
+                    <p>Под факторингом понимается не в чистом виде банковский финансовый инструмент, а финансовая услуга, тесно связанная с торговыми операциями, в первую очередь, помогающая развивать деловые связи Предпринимателей между собой как в отдельно взятом регионе, так и по всей России, а также между Предпринимателями и крупным Бизнесом в России и за ее пределами.</p>
+
+                    <p><strong>Кодекс «Содружества Бизнесменов».</strong><br>
+                    Кодекс подразумевает правила ведения деловых взаимоотношений в рамках «Содружества». Как уже упоминалось выше, все вместе, объединившись в свою единую Организацию, мы являемся той экономической силой, которая интересна и крупным товаропроизводителям. Для того, чтобы быть организованной структурой, и на равных вести деловые взаимоотношения с Крупным Бизнесом и Крупными Мировыми Товаропроизводителями, нам внутри Организации необходимо разработать свои правила, с которыми будут знакомы и наши потенциальные Деловые Партнеры — это и будет Кодекс «Содружества Бизнесменов».</p>
+
+                    <p><strong>Третейский суд в рамках Кодекса «Содружества Бизнесменов».</strong><br>
+                    Действующие процессуальные нормы в РФ не всегда подходят для Предпринимателя. На практике, две недели простоя могут обернуться для Предпринимателя реальной угрозой банкротства. Поэтому в рамках Кодекса «Содружества Бизнесменов» будет разработан Третейский суд. Третейский суд, состоящий из самих Предпринимателей, позволит внутри Организации более оперативно решать конфликтные ситуации, не доводить никого до угрозы банкротства.</p>
+
+                    <p><strong>4. Задачи социального обеспечения.</strong><br>
+                    Перед «Содружеством» стоит задача поднять престиж Предпринимательства в России. Все, что было описано выше, поможет на общественной и экономической основе сделать экономический прорыв в данном секторе экономики. Только выход на проектную мощность позволит увеличить вклад в ВВП страны более чем в два раза. Дальнейшее же развитие предполагает очевидный дальнейший рост за счет пополнения рядов Предпринимателей новыми членами «Содружества».</p>
+                    <p>Однако, в основе нашей программы не только экономические преобразования, но и обычные человеческие ценности, такие, как Взаимовыручка, Ответственность, Порядочность, Уважение. Поэтому Программой предполагается развитие спортивных секций, которые дети членов «Содружества» будут посещать на бесплатной основе, для того чтобы способствовать объединению Предпринимателей и на бытовом уровне. Программа также предполагает проведение общественных мероприятий, которые способствуют объединению и продвижению идей «Содружества».</p>
+
+                    <p><strong>5. Заключительные положения.</strong><br>
+                    Программа включает в себя полноценное развитие предложенного проекта для расширения Малого и Среднего Бизнеса. Как видно из программы, она написана не в административном стиле и не в стиле чиновников, тем не менее, ее суть понятна обычному Предпринимателю, который ежедневно сталкивается с реальными проблемами предпринимательства. Истина проста. Нам не нужны декларативные лозунги — нам нужны практические шаги на рыночной основе, причем, под всеобщим контролем. Это и есть наш подход, который всем понятен.</p>
+                    <p>Задача Общероссийской Общественной Организации «Содружество Бизнесменов» — это сопровождение Предпринимателей и помощь в переходе из Индивидуального Предпринимательства в Малый Бизнес, из Малого Бизнеса в Средний, из Среднего в Крупный Бизнес!</p>
+                </div>
+
+                <!-- Кнопки для открытия документов -->
+                <div class="doc-buttons">
+                    <a href="#" class="doc-btn" id="openUstav">Устав</a>
+                    <a href="#" class="doc-btn" id="openHistory">История партии</a>
+                    <a href="#" class="doc-btn" id="openCertificate">Свидетельство</a>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <!-- Модальное окно для документов -->
+    <div class="modal" id="documentModal">
+        <span class="close-modal" id="closeModal">&times;</span>
+        <div class="modal-content" id="modalContent">
+            <!-- Содержимое вставляется динамически -->
+        </div>
+    </div>
+
+    <!-- Модальное окно для свидетельства -->
+    <div class="modal" id="certificateModal">
+        <span class="close-modal" id="closeCertificateModal">&times;</span>
+        <div class="modal-content" id="certificateContent">
+            <img id="certificateImage" src="svidetelstvo2.png" alt="Свидетельство" style="max-width: 100%; max-height: 90vh; object-fit: contain;">
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Комиссия по противодействию коррупции</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#about">О комиссии</a></li>
+                        <li><a href="index.html#documents">Уставные документы</a></li>
+                        <li><a href="index.html#activity">Структура</a></li>
+                        <li><a href="index.html#about">История</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Деятельность</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#activity">Направления работы</a></li>
+                        <li><a href="index.html#activity">Проекты и программы</a></li>
+                        <li><a href="index.html#activity">Мероприятия</a></li>
+                        <li><a href="index.html#news">Публикации</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Контакты</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+7(499) 391-33-34</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>+7(926) 384-44-18</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>korrup-net@mail.ru</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-globe"></i>
+                            <span>www.korrup-net.ru</span>
+                        </li>
+                        <li>
+                            <i class="fab fa-telegram"></i>
+                            <a href="https://t.me/korrupnet" target="_blank" style="color: #ccc; text-decoration: none;">@korrupnet</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright" id="copyright">
+                &copy; 2025 Комиссия по противодействию коррупции. Все права защищены.
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentYear = new Date().getFullYear();
+            document.getElementById('copyright').innerHTML = `&copy; ${currentYear} Комиссия по противодействию коррупции. Все права защищены.`;
+
+            function updateDateTime() {
+                const now = new Date();
+                const options = {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    timeZoneName: 'short'
+                };
+                document.getElementById('current-datetime').textContent = now.toLocaleDateString('ru-RU', options);
+            }
+            updateDateTime();
+            setInterval(updateDateTime, 1000);
+
+            const toggleButton = document.getElementById('accessibilityToggle');
+            const body = document.body;
+            if (localStorage.getItem('lowVisionMode') === 'enabled') {
+                body.classList.add('low-vision');
+                toggleButton.innerHTML = '<i class="fas fa-eye"></i> <span>Обычная версия</span>';
+            }
+
+            toggleButton.addEventListener('click', function() {
+                body.classList.toggle('low-vision');
+                if (body.classList.contains('low-vision')) {
+                    toggleButton.innerHTML = '<i class="fas fa-eye"></i> <span>Обычная версия</span>';
+                    localStorage.setItem('lowVisionMode', 'enabled');
+                } else {
+                    toggleButton.innerHTML = '<i class="fas fa-low-vision"></i> <span>Версия для слабовидящих</span>';
+                    localStorage.setItem('lowVisionMode', 'disabled');
+                }
+            });
+
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+            menuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+            });
+
+            // === ЛОГИКА МОДАЛЬНЫХ ОКОН ДЛЯ ДОКУМЕНТОВ ===
+            const modal = document.getElementById('documentModal');
+            const modalContent = document.getElementById('modalContent');
+            const closeModal = document.getElementById('closeModal');
+            const openUstavBtn = document.getElementById('openUstav');
+            const openHistoryBtn = document.getElementById('openHistory');
+
+            // Функция для открытия PDF
+            function openPdf(src) {
+                modalContent.innerHTML = `<iframe src="${src}" frameborder="0"></iframe>`;
+                modal.style.display = 'flex';
+            }
+
+            openUstavBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                // Укажите путь к вашему PDF-файлу устава
+                openPdf('ustav1.pdf');
+            });
+
+            openHistoryBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                // Укажите путь к вашему PDF-файлу истории партии
+                openPdf('istoriya_partii.pdf');
+            });
+
+            closeModal.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            // === ЛОГИКА МОДАЛЬНОГО ОКНА ДЛЯ СВИДЕТЕЛЬСТВА ===
+            const certificateModal = document.getElementById('certificateModal');
+            const closeCertificateModal = document.getElementById('closeCertificateModal');
+            const openCertificateBtn = document.getElementById('openCertificate');
+
+            openCertificateBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                certificateModal.style.display = 'flex';
+            });
+
+            closeCertificateModal.addEventListener('click', () => {
+                certificateModal.style.display = 'none';
+            });
+
+            window.addEventListener('click', (e) => {
+                if (e.target === certificateModal) {
+                    certificateModal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
