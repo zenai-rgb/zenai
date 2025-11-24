@@ -25,7 +25,7 @@
             flex-direction: column;
             min-height: 100vh;
             scroll-behavior: smooth;
-            transition: all 0.3s ease;
+            transition: background 0.4s ease, color 0.4s ease;
         }
         body.low-vision {
             background: #000 !important;
@@ -39,21 +39,21 @@
         }
         .accessibility-toggle {
             position: fixed;
-            top: 15px;
-            right: 15px;
+            top: 20px;
+            right: 20px;
             z-index: 1000;
             background: #002b7a;
             color: white;
             border: none;
             border-radius: 30px;
-            padding: 8px 16px;
-            font-size: 12px;
+            padding: 10px 20px;
+            font-size: 14px;
             font-weight: bold;
             cursor: pointer;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             transition: all 0.3s ease;
         }
         .accessibility-toggle:hover {
@@ -61,7 +61,7 @@
             transform: translateY(-2px);
         }
         .accessibility-toggle i {
-            font-size: 16px;
+            font-size: 18px;
         }
         /* Мобильное меню */
         .menu-toggle {
@@ -342,26 +342,7 @@
         body.low-vision .doc-btn:hover {
             background: #ff9977 !important;
         }
-        /* === НОВЫЕ СТИЛИ ДЛЯ МОДАЛЬНОГО ОКНА === */
-        .view-reports-btn {
-            background: #002b7a;
-            color: white;
-            padding: 10px 24px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            font-family: 'Roboto', sans-serif;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            transition: all 0.3s;
-            display: inline-block;
-            margin-top: 10px;
-        }
-        .view-reports-btn:hover {
-            background: #0039a4;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-        }
+        /* === МОДАЛЬНОЕ ОКНО === */
         .modal {
             display: none;
             position: fixed;
@@ -541,19 +522,7 @@
             color: #fff !important;
             font-size: 1.5rem !important;
         }
-        .president-quote:before,
-        .president-quote:after {
-            content: '"';
-            font-size: 2.8rem;
-            color: #d52b1e;
-            opacity: 0.3;
-            position: absolute;
-        }
-        body.low-vision .president-quote:before,
-        body.low-vision .president-quote:after {
-            color: #FF7F50 !important;
-            opacity: 0.7 !important;
-        }
+        /* === КАВЫЧКИ УБРАНЫ === */
         .president-name {
             margin-top: 15px;
             font-weight: bold;
@@ -856,15 +825,15 @@
             .stats-grid { grid-template-columns: 1fr; }
             .partners-grid { grid-template-columns: 1fr; }
 
-            /* Уменьшение кнопки для слабовидящих на мобильных */
+            /* Уменьшение кнопки для слабовидящих */
             .accessibility-toggle {
                 top: 10px;
                 right: 10px;
-                padding: 6px 12px;
-                font-size: 10px;
+                padding: 8px 14px;
+                font-size: 12px;
             }
             .accessibility-toggle i {
-                font-size: 14px;
+                font-size: 16px;
             }
         }
     </style>
@@ -892,7 +861,6 @@
             </div>
             <ul class="header-nav" id="mainNav">
                 <li><a href="#about">О комиссии</a></li>
-                <li><a href="#activity">Деятельность</a></li>
                 <li><a href="#regions">Регионы</a></li>
                 <li><a href="#documents">Документы</a></li>
                 <li><a href="#news">Новости</a></li>
@@ -969,7 +937,7 @@
                     <div class="president-photo"></div>
                     <div class="president-info">
                         <div class="president-quote">
-                            "Мы живём с вами в очень сложное время, время экономических реформ и кризисов. Согласно исследованиям, коррупция является серьезным препятствием к экономическому росту и развитию государства, способным поставить под угрозу любые преобразования."
+                            Мы живём с вами в очень сложное время, время экономических реформ и кризисов. Согласно исследованиям, коррупция является серьезным препятствием к экономическому росту и развитию государства, способным поставить под угрозу любые преобразования.
                             <div style="text-align: right; margin-top: 20px; font-style: normal; font-weight: bold;">Бояркин А.В.</div>
                         </div>
                     </div>
@@ -991,8 +959,9 @@
                          onclick="window.location.href='region.html?region=краснодар'">
                         <div class="marker-tooltip">Краснодар</div>
                     </div>
+                    <!-- === КАЛМЫКИЯ ТЕПЕРЬ ОТКРЫВАЕТ МОДАЛЬНОЕ ОКНО === -->
                     <div class="map-marker" data-region="калмыкия" style="top: 68%; left: 8%;"
-                         onclick="window.location.href='region.html?region=калмыкия'">
+                         onclick="document.getElementById('reportsModal').style.display='flex'">
                         <div class="marker-tooltip">Калмыкия</div>
                     </div>
                     <div class="map-marker" data-region="москва" style="top: 40%; left: 13.5%;"
@@ -1038,27 +1007,8 @@
                 </div>
             </div>
         </section>
-        <!-- === ИЗМЕНЁННЫЙ РАЗДЕЛ "ДЕЯТЕЛЬНОСТЬ" === -->
-        <section id="activity" class="section section-light">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Деятельность</h2>
-                </div>
-                <div class="section-content">
-                    <p>Посмотрите отчёты комиссии по противодействию коррупции:</p>
-                    <a href="#" class="view-reports-btn" id="openModal">Посмотреть отчёты</a>
-                </div>
-            </div>
-        </section>
-        <!-- === МОДАЛЬНОЕ ОКНО === -->
-        <div class="modal" id="reportsModal">
-            <span class="close-modal" id="closeModal">&times;</span>
-            <div class="modal-content">
-                <img src="rabota1.jpg" alt="Отчет комиссии по противодействию коррупции по Республике Калмыкия">
-                <img src="rabota2.jpg" alt="Подпись председателя Регионального отделения">
-            </div>
-        </div>
-        <!-- === ОСТАЛЬНЫЕ РАЗДЕЛЫ БЕЗ ИЗМЕНЕНИЙ === -->
+        <!-- === РАЗДЕЛ "ДЕЯТЕЛЬНОСТЬ" УДАЛЁН === -->
+        <!-- === ДОКУМЕНТЫ === -->
         <section id="documents" class="section section-dark">
             <div class="container">
                 <div class="section-title">
@@ -1106,7 +1056,6 @@
                         <div class="nav-item">
                             <a href="сотруд.html">Наши сотрудники и Активисты</a>
                         </div>
-                        <!-- Новая кнопка -->
                         <div class="nav-item">
                             <a href="predprinimatelstvo.html"><i class="fas fa-briefcase"></i> Развитие предпринимательства</a>
                         </div>
@@ -1172,16 +1121,16 @@
                     <ul class="footer-links">
                         <li><a href="#about">О комиссии</a></li>
                         <li><a href="#documents">Уставные документы</a></li>
-                        <li><a href="#activity">Структура</a></li>
+                        <li><a href="#regions">Структура</a></li>
                         <li><a href="#about">История</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h3>Деятельность</h3>
                     <ul class="footer-links">
-                        <li><a href="#activity">Направления работы</a></li>
-                        <li><a href="#activity">Проекты и программы</a></li>
-                        <li><a href="#activity">Мероприятия</a></li>
+                        <li><a href="#regions">Направления работы</a></li>
+                        <li><a href="#regions">Проекты и программы</a></li>
+                        <li><a href="#regions">Мероприятия</a></li>
                         <li><a href="#news">Публикации</a></li>
                     </ul>
                 </div>
@@ -1219,10 +1168,21 @@
     <a href="#" class="back-to-top" id="backToTop">
         <i class="fas fa-arrow-up"></i>
     </a>
+
+    <!-- === МОДАЛЬНОЕ ОКНО (только для Калмыкии) === -->
+    <div class="modal" id="reportsModal">
+        <span class="close-modal" id="closeModal">&times;</span>
+        <div class="modal-content">
+            <img src="rabota1.jpg" alt="Отчет комиссии по противодействию коррупции по Республике Калмыкия">
+            <img src="rabota2.jpg" alt="Подпись председателя Регионального отделения">
+        </div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const currentYear = new Date().getFullYear();
             document.getElementById('copyright').innerHTML = `&copy; ${currentYear} Комиссия по противодействию коррупции. Все права защищены.`;
+            
             function updateDateTime() {
                 const now = new Date();
                 const options = {
@@ -1239,6 +1199,7 @@
             }
             updateDateTime();
             setInterval(updateDateTime, 1000);
+
             const toggleButton = document.getElementById('accessibilityToggle');
             const body = document.body;
             if (localStorage.getItem('lowVisionMode') === 'enabled') {
@@ -1255,11 +1216,13 @@
                     localStorage.setItem('lowVisionMode', 'disabled');
                 }
             });
+
             const menuToggle = document.getElementById('menuToggle');
             const mainNav = document.getElementById('mainNav');
             menuToggle.addEventListener('click', () => {
                 mainNav.classList.toggle('active');
             });
+
             const backToTop = document.getElementById('backToTop');
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 400) {
@@ -1272,14 +1235,10 @@
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
-            // === МОДАЛЬНОЕ ОКНО ===
+
+            // Модальное окно для Калмыкии
             const modal = document.getElementById('reportsModal');
-            const openBtn = document.getElementById('openModal');
             const closeBtn = document.getElementById('closeModal');
-            openBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                modal.style.display = 'flex';
-            });
             closeBtn.addEventListener('click', () => {
                 modal.style.display = 'none';
             });
@@ -1292,6 +1251,7 @@
     </script>
 </body>
 </html>
+
 
 
 
