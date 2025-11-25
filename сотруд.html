@@ -489,7 +489,7 @@
     </main>
 
     <script>
-        // Данные сотрудников (включая новые и обновлённые)
+        // Исходные данные — оставляем как есть
         const staffData = [
             { name: "Бояркин Антон Валерьевич", position: "Президент организации", number: "77-00001 АА-00191" },
             { name: "Курылев Андрей Владимирович", position: "Первый Вице-президент организации", number: "Номер не присвоен" },
@@ -573,14 +573,8 @@
             { name: "Хумаидов Арби Обуевич", position: "Заместитель председателя р/о по Чеченской Республике", number: "95-00005 РЧ-00256" },
             { name: "Аристов Андрей Петрович", position: "Инспектор департамента по содействию с силовыми ведомствами", number: "77-00066 АО-00258" },
             { name: "Закаев Алимхан Хусаинович", position: "Председатель р/о по Ивановской обл. г. Иваново", number: "37-00001 ИО-00160" },
-
-            // === НОВЫЙ СОТРУДНИК ===
-            { 
-                name: "Радев Александр Сергеевич", 
-                position: "Руководитель регионального отделения организации в Республике Крым по городу Алупка", 
-                number: "82-00007", 
-                idNumber: "РК 00264" 
-            }
+            { name: "Радев Александр Сергеевич", position: "Руководитель регионального отделения организации в Республике Крым по городу Алупка", number: "82-00007 РК-00264" },
+            { name: "Генералов Александр Сергеевич", position: "Инспектор спецотдела по контролю за исполнением законов сотрудниками органов власти в Российской Федерации", number: "77-00092 АО-00262" }
         ];
 
         // Иерархия должностей для сортировки
@@ -632,6 +626,54 @@
             return 'Центральный аппарат';
         }
 
+        // Функция для разделения номера на личный и удостоверение
+        function parseNumbers(raw) {
+            if (raw === "Номер не присвоен") {
+                return { personal: "Номер не присвоен", id: null };
+            }
+
+            // Разделяем по пробелу
+            const parts = raw.trim().split(/\s+/);
+            let personal = null;
+            let id = null;
+
+            // Паттерн для личного номера: XX-XXXXX
+            const personalPattern = /^\d{2}-\d{5}$/;
+            // Паттерн для удостоверения: XX-XXXXX (но покажем как XX XXXXX)
+            const idPattern = /^[A-ZА-Я]{2}-\d{5}$/;
+
+            if (parts.length === 1) {
+                const part = parts[0];
+                if (personalPattern.test(part)) {
+                    personal = part;
+                } else if (idPattern.test(part)) {
+                    id = part.replace('-', ' ');
+                } else {
+                    personal = part; // fallback
+                }
+            } else if (parts.length >= 2) {
+                // Предполагаем: первая часть — личный, вторая — удостоверение
+                personal = parts[0];
+                let idPart = parts[1];
+                if (idPattern.test(idPart)) {
+                    id = idPart.replace('-', ' ');
+                } else {
+                    // Если вторая часть не подходит — попробуем найти в остальных
+                    for (let i = 1; i < parts.length; i++) {
+                        if (idPattern.test(parts[i])) {
+                            id = parts[i].replace('-', ' ');
+                            break;
+                        }
+                    }
+                }
+            }
+
+            return {
+                personal: personal || "Номер не определён",
+                id: id
+            };
+        }
+
         function renderStaff(sortBy = 'position') {
             let sortedData = [...staffData];
 
@@ -653,15 +695,24 @@
             sortedData.forEach(s => {
                 const initial = s.name.charAt(0);
                 const region = extractRegion(s.position);
+                const { personal, id } = parseNumbers(s.number);
+
                 const card = document.createElement('div');
                 card.className = 'staff-card';
                 card.dataset.position = s.position;
                 card.dataset.initial = initial;
                 card.dataset.region = region;
-                let numberLine = `Личный номер: ${s.number}`;
-                if (s.idNumber) {
-                    numberLine += `<br>Номер удостоверения: ${s.idNumber}`;
+
+                let lines = [];
+                if (personal === "Номер не присвоен") {
+                    lines.push("Личный номер не присвоен");
+                } else {
+                    lines.push(`Личный номер: ${personal}`);
                 }
+                if (id) {
+                    lines.push(`Номер удостоверения: ${id}`);
+                }
+
                 card.innerHTML = `
                     <div class="staff-photo">
                         <i class="fas fa-user-tie"></i>
@@ -669,7 +720,7 @@
                     <div class="staff-info">
                         <h3>${s.name}</h3>
                         <p class="staff-position">${s.position}</p>
-                        <p class="staff-description">${numberLine}</p>
+                        <p class="staff-description">${lines.join('<br>')}</p>
                         <a href="#" class="staff-btn">Подробнее</a>
                     </div>
                 `;
@@ -751,6 +802,7 @@
     </script>
 </body>
 </html>
+
 
 
 
