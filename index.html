@@ -1,1373 +1,1403 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Комиссия по противодействию коррупции — межрегиональная общественная организация, занимающаяся борьбой с коррупцией и общественным контролем.">
-    <title>Комиссия по противодействию коррупции</title>
-    <link rel="icon" type="image/png" href="logo-kpk-копия.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'PT Serif', serif;
-            color: #333;
-            line-height: 1.6;
-            background: url('https://images.unsplash.com/photo-1543349689-9a4d426bee8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80') fixed;
-            background-size: cover;
-            background-color: #f8f9fa;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            scroll-behavior: smooth;
-            transition: background 0.4s ease, color 0.4s ease;
-        }
-        body.low-vision {
-            background: #000 !important;
-            color: #fff !important;
-            font-size: 1.2em !important;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .accessibility-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: #002b7a;
-            color: white;
-            border: none;
-            border-radius: 30px;
-            padding: 10px 20px;
-            font-size: 14px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s ease;
-        }
-        .accessibility-toggle:hover {
-            background: #0039a4;
-            transform: translateY(-2px);
-        }
-        .accessibility-toggle i {
-            font-size: 18px;
-        }
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            margin-left: auto;
-        }
-        header {
-            background: linear-gradient(to bottom, #0039a4, #002b7a);
-            color: white;
-            padding: 15px 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        body.low-vision header {
-            background: linear-gradient(to bottom, #000, #111) !important;
-            box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2) !important;
-        }
-        .header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        .logo-img {
-            width: 100px;
-            height: 100px;
-            background: transparent;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 5px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-        }
-        body.low-vision .logo-img {
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2) !important;
-        }
-        .logo-img img {
-            max-width: 100%;
-            max-height: 100%;
-        }
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-        .logo-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-        .logo-subtitle {
-            font-size: 0.85rem;
-            opacity: 0.9;
-            margin-top: 4px;
-        }
-        .datetime {
-            color: #B0E0E6;
-            font-family: 'Roboto', sans-serif;
-            font-size: 0.95rem;
-            margin-top: 10px;
-            text-align: center;
-        }
-        body.low-vision .datetime {
-            color: #fff !important;
-        }
-        .header-nav {
-            display: flex;
-            gap: 15px;
-            list-style: none;
-            align-items: center;
-            margin-top: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .header-nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 6px 8px;
-            position: relative;
-            font-family: 'Roboto', sans-serif;
-            white-space: nowrap;
-            font-size: 0.95rem;
-        }
-        body.low-vision .header-nav a {
-            color: #fff !important;
-            font-size: 1.1em !important;
-        }
-        .header-nav a:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: white;
-            transition: width 0.3s ease;
-        }
-        .header-nav a:hover:after {
-            width: 100%;
-        }
-        .hero {
-            background: url('https://cdn.culture.ru/images/dbaf51d3-1bdf-52f0-a516-7834d841b119') no-repeat center center;
-            background-size: cover;
-            padding: 80px 0;
-            color: white;
-            text-align: center;
-            position: relative;
-        }
-        body.low-vision .hero {
-            background: #000 !important;
-        }
-        .hero:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0, 57, 164, 0.85), rgba(0, 43, 122, 0.9));
-        }
-        body.low-vision .hero:before {
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.95)) !important;
-        }
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .hero h1 {
-            font-size: 2.4rem;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        body.low-vision .hero h1 {
-            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.3) !important;
-            font-size: 2.8rem !important;
-        }
-        .hero-subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-        body.low-vision .hero-subtitle {
-            opacity: 1 !important;
-            font-size: 1.4rem !important;
-        }
-        .contacts {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 20px;
-            border-radius: 8px;
-            backdrop-filter: blur(10px);
-            margin: 25px auto;
-            max-width: 400px;
-        }
-        body.low-vision .contacts {
-            background: rgba(255, 255, 255, 0.2) !important;
-        }
-        .contact-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 12px;
-            font-family: 'Roboto', sans-serif;
-            font-size: 0.95rem;
-        }
-        .contact-item:last-child {
-            margin-bottom: 0;
-        }
-        .contact-item i {
-            font-size: 1.1rem;
-            color: #B0E0E6;
-        }
-        body.low-vision .contact-item i {
-            color: #fff !important;
-        }
-        /* Основной контент */
-        main {
-            flex: 1;
-        }
-        .section {
-            padding: 30px 0;
-            scroll-margin-top: 100px;
-        }
-        .section-light {
-            background: rgba(255, 255, 255, 0.9);
-        }
-        body.low-vision .section-light {
-            background: rgba(30, 30, 30, 0.95) !important;
-        }
-        .section-dark {
-            background: rgba(248, 249, 255, 0.9);
-        }
-        body.low-vision .section-dark {
-            background: rgba(20, 20, 20, 0.95) !important;
-        }
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        .section-title h2 {
-            font-size: 2rem;
-            color: #002b7a;
-            margin-bottom: 15px;
-            position: relative;
-            display: inline-block;
-        }
-        body.low-vision .section-title h2 {
-            color: #fff !important;
-            font-size: 2.3rem !important;
-        }
-        .section-title h2:after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 70px;
-            height: 3px;
-            background: #FF7F50;
-            border-radius: 2px;
-        }
-        .section-content {
-            max-width: 900px;
-            margin: 0 auto;
-            font-size: 1.05rem;
-            line-height: 1.7;
-            text-align: center;
-        }
-        body.low-vision .section-content {
-            color: #fff !important;
-            font-size: 1.25rem !important;
-            line-height: 1.9 !important;
-        }
-        .section-content p {
-            margin-bottom: 20px;
-        }
-        .doc-btn {
-            display: inline-block;
-            background: #002b7a;
-            color: white;
-            padding: 12px 28px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            margin: 10px 10px;
-            transition: all 0.3s;
-            font-family: 'Roboto', sans-serif;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            text-align: center;
-        }
-        .doc-btn:hover {
-            background: #0039a4;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-        }
-        body.low-vision .doc-btn {
-            background: #FF7F50 !important;
-            color: #000 !important;
-        }
-        body.low-vision .doc-btn:hover {
-            background: #ff9977 !important;
-        }
-        /* === Модальное окно: Сибирский ФО === */
-        .modal-sfo {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.92);
-            z-index: 9999;
-            justify-content: center;
-            align-items: flex-start;
-            overflow-y: auto;
-            padding: 20px;
-        }
-        .modal-sfo-content {
-            background: white;
-            color: #333;
-            max-width: 900px;
-            width: 100%;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            position: relative;
-        }
-        body.low-vision .modal-sfo-content {
-            background: #222 !important;
-            color: #fff !important;
-        }
-        .modal-sfo h2 {
-            text-align: center;
-            margin-bottom: 25px;
-            color: #002b7a;
-            font-size: 1.8rem;
-        }
-        body.low-vision .modal-sfo h2 {
-            color: #fff !important;
-        }
-        .sfo-doc-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        .sfo-doc-item {
-            padding: 12px;
-            background: #f0f8ff;
-            border-left: 4px solid #002b7a;
-            border-radius: 6px;
-            transition: all 0.2s;
-        }
-        body.low-vision .sfo-doc-item {
-            background: #1a1a2e !important;
-            border-left: 4px solid #FF7F50 !important;
-        }
-        .sfo-doc-item:hover {
-            background: #e6f2ff;
-            transform: translateX(5px);
-        }
-        body.low-vision .sfo-doc-item:hover {
-            background: #222 !important;
-        }
-        .sfo-doc-item a {
-            text-decoration: none;
-            color: #002b7a;
-            font-weight: 600;
-            font-family: 'Roboto', sans-serif;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        body.low-vision .sfo-doc-item a {
-            color: #FF7F50 !important;
-        }
-        .close-sfo-modal {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 28px;
-            color: #002b7a;
-            cursor: pointer;
-            z-index: 10001;
-        }
-        body.low-vision .close-sfo-modal {
-            color: #FF7F50 !important;
-        }
-        .close-sfo-modal:hover {
-            color: #d52b1e;
-        }
-        /* Модальное окно: Калмыкия */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 9999;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            padding: 20px;
-        }
-        .modal-content {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            align-items: center;
-            max-width: 90%;
-            max-height: 90%;
-            overflow-y: auto;
-        }
-        .modal img {
-            max-width: 100%;
-            max-height: 80vh;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(255,255,255,0.3);
-        }
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: white;
-            font-size: 28px;
-            cursor: pointer;
-            z-index: 10000;
-        }
-        /* Карта */
-        #map-container {
-            position: relative;
-            width: 100%;
-            max-width: 1000px;
-            margin: 25px auto;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            background: #f0f0f0;
-            overflow: hidden;
-            cursor: pointer;
-        }
-        body.low-vision #map-container {
-            box-shadow: 0 5px 15px rgba(255,255,255, 0.1) !important;
-            background: #222 !important;
-        }
-        #static-map-image {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 8px;
-            position: relative;
-            z-index: 1;
-        }
-        .map-marker {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: #FF7F50;
-            border: 2px solid white;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: transform 0.3s ease, background 0.3s ease;
-            z-index: 10;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
-        }
-        .map-marker:hover {
-            background: #d52b1e;
-            transform: scale(1.3);
-        }
-        .map-marker::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 8px;
-            height: 8px;
-            background: white;
-            border-radius: 50%;
-        }
-        .marker-tooltip {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 10px 15px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            font-size: 0.9rem;
-            color: #333;
-            max-width: 250px;
-            z-index: 20;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-            pointer-events: none;
-            text-align: center;
-            font-family: 'Roboto', sans-serif;
-            white-space: pre-line;
-        }
-        body.low-vision .marker-tooltip {
-            background: rgba(30, 30, 30, 0.95) !important;
-            color: #fff !important;
-            box-shadow: 0 5px 15px rgba(255,255,255, 0.2) !important;
-        }
-        .map-marker:hover .marker-tooltip {
-            opacity: 1;
-            visibility: visible;
-        }
-        /* Остальные стили (без изменений по вашему шаблону) */
-        .president {
-            display: flex;
-            align-items: flex-start;
-            gap: 30px;
-            max-width: 1000px;
-            margin: 0 auto;
-            flex-wrap: wrap;
-        }
-        .president-photo {
-            flex: 0 0 280px;
-            min-height: 360px;
-            background: #002b7a url('антон.jpg') no-repeat top center;
-            background-size: cover;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            position: relative;
-        }
-        body.low-vision .president-photo {
-            background: #000 url('антон.jpg') no-repeat top center !important;
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15) !important;
-        }
-        .president-photo:before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            border: 2px solid #002b7a;
-            border-radius: 12px;
-            z-index: -1;
-            opacity: 0.5;
-        }
-        body.low-vision .president-photo:before {
-            border: 2px solid #fff !important;
-            opacity: 0.7 !important;
-        }
-        .president-info {
-            flex: 1;
-            min-width: 280px;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        body.low-vision .president-info {
-            background: #222 !important;
-            color: #fff !important;
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1) !important;
-        }
-        .president-quote {
-            font-size: 1.3rem;
-            font-style: italic;
-            line-height: 1.7;
-            color: #002b7a;
-            text-align: center;
-            padding: 20px;
-            position: relative;
-        }
-        body.low-vision .president-quote {
-            color: #fff !important;
-            font-size: 1.5rem !important;
-        }
-        .president-name {
-            margin-top: 15px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            color: #002b7a;
-            text-align: left;
-        }
-        body.low-vision .president-name {
-            color: #fff !important;
-        }
-        .stats {
-            background: linear-gradient(to right, #0039a4, #002b7a);
-            padding: 60px 0;
-            color: white;
-            text-align: center;
-        }
-        body.low-vision .stats {
-            background: linear-gradient(to right, #000, #111) !important;
-        }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .stat-item {
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            backdrop-filter: blur(5px);
-        }
-        body.low-vision .stat-item {
-            background: rgba(255, 255, 255, 0.15) !important;
-        }
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #FFFFE0;
-        }
-        body.low-vision .stat-number {
-            color: #fff !important;
-            font-size: 3rem !important;
-        }
-        .stat-text {
-            font-size: 1.1rem;
-        }
-        body.low-vision .stat-text {
-            font-size: 1.3rem !important;
-        }
-        footer {
-            background: #1a1a2e;
-            color: white;
-            padding: 50px 0 30px;
-        }
-        body.low-vision footer {
-            background: #000 !important;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-        .footer-col h3 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            color: white;
-        }
-        body.low-vision .footer-col h3 {
-            color: #fff !important;
-            font-size: 1.5rem !important;
-        }
-        .footer-links, .contact-info {
-            list-style: none;
-        }
-        .footer-links li, .contact-info li {
-            margin-bottom: 10px;
-        }
-        .footer-links a {
-            color: #ccc;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-family: 'Roboto', sans-serif;
-        }
-        body.low-vision .footer-links a {
-            color: #fff !important;
-            font-size: 1.1em !important;
-        }
-        .footer-links a:hover {
-            color: white;
-        }
-        .contact-info li {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-        .contact-info i {
-            color: #d52b1e;
-            font-size: 1.1rem;
-            margin-top: 3px;
-        }
-        body.low-vision .contact-info i {
-            color: #FF7F50 !important;
-        }
-        .copyright {
-            text-align: center;
-            padding-top: 25px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #999;
-            font-size: 0.85rem;
-            font-family: 'Roboto', sans-serif;
-        }
-        body.low-vision .copyright {
-            color: #ccc !important;
-            border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
-        }
-        .partners-section {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            margin: 30px auto;
-        }
-        body.low-vision .partners-section {
-            background: rgba(30, 30, 30, 0.95) !important;
-        }
-        .nav-menu {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin: 25px 0;
-        }
-        .nav-item {
-            background: #002b7a;
-            padding: 8px 18px;
-            border-radius: 30px;
-            transition: all 0.3s ease;
-        }
-        body.low-vision .nav-item {
-            background: #FF7F50 !important;
-        }
-        .nav-item:hover {
-            background: #0039a4;
-            transform: translateY(-3px);
-        }
-        body.low-vision .nav-item:hover {
-            background: #ff9977 !important;
-        }
-        .nav-item a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-family: 'Roboto', sans-serif;
-            font-size: 0.95rem;
-        }
-        body.low-vision .nav-item a {
-            color: #000 !important;
-        }
-        .partner-img {
-            height: 160px;
-            background: #f8f9fa;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            padding: 10px;
-        }
-        body.low-vision .partner-img {
-            background: #222 !important;
-        }
-        .partner-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        .partner-info {
-            padding: 15px;
-            text-align: center;
-        }
-        .partner-info h3 {
-            color: #002b7a;
-            margin-bottom: 8px;
-            font-size: 1rem;
-            line-height: 1.3;
-        }
-        body.low-vision .partner-info h3 {
-            color: #fff !important;
-        }
-        .partners-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 25px;
-            margin: 30px 0;
-        }
-        .partner-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-        body.low-vision .partner-card {
-            background: #222 !important;
-            color: #fff !important;
-        }
-        .partner-card:hover {
-            transform: translateY(-5px);
-        }
-        .contact-section {
-            background: linear-gradient(135deg, #002b7a, #0039a4);
-            color: white;
-            padding: 40px 0;
-            border-radius: 10px;
-            margin: 40px 0;
-            text-align: center;
-        }
-        body.low-vision .contact-section {
-            background: linear-gradient(135deg, #000, #111) !important;
-        }
-        .contact-btn {
-            display: inline-block;
-            background: #002b7a;
-            color: white;
-            padding: 10px 22px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 15px;
-            transition: all 0.3s;
-            font-family: 'Roboto', sans-serif;
-            font-size: 1rem;
-        }
-        body.low-vision .contact-btn {
-            background: #FF7F50 !important;
-            color: #000 !important;
-        }
-        .contact-btn:hover {
-            background: #0039a4;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        body.low-vision .contact-btn:hover {
-            background: #ff9977 !important;
-            box-shadow: 0 5px 15px rgba(255, 127, 80, 0.3) !important;
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 48px;
-            height: 48px;
-            background: #002b7a;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 999;
-        }
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-        .back-to-top:hover {
-            background: #0039a4;
-            transform: translateY(-3px);
-        }
-        body.low-vision .back-to-top {
-            background: #FF7F50 !important;
-            color: #000 !important;
-        }
-        body.low-vision .back-to-top:hover {
-            background: #ff9977 !important;
-        }
-        @media (max-width: 768px) {
-            .menu-toggle { display: block; }
-            .header-nav { display: none; }
-            .header-nav.active { display: flex; flex-direction: column; }
-            .logo-title { font-size: 1.2rem; }
-            .logo-subtitle { font-size: 0.8rem; }
-            .logo-img { width: 80px; height: 80px; }
-            .hero h1 { font-size: 2rem; }
-            .hero-subtitle { font-size: 1.1rem; }
-            .president { flex-direction: column; }
-            .stats-grid { grid-template-columns: 1fr; }
-            .partners-grid { grid-template-columns: 1fr; }
-            .accessibility-toggle {
-                top: 10px;
-                right: 10px;
-                padding: 8px 14px;
-                font-size: 12px;
-            }
-            .accessibility-toggle i {
-                font-size: 16px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Комиссия по противодействию коррупции — межрегиональная общественная организация, занимающаяся борьбой с коррупцией и общественным контролем.">
+<title>Комиссия по противодействию коррупции</title>
+<link rel="icon" type="image/png" href="logo-kpk-копия.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body {
+font-family: 'PT Serif', serif;
+color: #333;
+line-height: 1.6;
+background: url('https://images.unsplash.com/photo-1543349689-9a4d426bee8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80') fixed;
+background-size: cover;
+background-color: #f8f9fa;
+display: flex;
+flex-direction: column;
+min-height: 100vh;
+scroll-behavior: smooth;
+transition: background 0.4s ease, color 0.4s ease;
+}
+body.low-vision {
+background: #000 !important;
+color: #fff !important;
+font-size: 1.2em !important;
+}
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 20px;
+}
+.accessibility-toggle {
+position: fixed;
+top: 20px;
+right: 20px;
+z-index: 1000;
+background: #002b7a;
+color: white;
+border: none;
+border-radius: 30px;
+padding: 10px 20px;
+font-size: 14px;
+font-weight: bold;
+cursor: pointer;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+display: flex;
+align-items: center;
+gap: 8px;
+transition: all 0.3s ease;
+}
+.accessibility-toggle:hover {
+background: #0039a4;
+transform: translateY(-2px);
+}
+.accessibility-toggle i {
+font-size: 18px;
+}
+.menu-toggle {
+display: none;
+background: none;
+border: none;
+color: white;
+font-size: 24px;
+cursor: pointer;
+margin-left: auto;
+}
+header {
+background: linear-gradient(to bottom, #0039a4, #002b7a);
+color: white;
+padding: 15px 0;
+box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+position: relative;
+transition: all 0.3s ease;
+}
+body.low-vision header {
+background: linear-gradient(to bottom, #000, #111) !important;
+box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2) !important;
+}
+.header-top {
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+}
+.logo {
+display: flex;
+align-items: center;
+gap: 15px;
+}
+.logo-img {
+width: 100px;
+height: 100px;
+background: transparent;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 5px;
+box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+body.low-vision .logo-img {
+box-shadow: 0 0 15px rgba(255, 255, 255, 0.2) !important;
+}
+.logo-img img {
+max-width: 100%;
+max-height: 100%;
+}
+.logo-text {
+display: flex;
+flex-direction: column;
+}
+.logo-title {
+font-size: 1.4rem;
+font-weight: 700;
+line-height: 1.2;
+}
+.logo-subtitle {
+font-size: 0.85rem;
+opacity: 0.9;
+margin-top: 4px;
+}
+.datetime {
+color: #B0E0E6;
+font-family: 'Roboto', sans-serif;
+font-size: 0.95rem;
+margin-top: 10px;
+text-align: center;
+}
+body.low-vision .datetime {
+color: #fff !important;
+}
+.header-nav {
+display: flex;
+gap: 15px;
+list-style: none;
+align-items: center;
+margin-top: 10px;
+flex-wrap: wrap;
+justify-content: center;
+}
+.header-nav a {
+color: white;
+text-decoration: none;
+font-weight: 500;
+transition: all 0.3s ease;
+padding: 6px 8px;
+position: relative;
+font-family: 'Roboto', sans-serif;
+white-space: nowrap;
+font-size: 0.95rem;
+}
+body.low-vision .header-nav a {
+color: #fff !important;
+font-size: 1.1em !important;
+}
+.header-nav a:after {
+content: '';
+position: absolute;
+bottom: 0;
+left: 0;
+width: 0;
+height: 2px;
+background: white;
+transition: width 0.3s ease;
+}
+.header-nav a:hover:after {
+width: 100%;
+}
+.hero {
+background: url('https://cdn.culture.ru/images/dbaf51d3-1bdf-52f0-a516-7834d841b119') no-repeat center center;
+background-size: cover;
+padding: 80px 0;
+color: white;
+text-align: center;
+position: relative;
+}
+body.low-vision .hero {
+background: #000 !important;
+}
+.hero:before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: linear-gradient(to bottom, rgba(0, 57, 164, 0.85), rgba(0, 43, 122, 0.9));
+}
+body.low-vision .hero:before {
+background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.95)) !important;
+}
+.hero-content {
+position: relative;
+z-index: 1;
+max-width: 800px;
+margin: 0 auto;
+}
+.hero h1 {
+font-size: 2.4rem;
+margin-bottom: 15px;
+text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+body.low-vision .hero h1 {
+text-shadow: 0 2px 4px rgba(255, 255, 255, 0.3) !important;
+font-size: 2.8rem !important;
+}
+.hero-subtitle {
+font-size: 1.2rem;
+margin-bottom: 30px;
+opacity: 0.9;
+}
+body.low-vision .hero-subtitle {
+opacity: 1 !important;
+font-size: 1.4rem !important;
+}
+.contacts {
+background: rgba(255, 255, 255, 0.15);
+padding: 20px;
+border-radius: 8px;
+backdrop-filter: blur(10px);
+margin: 25px auto;
+max-width: 400px;
+}
+body.low-vision .contacts {
+background: rgba(255, 255, 255, 0.2) !important;
+}
+.contact-item {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+margin-bottom: 12px;
+font-family: 'Roboto', sans-serif;
+font-size: 0.95rem;
+}
+.contact-item:last-child {
+margin-bottom: 0;
+}
+.contact-item i {
+font-size: 1.1rem;
+color: #B0E0E6;
+}
+body.low-vision .contact-item i {
+color: #fff !important;
+}
+/* Основной контент */
+main {
+flex: 1;
+}
+.section {
+padding: 30px 0;
+scroll-margin-top: 100px;
+}
+.section-light {
+background: rgba(255, 255, 255, 0.9);
+}
+body.low-vision .section-light {
+background: rgba(30, 30, 30, 0.95) !important;
+}
+.section-dark {
+background: rgba(248, 249, 255, 0.9);
+}
+body.low-vision .section-dark {
+background: rgba(20, 20, 20, 0.95) !important;
+}
+.section-title {
+text-align: center;
+margin-bottom: 40px;
+}
+.section-title h2 {
+font-size: 2rem;
+color: #002b7a;
+margin-bottom: 15px;
+position: relative;
+display: inline-block;
+}
+body.low-vision .section-title h2 {
+color: #fff !important;
+font-size: 2.3rem !important;
+}
+.section-title h2:after {
+content: '';
+position: absolute;
+bottom: -12px;
+left: 50%;
+transform: translateX(-50%);
+width: 70px;
+height: 3px;
+background: #FF7F50;
+border-radius: 2px;
+}
+.section-content {
+max-width: 900px;
+margin: 0 auto;
+font-size: 1.05rem;
+line-height: 1.7;
+text-align: center;
+}
+body.low-vision .section-content {
+color: #fff !important;
+font-size: 1.25rem !important;
+line-height: 1.9 !important;
+}
+.section-content p {
+margin-bottom: 20px;
+}
+.doc-btn {
+display: inline-block;
+background: #002b7a;
+color: white;
+padding: 12px 28px;
+border-radius: 30px;
+text-decoration: none;
+font-weight: 600;
+margin: 10px 10px;
+transition: all 0.3s;
+font-family: 'Roboto', sans-serif;
+font-size: 1.1rem;
+box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+text-align: center;
+}
+.doc-btn:hover {
+background: #0039a4;
+transform: translateY(-3px);
+box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+body.low-vision .doc-btn {
+background: #FF7F50 !important;
+color: #000 !important;
+}
+body.low-vision .doc-btn:hover {
+background: #ff9977 !important;
+}
+/* === Модальное окно: Сибирский ФО === */
+.modal-sfo {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.92);
+z-index: 9999;
+justify-content: center;
+align-items: flex-start;
+overflow-y: auto;
+padding: 20px;
+}
+.modal-sfo-content {
+background: white;
+color: #333;
+max-width: 900px;
+width: 100%;
+padding: 30px;
+border-radius: 12px;
+box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+position: relative;
+}
+body.low-vision .modal-sfo-content {
+background: #222 !important;
+color: #fff !important;
+}
+.modal-sfo h2 {
+text-align: center;
+margin-bottom: 25px;
+color: #002b7a;
+font-size: 1.8rem;
+}
+body.low-vision .modal-sfo h2 {
+color: #fff !important;
+}
+.sfo-doc-list {
+display: flex;
+flex-direction: column;
+gap: 15px;
+}
+.sfo-doc-item {
+padding: 12px;
+background: #f0f8ff;
+border-left: 4px solid #002b7a;
+border-radius: 6px;
+transition: all 0.2s;
+}
+body.low-vision .sfo-doc-item {
+background: #1a1a2e !important;
+border-left: 4px solid #FF7F50 !important;
+}
+.sfo-doc-item:hover {
+background: #e6f2ff;
+transform: translateX(5px);
+}
+body.low-vision .sfo-doc-item:hover {
+background: #222 !important;
+}
+.sfo-doc-item a {
+text-decoration: none;
+color: #002b7a;
+font-weight: 600;
+font-family: 'Roboto', sans-serif;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+body.low-vision .sfo-doc-item a {
+color: #FF7F50 !important;
+}
+.close-sfo-modal {
+position: absolute;
+top: 15px;
+right: 20px;
+font-size: 28px;
+color: #002b7a;
+cursor: pointer;
+z-index: 10001;
+}
+body.low-vision .close-sfo-modal {
+color: #FF7F50 !important;
+}
+.close-sfo-modal:hover {
+color: #d52b1e;
+}
+/* Модальное окно: Калмыкия и Дагестан */
+.modal {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.9);
+z-index: 9999;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+padding: 20px;
+}
+.modal-content {
+display: flex;
+flex-direction: column;
+gap: 20px;
+align-items: center;
+max-width: 90%;
+max-height: 90%;
+overflow-y: auto;
+}
+.modal img {
+max-width: 100%;
+max-height: 80vh;
+border-radius: 8px;
+box-shadow: 0 5px 20px rgba(255,255,255,0.3);
+}
+.close-modal {
+position: absolute;
+top: 20px;
+right: 20px;
+color: white;
+font-size: 28px;
+cursor: pointer;
+z-index: 10000;
+}
+/* Карта */
+#map-container {
+position: relative;
+width: 100%;
+max-width: 1000px;
+margin: 25px auto;
+border-radius: 10px;
+box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+background: #f0f0f0;
+overflow: hidden;
+cursor: pointer;
+}
+body.low-vision #map-container {
+box-shadow: 0 5px 15px rgba(255,255,255, 0.1) !important;
+background: #222 !important;
+}
+#static-map-image {
+width: 100%;
+height: auto;
+display: block;
+border-radius: 8px;
+position: relative;
+z-index: 1;
+}
+.map-marker {
+position: absolute;
+width: 20px;
+height: 20px;
+background: #FF7F50;
+border: 2px solid white;
+border-radius: 50%;
+cursor: pointer;
+transition: transform 0.3s ease, background 0.3s ease;
+z-index: 10;
+box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.map-marker:hover {
+background: #d52b1e;
+transform: scale(1.3);
+}
+.map-marker::before {
+content: '';
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 8px;
+height: 8px;
+background: white;
+border-radius: 50%;
+}
+.marker-tooltip {
+position: absolute;
+background: rgba(255, 255, 255, 0.95);
+padding: 10px 15px;
+border-radius: 8px;
+box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+font-size: 0.9rem;
+color: #333;
+max-width: 250px;
+z-index: 20;
+opacity: 0;
+visibility: hidden;
+transition: opacity 0.3s ease, visibility 0.3s ease;
+pointer-events: none;
+text-align: center;
+font-family: 'Roboto', sans-serif;
+white-space: pre-line;
+}
+body.low-vision .marker-tooltip {
+background: rgba(30, 30, 30, 0.95) !important;
+color: #fff !important;
+box-shadow: 0 5px 15px rgba(255,255,255, 0.2) !important;
+}
+.map-marker:hover .marker-tooltip {
+opacity: 1;
+visibility: visible;
+}
+/* Остальные стили без изменений */
+.president {
+display: flex;
+align-items: flex-start;
+gap: 30px;
+max-width: 1000px;
+margin: 0 auto;
+flex-wrap: wrap;
+}
+.president-photo {
+flex: 0 0 280px;
+min-height: 360px;
+background: #002b7a url('антон.jpg') no-repeat top center;
+background-size: cover;
+border-radius: 8px;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+position: relative;
+}
+body.low-vision .president-photo {
+background: #000 url('антон.jpg') no-repeat top center !important;
+box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15) !important;
+}
+.president-photo:before {
+content: '';
+position: absolute;
+top: -10px;
+left: -10px;
+right: -10px;
+bottom: -10px;
+border: 2px solid #002b7a;
+border-radius: 12px;
+z-index: -1;
+opacity: 0.5;
+}
+body.low-vision .president-photo:before {
+border: 2px solid #fff !important;
+opacity: 0.7 !important;
+}
+.president-info {
+flex: 1;
+min-width: 280px;
+padding: 20px;
+background: white;
+border-radius: 8px;
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+body.low-vision .president-info {
+background: #222 !important;
+color: #fff !important;
+box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1) !important;
+}
+.president-quote {
+font-size: 1.3rem;
+font-style: italic;
+line-height: 1.7;
+color: #002b7a;
+text-align: center;
+padding: 20px;
+position: relative;
+}
+body.low-vision .president-quote {
+color: #fff !important;
+font-size: 1.5rem !important;
+}
+.president-name {
+margin-top: 15px;
+font-weight: bold;
+font-size: 1.1rem;
+color: #002b7a;
+text-align: left;
+}
+body.low-vision .president-name {
+color: #fff !important;
+}
+.stats {
+background: linear-gradient(to right, #0039a4, #002b7a);
+padding: 60px 0;
+color: white;
+text-align: center;
+}
+body.low-vision .stats {
+background: linear-gradient(to right, #000, #111) !important;
+}
+.stats-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+gap: 20px;
+max-width: 1000px;
+margin: 0 auto;
+}
+.stat-item {
+padding: 20px;
+background: rgba(255, 255, 255, 0.1);
+border-radius: 8px;
+backdrop-filter: blur(5px);
+}
+body.low-vision .stat-item {
+background: rgba(255, 255, 255, 0.15) !important;
+}
+.stat-number {
+font-size: 2.5rem;
+font-weight: 700;
+margin-bottom: 8px;
+color: #FFFFE0;
+}
+body.low-vision .stat-number {
+color: #fff !important;
+font-size: 3rem !important;
+}
+.stat-text {
+font-size: 1.1rem;
+}
+body.low-vision .stat-text {
+font-size: 1.3rem !important;
+}
+footer {
+background: #1a1a2e;
+color: white;
+padding: 50px 0 30px;
+}
+body.low-vision footer {
+background: #000 !important;
+}
+.footer-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+gap: 30px;
+margin-bottom: 30px;
+}
+.footer-col h3 {
+font-size: 1.3rem;
+margin-bottom: 20px;
+color: white;
+}
+body.low-vision .footer-col h3 {
+color: #fff !important;
+font-size: 1.5rem !important;
+}
+.footer-links, .contact-info {
+list-style: none;
+}
+.footer-links li, .contact-info li {
+margin-bottom: 10px;
+}
+.footer-links a {
+color: #ccc;
+text-decoration: none;
+transition: all 0.3s ease;
+font-family: 'Roboto', sans-serif;
+}
+body.low-vision .footer-links a {
+color: #fff !important;
+font-size: 1.1em !important;
+}
+.footer-links a:hover {
+color: white;
+}
+.contact-info li {
+display: flex;
+align-items: flex-start;
+gap: 12px;
+}
+.contact-info i {
+color: #d52b1e;
+font-size: 1.1rem;
+margin-top: 3px;
+}
+body.low-vision .contact-info i {
+color: #FF7F50 !important;
+}
+.copyright {
+text-align: center;
+padding-top: 25px;
+border-top: 1px solid rgba(255, 255, 255, 0.1);
+color: #999;
+font-size: 0.85rem;
+font-family: 'Roboto', sans-serif;
+}
+body.low-vision .copyright {
+color: #ccc !important;
+border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+.partners-section {
+background: rgba(255, 255, 255, 0.9);
+padding: 30px;
+border-radius: 10px;
+box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+margin: 30px auto;
+}
+body.low-vision .partners-section {
+background: rgba(30, 30, 30, 0.95) !important;
+}
+.nav-menu {
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+gap: 12px;
+margin: 25px 0;
+}
+.nav-item {
+background: #002b7a;
+padding: 8px 18px;
+border-radius: 30px;
+transition: all 0.3s ease;
+}
+body.low-vision .nav-item {
+background: #FF7F50 !important;
+}
+.nav-item:hover {
+background: #0039a4;
+transform: translateY(-3px);
+}
+body.low-vision .nav-item:hover {
+background: #ff9977 !important;
+}
+.nav-item a {
+color: white;
+text-decoration: none;
+font-weight: 500;
+display: flex;
+align-items: center;
+gap: 6px;
+font-family: 'Roboto', sans-serif;
+font-size: 0.95rem;
+}
+body.low-vision .nav-item a {
+color: #000 !important;
+}
+.partner-img {
+height: 160px;
+background: #f8f9fa;
+display: flex;
+align-items: center;
+justify-content: center;
+overflow: hidden;
+padding: 10px;
+}
+body.low-vision .partner-img {
+background: #222 !important;
+}
+.partner-img img {
+width: 100%;
+height: 100%;
+object-fit: contain;
+}
+.partner-info {
+padding: 15px;
+text-align: center;
+}
+.partner-info h3 {
+color: #002b7a;
+margin-bottom: 8px;
+font-size: 1rem;
+line-height: 1.3;
+}
+body.low-vision .partner-info h3 {
+color: #fff !important;
+}
+.partners-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+gap: 25px;
+margin: 30px 0;
+}
+.partner-card {
+background: white;
+border-radius: 10px;
+overflow: hidden;
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+transition: transform 0.3s ease;
+display: flex;
+flex-direction: column;
+}
+body.low-vision .partner-card {
+background: #222 !important;
+color: #fff !important;
+}
+.partner-card:hover {
+transform: translateY(-5px);
+}
+.contact-section {
+background: linear-gradient(135deg, #002b7a, #0039a4);
+color: white;
+padding: 40px 0;
+border-radius: 10px;
+margin: 40px 0;
+text-align: center;
+}
+body.low-vision .contact-section {
+background: linear-gradient(135deg, #000, #111) !important;
+}
+.contact-btn {
+display: inline-block;
+background: #002b7a;
+color: white;
+padding: 10px 22px;
+border-radius: 30px;
+text-decoration: none;
+font-weight: 600;
+margin-top: 15px;
+transition: all 0.3s;
+font-family: 'Roboto', sans-serif;
+font-size: 1rem;
+}
+body.low-vision .contact-btn {
+background: #FF7F50 !important;
+color: #000 !important;
+}
+.contact-btn:hover {
+background: #0039a4;
+transform: translateY(-3px);
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+body.low-vision .contact-btn:hover {
+background: #ff9977 !important;
+box-shadow: 0 5px 15px rgba(255, 127, 80, 0.3) !important;
+}
+.back-to-top {
+position: fixed;
+bottom: 20px;
+right: 20px;
+width: 48px;
+height: 48px;
+background: #002b7a;
+color: white;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+text-decoration: none;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+opacity: 0;
+visibility: hidden;
+transition: all 0.3s ease;
+z-index: 999;
+}
+.back-to-top.visible {
+opacity: 1;
+visibility: visible;
+}
+.back-to-top:hover {
+background: #0039a4;
+transform: translateY(-3px);
+}
+body.low-vision .back-to-top {
+background: #FF7F50 !important;
+color: #000 !important;
+}
+body.low-vision .back-to-top:hover {
+background: #ff9977 !important;
+}
+@media (max-width: 768px) {
+.menu-toggle { display: block; }
+.header-nav { display: none; }
+.header-nav.active { display: flex; flex-direction: column; }
+.logo-title { font-size: 1.2rem; }
+.logo-subtitle { font-size: 0.8rem; }
+.logo-img { width: 80px; height: 80px; }
+.hero h1 { font-size: 2rem; }
+.hero-subtitle { font-size: 1.1rem; }
+.president { flex-direction: column; }
+.stats-grid { grid-template-columns: 1fr; }
+.partners-grid { grid-template-columns: 1fr; }
+.accessibility-toggle {
+top: 10px;
+right: 10px;
+padding: 8px 14px;
+font-size: 12px;
+}
+.accessibility-toggle i {
+font-size: 16px;
+}
+}
+</style>
 </head>
 <body>
-    <button class="accessibility-toggle" id="accessibilityToggle">
-        <i class="fas fa-low-vision"></i>
-        <span>Версия для слабовидящих</span>
-    </button>
-    <header>
-        <div class="container">
-            <div class="header-top">
-                <div class="logo">
-                    <div class="logo-img">
-                        <img src="logo-kpk-копия.png" alt="Логотип Комиссии по противодействию коррупции">
-                    </div>
-                    <div class="logo-text">
-                        <div class="logo-title">Комиссия по противодействию коррупции</div>
-                        <div class="logo-subtitle">Межрегиональная общественная организация</div>
-                    </div>
-                </div>
-                <button class="menu-toggle" id="menuToggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-            <ul class="header-nav" id="mainNav">
-                <li><a href="#about">О комиссии</a></li>
-                <li><a href="#regions">Регионы</a></li>
-                <li><a href="#documents">Документы</a></li>
-                <li><a href="#news">Новости</a></li>
-                <li><a href="#contact">Контакты</a></li>
-            </ul>
-            <div class="datetime" id="current-datetime"></div>
-        </div>
-    </header>
-    <section class="hero">
-        <div class="container hero-content">
-            <h1>Комиссия по противодействию коррупции</h1>
-            <div class="hero-subtitle">Межрегиональная общественная организация</div>
-            <div class="contacts">
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <span>+7(499) 391-33-34</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-mobile-alt"></i>
-                    <span>+7(926) 384-44-18</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>korrup-net@mail.ru</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-globe"></i>
-                    <span>www.korrup-net.ru</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-telegram"></i>
-                    <a href="https://t.me/korrupnet" target="_blank" style="color: #B0E0E6; text-decoration: none;">@korrupnet</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <main>
-        <section id="about" class="section section-light">
-            <div class="container">
-                <div class="section-title">
-                    <h2>О комиссии</h2>
-                </div>
-                <div class="section-content">
-                    <p>Комиссия по содействию развитию института общественного контроля за соблюдением законодательства по противодействию коррупции</p>
-                    <p>МОО «КПК» была создана в соответствии с законом об общественных объединениях и зарегистрирована Главным управлением Министерства Юстиции РФ – 26 декабря 2019 года.</p>
-                </div>
-            </div>
-        </section>
-        <section class="stats">
-            <div class="container">
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-number">5+</div>
-                        <div class="stat-text">лет работы</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">120+</div>
-                        <div class="stat-text">реализованных проектов</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">250+</div>
-                        <div class="stat-text">проведенных экспертиз</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">40+</div>
-                        <div class="stat-text">регионов присутствия</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="section section-dark">
-            <div class="container">
-                <div class="president">
-                    <div class="president-photo"></div>
-                    <div class="president-info">
-                        <div class="president-quote">
-                            Мы живём с вами в очень сложное время, время экономических реформ и кризисов. Согласно исследованиям, коррупция является серьезным препятствием к экономическому росту и развитию государства, способным поставить под угрозу любые преобразования.
-                            <div style="text-align: right; margin-top: 20px; font-style: normal; font-weight: bold;">Бояркин А.В.</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="president-name">Президент организации — Бояркин Антон Валерьевич</div>
-            </div>
-        </section>
-        <section id="regions" class="section section-light">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Деятельность по регионам</h2>
-                </div>
-                <div class="section-content">
-                    <p>Интерактивная карта деятельности Комиссии по противодействию коррупции в различных регионах России.</p>
-                </div>
-                <div id="map-container">
-                    <img id="static-map-image" src="Karta.png" alt="Карта регионов России">
-                    <div class="map-marker" data-region="краснодар" style="top: 59.5%; left: 3%;"
-                         onclick="window.location.href='region.html?region=краснодар'">
-                        <div class="marker-tooltip">Краснодар</div>
-                    </div>
-                    <div class="map-marker" data-region="калмыкия" style="top: 68%; left: 8%;"
-                         onclick="document.getElementById('reportsModal').style.display='flex'">
-                        <div class="marker-tooltip">Калмыкия</div>
-                    </div>
-                    <div class="map-marker" data-region="москва" style="top: 40%; left: 13.5%;"
-                         onclick="window.location.href='region.html?region=москва'">
-                        <div class="marker-tooltip">Москва</div>
-                    </div>
-                    <div class="map-marker" data-region="луганская народная республика" style="top: 53%; left: 7%;"
-                         onclick="window.location.href='region.html?region=луганская народная республика'">
-                        <div class="marker-tooltip">Луганская Народная Республика</div>
-                    </div>
-                    <div class="map-marker" data-region="крым" style="top: 52%; left: 1%;"
-                         onclick="window.location.href='region.html?region=крым'">
-                        <div class="marker-tooltip">Крым</div>
-                    </div>
-                    <div class="map-marker" data-region="дагестан" style="top: 75.5%; left: 6%;"
-                         onclick="window.location.href='region.html?region=дагестан'">
-                        <div class="marker-tooltip">Дагестан</div>
-                    </div>
-                    <div class="map-marker" data-region="санкт петербург" style="top: 26%; left: 16%;"
-                         onclick="window.location.href='region.html?region=санкт петербург'">
-                        <div class="marker-tooltip">Санкт-Петербург</div>
-                    </div>
-                    <!-- === СИБИРСКИЙ ФО — ОТКРЫВАЕТ МОДАЛЬНОЕ ОКНО === -->
-                    <div class="map-marker" data-region="сибирский федеральный округ" style="top: 50%; left: 52%;"
-                         onclick="document.getElementById('sfoModal').style.display='flex'">
-                        <div class="marker-tooltip">Сибирский ФО</div>
-                    </div>
-                    <div class="map-marker" data-region="ставрополь" style="top: 65%; left: 6%;"
-                         onclick="window.location.href='region.html?region=ставрополь'">
-                        <div class="marker-tooltip">Ставрополь</div>
-                    </div>
-                    <div class="map-marker" data-region="чечня" style="top: 71%; left: 6%;"
-                         onclick="window.location.href='region.html?region=чечня'">
-                        <div class="marker-tooltip">Чечня</div>
-                    </div>
-                    <div class="map-marker" data-region="астрахань" style="top: 65%; left: 10%;"
-                         onclick="window.location.href='region.html?region=астрахань'">
-                        <div class="marker-tooltip">Астрахань</div>
-                    </div>
-                    <div class="map-marker" data-region="екатеринбург" style="top: 55%; left: 28.5%;"
-                         onclick="window.location.href='region.html?region=екатеринбург'">
-                        <div class="marker-tooltip">Екатеринбург</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="documents" class="section section-dark">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Документы</h2>
-                </div>
-                <div class="section-content">
-                    <p>Официальные документы и отчеты комиссии будут размещены здесь</p>
-                    <a href="ustav2.html" class="doc-btn">Устав РПРСМБ.pdf</a>
-                    <a href="legal.html" class="doc-btn">Юридические услуги</a>
-                </div>
-            </div>
-        </section>
-        <section id="news" class="section section-light">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Новости</h2>
-                </div>
-                <div class="section-content">
-                    <p>Последние новости и события комиссии будут размещены здесь</p>
-                </div>
-            </div>
-        </section>
-        <section class="section section-dark" id="partners">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Наши партнеры</h2>
-                </div>
-                <div class="partners-section">
-                    <div class="nav-menu">
-                        <div class="nav-item">
-                            <a href="#partners"><i class="fas fa-handshake"></i> Наши партнеры</a>
-                        </div>
-                        <div class="nav-item">
-                            <a href="certificate.html"><i class="fas fa-file-certificate"></i> Свидетельство о регистрации</a>
-                        </div>
-                        <div class="nav-item">
-                            <a href="ustav.html"><i class="fas fa-file-contract"></i> Устав МОО</a>
-                        </div>
-                        <div class="nav-item">
-                            <a href="application.html"><i class="fas fa-clipboard-list"></i> Заявление и анкета</a>
-                        </div>
-                        <div class="nav-item">
-                            <a href="форма связ.html"><i class="fas fa-envelope"></i> Связаться с нами</a>
-                        </div>
-                        <div class="nav-item">
-                            <a href="сотруд.html">Наши сотрудники и Активисты</a>
-                        </div>
-                        <div class="nav-item">
-                            <a href="predprinimatelstvo.html"><i class="fas fa-briefcase"></i> Развитие предпринимательства</a>
-                        </div>
-                    </div>
-                    <div class="partners-grid">
-                        <a href="https://sledcom.ru" target="_blank" class="partner-card">
-                            <div class="partner-img">
-                                <img src="1.png" alt="СЛЕДСТВЕННЫЙ КОМИТЕТ РФ">
-                            </div>
-                            <div class="partner-info">
-                                <h3>СЛЕДСТВЕННЫЙ КОМИТЕТ РФ</h3>
-                            </div>
-                        </a>
-                        <a href="https://epp.genproc.gov.ru/web/gprf" target="_blank" class="partner-card">
-                            <div class="partner-img">
-                                <img src="2.png" alt="ГЕНЕРАЛЬНАЯ ПРОКУРАТУРА РОССИЙСКОЙ ФЕДЕРАЦИИ">
-                            </div>
-                            <div class="partner-info">
-                                <h3>ГЕНЕРАЛЬНАЯ ПРОКУРАТУРА РОССИЙСКОЙ ФЕДЕРАЦИИ</h3>
-                            </div>
-                        </a>
-                        <a href="https://compronet.info" target="_blank" class="partner-card">
-                            <div class="partner-img">
-                                <img src="3.png" alt="МИРОВОЕ СООБЩЕСТВО Межгосударственного агенства специальных расследований и противодействия коррупции">
-                            </div>
-                            <div class="partner-info">
-                                <h3>МИРОВОЕ СООБЩЕСТВО Межгосударственного агенства специальных расследований и противодействия коррупции</h3>
-                            </div>
-                        </a>
-                        <a href="https://мвд.рф" target="_blank" class="partner-card">
-                            <div class="partner-img">
-                                <img src="4.png" alt="МИНИСТЕРСТВО ВНУТРЕННИХ ДЕЛ РОССИЙСКОЙ ФЕДЕРАЦИИ">
-                            </div>
-                            <div class="partner-info">
-                                <h3>МИНИСТЕРСТВО ВНУТРЕННИХ ДЕЛ РОССИЙСКОЙ ФЕДЕРАЦИИ</h3>
-                            </div>
-                        </a>
-                        <a href="https://rpsmb.ru" target="_blank" class="partner-card">
-                            <div class="partner-img">
-                                <img src="prof.png" alt="Российский профсоюз работников среднего и малого бизнеса">
-                            </div>
-                            <div class="partner-info">
-                                <h3> РОССИЙСКИЙ ПРОФСОЮЗ РАБОТНИКОВ</h3>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="contact-section" id="contact">
-                        <div class="contact-content">
-                            <h2>Связаться с нами</h2>
-                            <p>Есть вопросы или предложения? Напишите нам, и мы обязательно ответим!</p>
-                            <a href="форма связ.html" class="contact-btn">Написать сообщение</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>Комиссия по противодействию коррупции</h3>
-                    <ul class="footer-links">
-                        <li><a href="#about">О комиссии</a></li>
-                        <li><a href="#documents">Уставные документы</a></li>
-                        <li><a href="#regions">Структура</a></li>
-                        <li><a href="#about">История</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Деятельность</h3>
-                    <ul class="footer-links">
-                        <li><a href="#regions">Направления работы</a></li>
-                        <li><a href="#regions">Проекты и программы</a></li>
-                        <li><a href="#regions">Мероприятия</a></li>
-                        <li><a href="#news">Публикации</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Контакты</h3>
-                    <ul class="contact-info">
-                        <li>
-                            <i class="fas fa-phone"></i>
-                            <span>+7(499) 391-33-34</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-mobile-alt"></i>
-                            <span>+7(926) 384-44-18</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <span>korrup-net@mail.ru</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-globe"></i>
-                            <span>www.korrup-net.ru</span>
-                        </li>
-                        <li>
-                            <i class="fab fa-telegram"></i>
-                            <a href="https://t.me/korrupnet" target="_blank" style="color: #ccc; text-decoration: none;">@korrupnet</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright" id="copyright">
-                &copy; 2025 Комиссия по противодействию коррупции. Все права защищены.
-            </div>
-        </div>
-    </footer>
-    <a href="#" class="back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-    <!-- Модальное окно: Калмыкия -->
-    <div class="modal" id="reportsModal">
-        <span class="close-modal" id="closeModal">&times;</span>
-        <div class="modal-content">
-            <img src="rabota1.jpg" alt="Отчет комиссии по противодействию коррупции по Республике Калмыкия">
-            <img src="rabota2.jpg" alt="Подпись председателя Регионального отделения">
-        </div>
-    </div>
-    <!-- === МОДАЛЬНОЕ ОКНО: СИБИРСКИЙ ФО (все 4 файла) === -->
-    <div class="modal-sfo" id="sfoModal">
-        <div class="modal-sfo-content">
-            <span class="close-sfo-modal" onclick="document.getElementById('sfoModal').style.display='none'">&times;</span>
-            <h2>Документы по Сибирскому федеральному округу</h2>
-            <div class="sfo-doc-list">
-                <div class="sfo-doc-item">
-                    <a href="Сканировать1 — копия.PDF" target="_blank" download>
-                        <i class="fas fa-file-pdf"></i> Письмо Барнаульской епархии (январь 2025 г.)
-                    </a>
-                </div>
-                <div class="sfo-doc-item">
-                    <a href="текст президенту.docx" download>
-                        <i class="fas fa-file-word"></i> Обращение Корнеева Ю.Б. к Президенту РФ
-                    </a>
-                </div>
-                <div class="sfo-doc-item">
-                    <a href="материалы.docx" download>
-                        <i class="fas fa-file-word"></i> Решение Бийского городского суда (29.09.2014)
-                    </a>
-                </div>
-                <div class="sfo-doc-item">
-                    <a href="краткая справка — копия (1).docx" download>
-                        <i class="fas fa-file-word"></i> Краткая справка по объекту культурного наследия
-                    </a>
-                </div>
-            </div>
-            <p style="margin-top: 20px; font-size: 0.9rem; color: #666; text-align: center;">
-                Все файлы будут скачаны на ваше устройство.
-            </p>
-        </div>
-    </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const currentYear = new Date().getFullYear();
-            document.getElementById('copyright').innerHTML = `&copy; ${currentYear} Комиссия по противодействию коррупции. Все права защищены.`;
+<button class="accessibility-toggle" id="accessibilityToggle">
+<i class="fas fa-low-vision"></i>
+<span>Версия для слабовидящих</span>
+</button>
+<header>
+<div class="container">
+<div class="header-top">
+<div class="logo">
+<div class="logo-img">
+<img src="logo-kpk-копия.png" alt="Логотип Комиссии по противодействию коррупции">
+</div>
+<div class="logo-text">
+<div class="logo-title">Комиссия по противодействию коррупции</div>
+<div class="logo-subtitle">Межрегиональная общественная организация</div>
+</div>
+</div>
+<button class="menu-toggle" id="menuToggle">
+<i class="fas fa-bars"></i>
+</button>
+</div>
+<ul class="header-nav" id="mainNav">
+<li><a href="#about">О комиссии</a></li>
+<li><a href="#regions">Регионы</a></li>
+<li><a href="#documents">Документы</a></li>
+<li><a href="#news">Новости</a></li>
+<li><a href="#contact">Контакты</a></li>
+</ul>
+<div class="datetime" id="current-datetime"></div>
+</div>
+</header>
+<section class="hero">
+<div class="container hero-content">
+<h1>Комиссия по противодействию коррупции</h1>
+<div class="hero-subtitle">Межрегиональная общественная организация</div>
+<div class="contacts">
+<div class="contact-item">
+<i class="fas fa-phone"></i>
+<span>+7(499) 391-33-34</span>
+</div>
+<div class="contact-item">
+<i class="fas fa-mobile-alt"></i>
+<span>+7(926) 384-44-18</span>
+</div>
+<div class="contact-item">
+<i class="fas fa-envelope"></i>
+<span>korrup-net@mail.ru</span>
+</div>
+<div class="contact-item">
+<i class="fas fa-globe"></i>
+<span>www.korrup-net.ru</span>
+</div>
+<div class="contact-item">
+<i class="fab fa-telegram"></i>
+<a href="https://t.me/korrupnet" target="_blank" style="color: #B0E0E6; text-decoration: none;">@korrupnet</a>
+</div>
+</div>
+</div>
+</section>
+<main>
+<section id="about" class="section section-light">
+<div class="container">
+<div class="section-title">
+<h2>О комиссии</h2>
+</div>
+<div class="section-content">
+<p>Комиссия по содействию развитию института общественного контроля за соблюдением законодательства по противодействию коррупции</p>
+<p>МОО «КПК» была создана в соответствии с законом об общественных объединениях и зарегистрирована Главным управлением Министерства Юстиции РФ – 26 декабря 2019 года.</p>
+</div>
+</div>
+</section>
+<section class="stats">
+<div class="container">
+<div class="stats-grid">
+<div class="stat-item">
+<div class="stat-number">5+</div>
+<div class="stat-text">лет работы</div>
+</div>
+<div class="stat-item">
+<div class="stat-number">120+</div>
+<div class="stat-text">реализованных проектов</div>
+</div>
+<div class="stat-item">
+<div class="stat-number">250+</div>
+<div class="stat-text">проведенных экспертиз</div>
+</div>
+<div class="stat-item">
+<div class="stat-number">40+</div>
+<div class="stat-text">регионов присутствия</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section section-dark">
+<div class="container">
+<div class="president">
+<div class="president-photo"></div>
+<div class="president-info">
+<div class="president-quote">
+Мы живём с вами в очень сложное время, время экономических реформ и кризисов. Согласно исследованиям, коррупция является серьезным препятствием к экономическому росту и развитию государства, способным поставить под угрозу любые преобразования.
+<div style="text-align: right; margin-top: 20px; font-style: normal; font-weight: bold;">Бояркин А.В.</div>
+</div>
+</div>
+</div>
+<div class="president-name">Президент организации — Бояркин Антон Валерьевич</div>
+</div>
+</section>
+<section id="regions" class="section section-light">
+<div class="container">
+<div class="section-title">
+<h2>Деятельность по регионам</h2>
+</div>
+<div class="section-content">
+<p>Интерактивная карта деятельности Комиссии по противодействию коррупции в различных регионах России.</p>
+</div>
+<div id="map-container">
+<img id="static-map-image" src="Karta.png" alt="Карта регионов России">
 
-            function updateDateTime() {
-                const now = new Date();
-                const options = {
-                    weekday: 'long',
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    second: '2-digit',
-                    timeZoneName: 'short'
-                };
-                document.getElementById('current-datetime').textContent = now.toLocaleDateString('ru-RU', options);
-            }
-            updateDateTime();
-            setInterval(updateDateTime, 1000);
+<!-- === ДАГЕСТАН — ОТКРЫВАЕТ PDF МОДАЛЬНО === -->
+<div class="map-marker" data-region="дагестан" style="top: 75.5%; left: 6%;"
+onclick="document.getElementById('dagestanModal').style.display='flex'">
+<div class="marker-tooltip">Дагестан</div>
+</div>
 
-            const toggleButton = document.getElementById('accessibilityToggle');
-            const body = document.body;
-            if (localStorage.getItem('lowVisionMode') === 'enabled') {
-                body.classList.add('low-vision');
-                toggleButton.innerHTML = '<i class="fas fa-eye"></i> <span>Обычная версия</span>';
-            }
-            toggleButton.addEventListener('click', function() {
-                body.classList.toggle('low-vision');
-                if (body.classList.contains('low-vision')) {
-                    toggleButton.innerHTML = '<i class="fas fa-eye"></i> <span>Обычная версия</span>';
-                    localStorage.setItem('lowVisionMode', 'enabled');
-                } else {
-                    toggleButton.innerHTML = '<i class="fas fa-low-vision"></i> <span>Версия для слабовидящих</span>';
-                    localStorage.setItem('lowVisionMode', 'disabled');
-                }
-            });
+<div class="map-marker" data-region="краснодар" style="top: 59.5%; left: 3%;"
+onclick="window.location.href='region.html?region=краснодар'">
+<div class="marker-tooltip">Краснодар</div>
+</div>
+<div class="map-marker" data-region="калмыкия" style="top: 68%; left: 8%;"
+onclick="document.getElementById('reportsModal').style.display='flex'">
+<div class="marker-tooltip">Калмыкия</div>
+</div>
+<div class="map-marker" data-region="москва" style="top: 40%; left: 13.5%;"
+onclick="window.location.href='region.html?region=москва'">
+<div class="marker-tooltip">Москва</div>
+</div>
+<div class="map-marker" data-region="луганская народная республика" style="top: 53%; left: 7%;"
+onclick="window.location.href='region.html?region=луганская народная республика'">
+<div class="marker-tooltip">Луганская Народная Республика</div>
+</div>
+<div class="map-marker" data-region="крым" style="top: 52%; left: 1%;"
+onclick="window.location.href='region.html?region=крым'">
+<div class="marker-tooltip">Крым</div>
+</div>
+<div class="map-marker" data-region="санкт петербург" style="top: 26%; left: 16%;"
+onclick="window.location.href='region.html?region=санкт петербург'">
+<div class="marker-tooltip">Санкт-Петербург</div>
+</div>
+<!-- === СИБИРСКИЙ ФО — ОТКРЫВАЕТ МОДАЛЬНОЕ ОКНО === -->
+<div class="map-marker" data-region="сибирский федеральный округ" style="top: 50%; left: 52%;"
+onclick="document.getElementById('sfoModal').style.display='flex'">
+<div class="marker-tooltip">Сибирский ФО</div>
+</div>
+<div class="map-marker" data-region="ставрополь" style="top: 65%; left: 6%;"
+onclick="window.location.href='region.html?region=ставрополь'">
+<div class="marker-tooltip">Ставрополь</div>
+</div>
+<div class="map-marker" data-region="чечня" style="top: 71%; left: 6%;"
+onclick="window.location.href='region.html?region=чечня'">
+<div class="marker-tooltip">Чечня</div>
+</div>
+<div class="map-marker" data-region="астрахань" style="top: 65%; left: 10%;"
+onclick="window.location.href='region.html?region=астрахань'">
+<div class="marker-tooltip">Астрахань</div>
+</div>
+<div class="map-marker" data-region="екатеринбург" style="top: 55%; left: 28.5%;"
+onclick="window.location.href='region.html?region=екатеринбург'">
+<div class="marker-tooltip">Екатеринбург</div>
+</div>
+</div>
+</div>
+</section>
+<section id="documents" class="section section-dark">
+<div class="container">
+<div class="section-title">
+<h2>Документы</h2>
+</div>
+<div class="section-content">
+<p>Официальные документы и отчеты комиссии будут размещены здесь</p>
+<a href="ustav2.html" class="doc-btn">Устав РПРСМБ.pdf</a>
+<a href="legal.html" class="doc-btn">Юридические услуги</a>
+</div>
+</div>
+</section>
+<section id="news" class="section section-light">
+<div class="container">
+<div class="section-title">
+<h2>Новости</h2>
+</div>
+<div class="section-content">
+<p>Последние новости и события комиссии будут размещены здесь</p>
+</div>
+</div>
+</section>
+<section class="section section-dark" id="partners">
+<div class="container">
+<div class="section-title">
+<h2>Наши партнеры</h2>
+</div>
+<div class="partners-section">
+<div class="nav-menu">
+<div class="nav-item">
+<a href="#partners"><i class="fas fa-handshake"></i> Наши партнеры</a>
+</div>
+<div class="nav-item">
+<a href="certificate.html"><i class="fas fa-file-certificate"></i> Свидетельство о регистрации</a>
+</div>
+<div class="nav-item">
+<a href="ustav.html"><i class="fas fa-file-contract"></i> Устав МОО</a>
+</div>
+<div class="nav-item">
+<a href="application.html"><i class="fas fa-clipboard-list"></i> Заявление и анкета</a>
+</div>
+<div class="nav-item">
+<a href="форма связ.html"><i class="fas fa-envelope"></i> Связаться с нами</a>
+</div>
+<div class="nav-item">
+<a href="сотруд.html">Наши сотрудники и Активисты</a>
+</div>
+<div class="nav-item">
+<a href="predprinimatelstvo.html"><i class="fas fa-briefcase"></i> Развитие предпринимательства</a>
+</div>
+</div>
+<div class="partners-grid">
+<a href="https://sledcom.ru" target="_blank" class="partner-card">
+<div class="partner-img">
+<img src="1.png" alt="СЛЕДСТВЕННЫЙ КОМИТЕТ РФ">
+</div>
+<div class="partner-info">
+<h3>СЛЕДСТВЕННЫЙ КОМИТЕТ РФ</h3>
+</div>
+</a>
+<a href="https://epp.genproc.gov.ru/web/gprf" target="_blank" class="partner-card">
+<div class="partner-img">
+<img src="2.png" alt="ГЕНЕРАЛЬНАЯ ПРОКУРАТУРА РОССИЙСКОЙ ФЕДЕРАЦИИ">
+</div>
+<div class="partner-info">
+<h3>ГЕНЕРАЛЬНАЯ ПРОКУРАТУРА РОССИЙСКОЙ ФЕДЕРАЦИИ</h3>
+</div>
+</a>
+<a href="https://compronet.info" target="_blank" class="partner-card">
+<div class="partner-img">
+<img src="3.png" alt="МИРОВОЕ СООБЩЕСТВО Межгосударственного агенства специальных расследований и противодействия коррупции">
+</div>
+<div class="partner-info">
+<h3>МИРОВОЕ СООБЩЕСТВО Межгосударственного агенства специальных расследований и противодействия коррупции</h3>
+</div>
+</a>
+<a href="https://мвд.рф" target="_blank" class="partner-card">
+<div class="partner-img">
+<img src="4.png" alt="МИНИСТЕРСТВО ВНУТРЕННИХ ДЕЛ РОССИЙСКОЙ ФЕДЕРАЦИИ">
+</div>
+<div class="partner-info">
+<h3>МИНИСТЕРСТВО ВНУТРЕННИХ ДЕЛ РОССИЙСКОЙ ФЕДЕРАЦИИ</h3>
+</div>
+</a>
+<a href="https://rpsmb.ru" target="_blank" class="partner-card">
+<div class="partner-img">
+<img src="prof.png" alt="Российский профсоюз работников среднего и малого бизнеса">
+</div>
+<div class="partner-info">
+<h3> РОССИЙСКИЙ ПРОФСОЮЗ РАБОТНИКОВ</h3>
+</div>
+</a>
+</div>
+<div class="contact-section" id="contact">
+<div class="contact-content">
+<h2>Связаться с нами</h2>
+<p>Есть вопросы или предложения? Напишите нам, и мы обязательно ответим!</p>
+<a href="форма связ.html" class="contact-btn">Написать сообщение</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="container">
+<div class="footer-grid">
+<div class="footer-col">
+<h3>Комиссия по противодействию коррупции</h3>
+<ul class="footer-links">
+<li><a href="#about">О комиссии</a></li>
+<li><a href="#documents">Уставные документы</a></li>
+<li><a href="#regions">Структура</a></li>
+<li><a href="#about">История</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h3>Деятельность</h3>
+<ul class="footer-links">
+<li><a href="#regions">Направления работы</a></li>
+<li><a href="#regions">Проекты и программы</a></li>
+<li><a href="#regions">Мероприятия</a></li>
+<li><a href="#news">Публикации</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h3>Контакты</h3>
+<ul class="contact-info">
+<li>
+<i class="fas fa-phone"></i>
+<span>+7(499) 391-33-34</span>
+</li>
+<li>
+<i class="fas fa-mobile-alt"></i>
+<span>+7(926) 384-44-18</span>
+</li>
+<li>
+<i class="fas fa-envelope"></i>
+<span>korrup-net@mail.ru</span>
+</li>
+<li>
+<i class="fas fa-globe"></i>
+<span>www.korrup-net.ru</span>
+</li>
+<li>
+<i class="fab fa-telegram"></i>
+<a href="https://t.me/korrupnet" target="_blank" style="color: #ccc; text-decoration: none;">@korrupnet</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="copyright" id="copyright">
+&copy; 2025 Комиссия по противодействию коррупции. Все права защищены.
+</div>
+</div>
+</footer>
+<a href="#" class="back-to-top" id="backToTop">
+<i class="fas fa-arrow-up"></i>
+</a>
 
-            const menuToggle = document.getElementById('menuToggle');
-            const mainNav = document.getElementById('mainNav');
-            menuToggle.addEventListener('click', () => {
-                mainNav.classList.toggle('active');
-            });
+<!-- Модальное окно: Калмыкия -->
+<div class="modal" id="reportsModal">
+<span class="close-modal" id="closeModal">&times;</span>
+<div class="modal-content">
+<img src="rabota1.jpg" alt="Отчет комиссии по противодействию коррупции по Республике Калмыкия">
+<img src="rabota2.jpg" alt="Подпись председателя Регионального отделения">
+</div>
+</div>
 
-            const backToTop = document.getElementById('backToTop');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 400) {
-                    backToTop.classList.add('visible');
-                } else {
-                    backToTop.classList.remove('visible');
-                }
-            });
-            backToTop.addEventListener('click', (e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
+<!-- Модальное окно: Сибирский ФО -->
+<div class="modal-sfo" id="sfoModal">
+<div class="modal-sfo-content">
+<span class="close-sfo-modal" onclick="document.getElementById('sfoModal').style.display='none'">&times;</span>
+<h2>Документы по Сибирскому федеральному округу</h2>
+<div class="sfo-doc-list">
+<div class="sfo-doc-item">
+<a href="Сканировать1 — копия.PDF" target="_blank" download>
+<i class="fas fa-file-pdf"></i> Письмо Барнаульской епархии (январь 2025 г.)
+</a>
+</div>
+<div class="sfo-doc-item">
+<a href="текст президенту.docx" download>
+<i class="fas fa-file-word"></i> Обращение Корнеева Ю.Б. к Президенту РФ
+</a>
+</div>
+<div class="sfo-doc-item">
+<a href="материалы.docx" download>
+<i class="fas fa-file-word"></i> Решение Бийского городского суда (29.09.2014)
+</a>
+</div>
+<div class="sfo-doc-item">
+<a href="краткая справка — копия (1).docx" download>
+<i class="fas fa-file-word"></i> Краткая справка по объекту культурного наследия
+</a>
+</div>
+</div>
+<p style="margin-top: 20px; font-size: 0.9rem; color: #666; text-align: center;">
+Все файлы будут скачаны на ваше устройство.
+</p>
+</div>
+</div>
 
-            // Модальное окно Калмыкия
-            const modal = document.getElementById('reportsModal');
-            const closeModalBtn = document.getElementById('closeModal');
-            closeModalBtn.addEventListener('click', () => {
-                modal.style.display = 'none';
-            });
-            window.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.style.display = 'none';
-                }
-            });
+<!-- === МОДАЛЬНОЕ ОКНО: ДАГЕСТАН === -->
+<div class="modal" id="dagestanModal">
+<span class="close-modal" id="closeDagestanModal">&times;</span>
+<div class="modal-content">
+<embed src="РОССИЙСКАЯ ФЕДЕРАЦИЯ-1.pdf" type="application/pdf" width="100%" height="80vh" style="border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.3);">
+</div>
+</div>
 
-            // Модальное окно Сибирский ФО
-            const sfoModal = document.getElementById('sfoModal');
-            window.addEventListener('click', (e) => {
-                if (e.target === sfoModal) {
-                    sfoModal.style.display = 'none';
-                }
-            });
-        });
-    </script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const currentYear = new Date().getFullYear();
+document.getElementById('copyright').innerHTML = `&copy; ${currentYear} Комиссия по противодействию коррупции. Все права защищены.`;
+
+function updateDateTime() {
+const now = new Date();
+const options = {
+weekday: 'long',
+year: 'numeric',
+month: 'long',
+day: 'numeric',
+hour: '2-digit',
+minute: '2-digit',
+second: '2-digit',
+timeZoneName: 'short'
+};
+document.getElementById('current-datetime').textContent = now.toLocaleDateString('ru-RU', options);
+}
+updateDateTime();
+setInterval(updateDateTime, 1000);
+
+const toggleButton = document.getElementById('accessibilityToggle');
+const body = document.body;
+if (localStorage.getItem('lowVisionMode') === 'enabled') {
+body.classList.add('low-vision');
+toggleButton.innerHTML = '<i class="fas fa-eye"></i> <span>Обычная версия</span>';
+}
+toggleButton.addEventListener('click', function() {
+body.classList.toggle('low-vision');
+if (body.classList.contains('low-vision')) {
+toggleButton.innerHTML = '<i class="fas fa-eye"></i> <span>Обычная версия</span>';
+localStorage.setItem('lowVisionMode', 'enabled');
+} else {
+toggleButton.innerHTML = '<i class="fas fa-low-vision"></i> <span>Версия для слабовидящих</span>';
+localStorage.setItem('lowVisionMode', 'disabled');
+}
+});
+
+const menuToggle = document.getElementById('menuToggle');
+const mainNav = document.getElementById('mainNav');
+menuToggle.addEventListener('click', () => {
+mainNav.classList.toggle('active');
+});
+
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+if (window.scrollY > 400) {
+backToTop.classList.add('visible');
+} else {
+backToTop.classList.remove('visible');
+}
+});
+backToTop.addEventListener('click', (e) => {
+e.preventDefault();
+window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Калмыкия
+const modal = document.getElementById('reportsModal');
+const closeModalBtn = document.getElementById('closeModal');
+closeModalBtn.addEventListener('click', () => {
+modal.style.display = 'none';
+});
+window.addEventListener('click', (e) => {
+if (e.target === modal) {
+modal.style.display = 'none';
+}
+});
+
+// Сибирский ФО
+const sfoModal = document.getElementById('sfoModal');
+window.addEventListener('click', (e) => {
+if (e.target === sfoModal) {
+sfoModal.style.display = 'none';
+}
+});
+
+// === ДАГЕСТАН ===
+const dagestanModal = document.getElementById('dagestanModal');
+const closeDagestanBtn = document.getElementById('closeDagestanModal');
+if (closeDagestanBtn) {
+closeDagestanBtn.addEventListener('click', () => {
+dagestanModal.style.display = 'none';
+});
+}
+window.addEventListener('click', (e) => {
+if (e.target === dagestanModal) {
+dagestanModal.style.display = 'none';
+}
+});
+
+});
+</script>
 </body>
 </html>
+
 
 
 
