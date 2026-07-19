@@ -896,6 +896,50 @@ color: #000 !important;
 body.low-vision .back-to-top:hover {
 background: #ff9977 !important;
 }
+
+/* Дополнительные стили для раздела Новое Поколение */
+.program-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-top: 30px;
+    text-align: left;
+    border-left: 5px solid #002b7a;
+}
+body.low-vision .program-card {
+    background: #222 !important;
+    border-left: 5px solid #FF7F50 !important;
+}
+.program-card h3 {
+    color: #002b7a;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+body.low-vision .program-card h3 {
+    color: #fff !important;
+}
+.program-card ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+.program-card li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+}
+.program-card li:before {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: #002b7a;
+}
+body.low-vision .program-card li:before {
+    color: #FF7F50 !important;
+}
+
 @media (max-width: 768px) {
 .menu-toggle { display: block; }
 .header-nav { display: none; }
@@ -1098,10 +1142,42 @@ onclick="window.location.href='region.html?region=екатеринбург'">
 <h2>Документы</h2>
 </div>
 <div class="section-content">
-<p>Официальные документы и отчеты комиссии будут размещены здесь</p>
+<p>Официальные документы, уставы и программы развития</p>
 <a href="ustav2.html" class="doc-btn">Устав РПРСМБ.pdf</a>
 <a href="legal.html" class="doc-btn">Юридические услуги</a>
+<a href="#new-generation-program" class="doc-btn" onclick="document.querySelector('#new-generation-program').scrollIntoView({behavior: 'smooth'})">Программа "Новое поколение"</a>
 </div>
+
+<!-- Раздел Новое Поколение -->
+<div id="new-generation-program" class="program-card">
+    <h3>Программа развития Молодёжной Организации “Новое Поколение”</h3>
+    <p>Программа опирается на уставы Общероссийского профсоюза работников среднего и малого бизнеса и Межрегиональной общественной организации “Комиссия по противодействию коррупции”.</p>
+    
+    <p><strong>Председатель:</strong> Сосна Матвей Никитич<br>
+    <strong>Куратор:</strong> Дегтярев Вячеслав Николаевич</p>
+    
+    <p>Основная идеология программы — Предприниматели, хозяева своего дела, объединяются в свою собственную Организацию по всей России в каждом городе для того, чтобы решать свои собственные проблемы.</p>
+    
+    <h4>Основные направления деятельности:</h4>
+    <ul>
+        <li>Поддержка и развитие малого и среднего предпринимательства</li>
+        <li>Создание новых рабочих мест</li>
+        <li>Реализация национальной программы демографического развития РФ</li>
+        <li>Внедрение инноваций и передовых технологий отечественных производителей</li>
+        <li>Развитие информационных технологий</li>
+        <li>Подготовка и переобучение кадров, адаптация населения 40+</li>
+        <li>Социальная защита ветеранов ВОВ, участников СВО, многодетных семей и инвалидов</li>
+        <li>Экологические программы и внедрение технологий переработки отходов</li>
+        <li>Финансово-кредитная поддержка и правовая защита предпринимателей</li>
+    </ul>
+    
+    <div style="text-align: center; margin-top: 25px;">
+        <a href="программа РПР статья на сайт после редакции.docx" class="doc-btn" download>
+            <i class="fas fa-file-word"></i> Скачать полную версию (.docx)
+        </a>
+    </div>
+</div>
+
 </div>
 </section>
 <section id="news" class="section section-light">
@@ -1398,7 +1474,6 @@ dagestanModal.style.display = 'none';
 </script>
 </body>
 </html>
-
 
 
 
