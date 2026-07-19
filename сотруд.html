@@ -489,8 +489,7 @@
     </main>
 
     <script>
-        // Обновлённый массив staffData на основе файла Сотрудники.docx
-        // Даты окончания убраны. Добавлены все новые сотрудники.
+        // Массив данных сотрудников
         const staffData = [
             { name: "Бояркин Антон Валерьевич", position: "Президент организации", number: "77-00001 АА-00191" },
             { name: "Курылев Андрей Владимирович", position: "Первый Вице-президент организации", number: "Номер не присвоен" },
@@ -580,7 +579,6 @@
             { name: "Мадагов Элимхан Алиевич", position: "Помощник председателя р/о по Чеченской Республике", number: "95-00015 РЧ-00171" },
             { name: "Сайпусаев Амар Турпал-Алиевич", position: "Помощник председателя р/о по Чеченской Республике", number: "95-00022 РЧ-00195" },
             { name: "Халидов Махач Камильевич", position: "Помощник председателя р/о по Московской области", number: "50-00007 МО-00215" },
-            // Новые сотрудники из списка
             { name: "Саидов Рамзан Аббасович", position: "Заместитель председателя регионального отделения организации по Чеченской Республике", number: "95-00029 РЧ-00267" },
             { name: "Тапаев Абдулнасир Хамзатович", position: "Заместитель председателя регионального отделения организации по Чеченской Республике", number: "95-00028 РЧ-00265" },
             { name: "Радев Александр Сергеевич", position: "Руководитель регионального отделения организации в Республике Крым по городу Алупка", number: "82-00007 РК-00264" },
@@ -642,14 +640,11 @@
                 return { personal: "Номер не присвоен", id: null };
             }
 
-            // Разделяем по пробелу
             const parts = raw.trim().split(/\s+/);
             let personal = null;
             let id = null;
 
-            // Паттерн для личного номера: XX-XXXXX
             const personalPattern = /^\d{2}-\d{5}$/;
-            // Паттерн для удостоверения: XX-XXXXX (но покажем как XX XXXXX)
             const idPattern = /^[A-ZА-Я]{2}-\d{5}$/;
 
             if (parts.length === 1) {
@@ -659,16 +654,14 @@
                 } else if (idPattern.test(part)) {
                     id = part.replace('-', ' ');
                 } else {
-                    personal = part; // fallback
+                    personal = part;
                 }
             } else if (parts.length >= 2) {
-                // Предполагаем: первая часть — личный, вторая — удостоверение
                 personal = parts[0];
                 let idPart = parts[1];
                 if (idPattern.test(idPart)) {
                     id = idPart.replace('-', ' ');
                 } else {
-                    // Если вторая часть не подходит — попробуем найти в остальных
                     for (let i = 1; i < parts.length; i++) {
                         if (idPattern.test(parts[i])) {
                             id = parts[i].replace('-', ' ');
@@ -723,6 +716,12 @@
                     lines.push(`Номер удостоверения: ${id}`);
                 }
 
+                // Логика для кнопки "Подробнее"
+                let linkHref = "#";
+                if (s.name === "Дегтярёв Вячеслав Николаевич") {
+                    linkHref = "дегтярев.html";
+                }
+
                 card.innerHTML = `
                     <div class="staff-photo">
                         <i class="fas fa-user-tie"></i>
@@ -731,7 +730,7 @@
                         <h3>${s.name}</h3>
                         <p class="staff-position">${s.position}</p>
                         <p class="staff-description">${lines.join('<br>')}</p>
-                        <a href="#" class="staff-btn">Подробнее</a>
+                        <a href="${linkHref}" class="staff-btn">Подробнее</a>
                     </div>
                 `;
                 grid.appendChild(card);
@@ -762,7 +761,6 @@
                 regSelect.appendChild(opt);
             });
 
-            // Заполняем кнопки букв ТОЛЬКО теми буквами, которые есть у оставшихся сотрудников
             const letterContainer = document.getElementById('letterFilter');
             initials.forEach(letter => {
                 const btn = document.createElement('button');
@@ -814,7 +812,6 @@
     </script>
 </body>
 </html>
-
 
 
 
