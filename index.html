@@ -619,6 +619,115 @@ text-align: left;
 body.low-vision .president-name {
 color: #fff !important;
 }
+
+/* === Стили для советника президента === */
+.advisor-section {
+margin-top: 40px;
+padding-top: 40px;
+border-top: 2px solid rgba(0, 43, 122, 0.2);
+}
+body.low-vision .advisor-section {
+border-top: 2px solid rgba(255, 255, 255, 0.3) !important;
+}
+.advisor {
+display: flex;
+align-items: flex-start;
+gap: 30px;
+max-width: 1000px;
+margin: 0 auto;
+flex-wrap: wrap;
+}
+.advisor-photo {
+flex: 0 0 280px;
+min-height: 360px;
+background: #002b7a url('дегтярев.jpg') no-repeat top center;
+background-size: cover;
+border-radius: 8px;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+position: relative;
+}
+body.low-vision .advisor-photo {
+background: #000 url('дегтярев.jpg') no-repeat top center !important;
+box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15) !important;
+}
+.advisor-photo:before {
+content: '';
+position: absolute;
+top: -10px;
+left: -10px;
+right: -10px;
+bottom: -10px;
+border: 2px solid #002b7a;
+border-radius: 12px;
+z-index: -1;
+opacity: 0.5;
+}
+body.low-vision .advisor-photo:before {
+border: 2px solid #fff !important;
+opacity: 0.7 !important;
+}
+.advisor-info {
+flex: 1;
+min-width: 280px;
+padding: 20px;
+background: white;
+border-radius: 8px;
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+body.low-vision .advisor-info {
+background: #222 !important;
+color: #fff !important;
+box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1) !important;
+}
+.advisor-position {
+font-size: 1.1rem;
+font-weight: 600;
+color: #002b7a;
+margin-bottom: 15px;
+}
+body.low-vision .advisor-position {
+color: #fff !important;
+}
+.advisor-name {
+font-size: 1.2rem;
+font-weight: bold;
+color: #002b7a;
+margin-bottom: 20px;
+}
+body.low-vision .advisor-name {
+color: #fff !important;
+}
+.bio-btn {
+display: inline-block;
+background: #002b7a;
+color: white;
+padding: 12px 28px;
+border-radius: 30px;
+text-decoration: none;
+font-weight: 600;
+transition: all 0.3s;
+font-family: 'Roboto', sans-serif;
+font-size: 1.1rem;
+box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+text-align: center;
+align-self: flex-start;
+}
+.bio-btn:hover {
+background: #0039a4;
+transform: translateY(-3px);
+box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+body.low-vision .bio-btn {
+background: #FF7F50 !important;
+color: #000 !important;
+}
+body.low-vision .bio-btn:hover {
+background: #ff9977 !important;
+}
+
 .stats {
 background: linear-gradient(to right, #0039a4, #002b7a);
 padding: 60px 0;
@@ -950,6 +1059,7 @@ body.low-vision .program-card li:before {
 .hero h1 { font-size: 2rem; }
 .hero-subtitle { font-size: 1.1rem; }
 .president { flex-direction: column; }
+.advisor { flex-direction: column; }
 .stats-grid { grid-template-columns: 1fr; }
 .partners-grid { grid-template-columns: 1fr; }
 .accessibility-toggle {
@@ -1069,6 +1179,23 @@ font-size: 16px;
 </div>
 </div>
 <div class="president-name">Президент организации — Бояркин Антон Валерьевич</div>
+
+<!-- === СЕКЦИЯ СОВЕТНИКА ПРЕЗИДЕНТА === -->
+<div class="advisor-section">
+<div class="advisor">
+<div class="advisor-photo"></div>
+<div class="advisor-info">
+<div>
+<div class="advisor-position">Советник Президента организации</div>
+<div class="advisor-name">Дегтярев Вячеслав Николаевич</div>
+</div>
+<a href="Дегтярев Вячеслав Николаевич Автобиография (1).docx" class="bio-btn" download>
+<i class="fas fa-file-alt"></i> Биография
+</a>
+</div>
+</div>
+</div>
+
 </div>
 </section>
 <section id="regions" class="section section-light">
@@ -1145,37 +1272,9 @@ onclick="window.location.href='region.html?region=екатеринбург'">
 <p>Официальные документы, уставы и программы развития</p>
 <a href="ustav2.html" class="doc-btn">Устав РПРСМБ.pdf</a>
 <a href="legal.html" class="doc-btn">Юридические услуги</a>
-<a href="#new-generation-program" class="doc-btn" onclick="document.querySelector('#new-generation-program').scrollIntoView({behavior: 'smooth'})">Программа "Новое поколение"</a>
-</div>
-
-<!-- Раздел Новое Поколение -->
-<div id="new-generation-program" class="program-card">
-    <h3>Программа развития Молодёжной Организации “Новое Поколение”</h3>
-    <p>Программа опирается на уставы Общероссийского профсоюза работников среднего и малого бизнеса и Межрегиональной общественной организации “Комиссия по противодействию коррупции”.</p>
-    
-    <p><strong>Председатель:</strong> Сосна Матвей Никитич<br>
-    <strong>Куратор:</strong> Дегтярев Вячеслав Николаевич</p>
-    
-    <p>Основная идеология программы — Предприниматели, хозяева своего дела, объединяются в свою собственную Организацию по всей России в каждом городе для того, чтобы решать свои собственные проблемы.</p>
-    
-    <h4>Основные направления деятельности:</h4>
-    <ul>
-        <li>Поддержка и развитие малого и среднего предпринимательства</li>
-        <li>Создание новых рабочих мест</li>
-        <li>Реализация национальной программы демографического развития РФ</li>
-        <li>Внедрение инноваций и передовых технологий отечественных производителей</li>
-        <li>Развитие информационных технологий</li>
-        <li>Подготовка и переобучение кадров, адаптация населения 40+</li>
-        <li>Социальная защита ветеранов ВОВ, участников СВО, многодетных семей и инвалидов</li>
-        <li>Экологические программы и внедрение технологий переработки отходов</li>
-        <li>Финансово-кредитная поддержка и правовая защита предпринимателей</li>
-    </ul>
-    
-    <div style="text-align: center; margin-top: 25px;">
-        <a href="программа РПР статья на сайт после редакции.docx" class="doc-btn" download>
-            <i class="fas fa-file-word"></i> Скачать полную версию (.docx)
-        </a>
-    </div>
+<a href="программа РПР статья на сайт после редакции (1).docx" class="doc-btn" download>
+<i class="fas fa-file-alt"></i> Новое Поколение
+</a>
 </div>
 
 </div>
